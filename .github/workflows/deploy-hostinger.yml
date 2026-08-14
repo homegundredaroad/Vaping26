@@ -1,0 +1,62 @@
+name: Deploy public site to Hostinger
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  HOSTINGER_HOST: ${{ secrets.HOSTINGER_HOST }}
+  HOSTINGER_USERNAME: ${{ secrets.HOSTINGER_USERNAME }}
+  HOSTINGER_SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_PRIVATE_KEY }}
+  HOSTINGER_PORT: ${{ vars.HOSTINGER_PORT }}
+  HOSTINGER_TARGET_DIR: ${{ vars.HOSTINGER_TARGET_DIR }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate public repository
+        run: python scripts/validate_public.py
+
+      - name: Check deployment configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          missing=0
+          for name in HOSTINGER_HOST HOSTINGER_USERNAME HOSTINGER_SSH_PRIVATE_KEY HOSTINGER_PORT HOSTINGER_TARGET_DIR; do
+            if [ -z "${!name:-}" ]; then
+              echo "Missing $name"
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then
+            echo "Hostinger deployment is not configured. Add the documented Secrets/Variables first."
+            exit 1
+          fi
+
+      - name: Configure SSH
+        shell: bash
+        run: |
+          set -euo pipefail
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$HOSTINGER_SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -p "$HOSTINGER_PORT" "$HOSTINGER_HOST" >> ~/.ssh/known_hosts
+
+      - name: Deploy site directory
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f site/index.html
+          ssh -i ~/.ssh/id_ed25519 -p "$HOSTINGER_PORT" \
+            "$HOSTINGER_USERNAME@$HOSTINGER_HOST" "mkdir -p '$HOSTINGER_TARGET_DIR'"
+          scp -i ~/.ssh/id_ed25519 -P "$HOSTINGER_PORT" -r site/. \
+            "$HOSTINGER_USERNAME@$HOSTINGER_HOST:$HOSTINGER_TARGET_DIR/"
