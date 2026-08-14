@@ -6,57 +6,90 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: vaping26-hostinger-deployment
+  cancel-in-progress: false
+
 env:
-  HOSTINGER_HOST: ${{ secrets.HOSTINGER_HOST }}
-  HOSTINGER_USERNAME: ${{ secrets.HOSTINGER_USERNAME }}
-  HOSTINGER_SSH_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_PRIVATE_KEY }}
-  HOSTINGER_PORT: ${{ vars.HOSTINGER_PORT }}
-  HOSTINGER_TARGET_DIR: ${{ vars.HOSTINGER_TARGET_DIR }}
+  DEPLOY_HOST: ${{ secrets.HOSTINGER_HOST || secrets.SCCWEBDESIGNTEST_SSH_HOST || vars.SCCWEBDESIGNTEST_SSH_HOST }}
+  DEPLOY_USERNAME: ${{ secrets.HOSTINGER_USERNAME || secrets.SCCWEBDESIGNTEST_SSH_USERNAME }}
+  DEPLOY_PASSWORD: ${{ secrets.HOSTINGER_PASSWORD || secrets.SCCWEBDESIGNTEST_SSH_PASSWORD }}
+  DEPLOY_PRIVATE_KEY: ${{ secrets.HOSTINGER_SSH_PRIVATE_KEY }}
+  DEPLOY_PORT: ${{ vars.HOSTINGER_PORT || secrets.SCCWEBDESIGNTEST_SSH_PORT || '65002' }}
+  DEPLOY_TARGET_DIR: ${{ vars.HOSTINGER_TARGET_DIR || vars.SCCWEBDESIGNTEST_PUBLIC_HTML_DIR || secrets.SCCWEBDESIGNTEST_PUBLIC_HTML_DIR }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.12"
 
       - name: Validate public repository
         run: python scripts/validate_public.py
 
-      - name: Check deployment configuration
+      - name: Check deployment configuration and target safety
         shell: bash
         run: |
           set -euo pipefail
           missing=0
-          for name in HOSTINGER_HOST HOSTINGER_USERNAME HOSTINGER_SSH_PRIVATE_KEY HOSTINGER_PORT HOSTINGER_TARGET_DIR; do
+          for name in DEPLOY_HOST DEPLOY_USERNAME DEPLOY_PORT DEPLOY_TARGET_DIR; do
             if [ -z "${!name:-}" ]; then
               echo "Missing $name"
               missing=1
             fi
           done
-          if [ "$missing" -ne 0 ]; then
-            echo "Hostinger deployment is not configured. Add the documented Secrets/Variables first."
-            exit 1
+          if [ -z "${DEPLOY_PRIVATE_KEY:-}" ] && [ -z "${DEPLOY_PASSWORD:-}" ]; then
+            echo "Missing deployment authentication: configure a private key or SSH password."
+            missing=1
           fi
+          test "$missing" -eq 0
 
-      - name: Configure SSH
+          case "${DEPLOY_TARGET_DIR,,}" in
+            *vaping26*) ;;
+            *)
+              echo "DEPLOYMENT BLOCKED: target directory must contain 'vaping26' so this workflow cannot accidentally deploy into a shared public_html root."
+              echo "Configured target: $DEPLOY_TARGET_DIR"
+              exit 1
+              ;;
+          esac
+
+      - name: Configure SSH host and authentication
         shell: bash
         run: |
           set -euo pipefail
           install -m 700 -d ~/.ssh
-          printf '%s\n' "$HOSTINGER_SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -p "$HOSTINGER_PORT" "$HOSTINGER_HOST" >> ~/.ssh/known_hosts
+          ssh-keyscan -p "$DEPLOY_PORT" "$DEPLOY_HOST" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/known_hosts
+
+          if [ -n "${DEPLOY_PRIVATE_KEY:-}" ]; then
+            printf '%s\n' "$DEPLOY_PRIVATE_KEY" > ~/.ssh/id_ed25519
+            chmod 600 ~/.ssh/id_ed25519
+          else
+            if ! command -v sshpass >/dev/null 2>&1; then
+              sudo apt-get update -qq
+              sudo apt-get install -y -qq sshpass
+            fi
+          fi
 
       - name: Deploy site directory
         shell: bash
         run: |
           set -euo pipefail
           test -f site/index.html
-          ssh -i ~/.ssh/id_ed25519 -p "$HOSTINGER_PORT" \
-            "$HOSTINGER_USERNAME@$HOSTINGER_HOST" "mkdir -p '$HOSTINGER_TARGET_DIR'"
-          scp -i ~/.ssh/id_ed25519 -P "$HOSTINGER_PORT" -r site/. \
-            "$HOSTINGER_USERNAME@$HOSTINGER_HOST:$HOSTINGER_TARGET_DIR/"
+
+          if [ -n "${DEPLOY_PRIVATE_KEY:-}" ]; then
+            ssh -i ~/.ssh/id_ed25519 -p "$DEPLOY_PORT" \
+              "$DEPLOY_USERNAME@$DEPLOY_HOST" "mkdir -p '$DEPLOY_TARGET_DIR'"
+            scp -i ~/.ssh/id_ed25519 -P "$DEPLOY_PORT" -r site/. \
+              "$DEPLOY_USERNAME@$DEPLOY_HOST:$DEPLOY_TARGET_DIR/"
+          else
+            export SSHPASS="$DEPLOY_PASSWORD"
+            sshpass -e ssh -p "$DEPLOY_PORT" \
+              "$DEPLOY_USERNAME@$DEPLOY_HOST" "mkdir -p '$DEPLOY_TARGET_DIR'"
+            sshpass -e scp -P "$DEPLOY_PORT" -r site/. \
+              "$DEPLOY_USERNAME@$DEPLOY_HOST:$DEPLOY_TARGET_DIR/"
+          fi
