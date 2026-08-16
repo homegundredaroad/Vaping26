@@ -21,6 +21,7 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
 
@@ -28,8 +29,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Validate public repository
-        run: python scripts/validate_public.py
+      - name: Validate and build identical public bundle
+        run: |
+          python scripts/validate_public.py
+          python -m unittest discover -s tests -v
+          python scripts/build_site.py
 
       - name: Check deployment configuration and target safety
         shell: bash
@@ -75,21 +79,21 @@ jobs:
             fi
           fi
 
-      - name: Deploy site directory
+      - name: Deploy validated build bundle
         shell: bash
         run: |
           set -euo pipefail
-          test -f site/index.html
+          test -f build/site/index.html
 
           if [ -n "${DEPLOY_PRIVATE_KEY:-}" ]; then
             ssh -i ~/.ssh/id_ed25519 -p "$DEPLOY_PORT" \
               "$DEPLOY_USERNAME@$DEPLOY_HOST" "mkdir -p '$DEPLOY_TARGET_DIR'"
-            scp -i ~/.ssh/id_ed25519 -P "$DEPLOY_PORT" -r site/. \
+            scp -i ~/.ssh/id_ed25519 -P "$DEPLOY_PORT" -r build/site/. \
               "$DEPLOY_USERNAME@$DEPLOY_HOST:$DEPLOY_TARGET_DIR/"
           else
             export SSHPASS="$DEPLOY_PASSWORD"
             sshpass -e ssh -p "$DEPLOY_PORT" \
               "$DEPLOY_USERNAME@$DEPLOY_HOST" "mkdir -p '$DEPLOY_TARGET_DIR'"
-            sshpass -e scp -P "$DEPLOY_PORT" -r site/. \
+            sshpass -e scp -P "$DEPLOY_PORT" -r build/site/. \
               "$DEPLOY_USERNAME@$DEPLOY_HOST:$DEPLOY_TARGET_DIR/"
           fi
