@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-08-16",
+  "scope": "UK vaping regulation and excise milestones relevant to Vaping26 research.",
+  "notice": "This is a research timeline, not legal advice. Effective requirements must be checked against current legislation and official guidance.",
+  "milestone_count": 8,
+  "milestones": [
+    {
+      "id": "vaping_duty_approvals_open",
+      "date": "2026-04-01",
+      "jurisdiction": "UK",
+      "category": "excise",
+      "title": "Vaping Products Duty approval applications opened",
+      "status": "completed",
+      "authority": "HM Revenue & Customs",
+      "source_url": "https://www.gov.uk/guidance/check-if-youre-impacted-by-vaping-products-duty-and-the-vaping-duty-stamps-scheme",
+      "evidence_role": "authoritative_hmrc_guidance",
+      "summary": "HMRC opened applications for relevant Vaping Products Duty and Vaping Duty Stamps approvals."
+    },
+    {
+      "id": "tobacco_vapes_act_royal_assent",
+      "date": "2026-04-29",
+      "jurisdiction": "UK",
+      "category": "legislation",
+      "title": "Tobacco and Vapes Bill granted Royal Assent",
+      "status": "completed",
+      "authority": "Department of Health and Social Care",
+      "source_url": "https://www.gov.uk/government/news/tobacco-and-vapes-bill-becomes-law",
+      "evidence_role": "official_government_announcement",
+      "summary": "The Tobacco and Vapes Bill became law following Royal Assent on 29 April 2026."
+    },
+    {
+      "id": "packaging_appearance_display_consultation",
+      "date": "2026-07-10",
+      "jurisdiction": "UK",
+      "category": "consultation",
+      "title": "UK-wide tobacco and vapes packaging, appearance and display consultation launched",
+      "status": "completed",
+      "authority": "Department of Health and Social Care",
+      "source_url": "https://www.gov.uk/government/consultations/tobacco-and-vapes-packaging-appearance-and-display/tobacco-and-vapes-packaging-appearance-and-display",
+      "evidence_role": "official_government_consultation",
+      "summary": "The consultation seeks views on regulations using powers in the Tobacco and Vapes Act 2026, including vape packaging, appearance and display measures; no immediate legal change is implied by consultation proposals."
+    },
+    {
+      "id": "vaping_force_of_law_notice",
+      "date": "2026-07-24",
+      "jurisdiction": "UK",
+      "category": "excise",
+      "title": "Vaping Products Duty and Duty Stamps Force of Law Notice updated",
+      "status": "completed",
+      "authority": "HM Revenue & Customs",
+      "source_url": "https://www.gov.uk/government/publications/vaping-products-duty-and-vaping-duty-stamps-force-of-law-notice/vaping-products-duty-and-vaping-duty-stamps-force-of-law-notice",
+      "evidence_role": "authoritative_force_of_law_notice",
+      "summary": "HMRC published updated force-of-law notices under the Finance Act 2026 and related 2026 regulations."
+    },
+    {
+      "id": "vaping_duty_stamps_market_start",
+      "date": "2026-10-01",
+      "jurisdiction": "UK",
+      "category": "excise",
+      "title": "Duty-stamp requirements begin for newly released liable products",
+      "status": "upcoming",
+      "authority": "HM Revenue & Customs",
+      "source_url": "https://www.gov.uk/guidance/handling-wholesale-or-retail-vaping-products-in-the-uk",
+      "evidence_role": "authoritative_retail_guidance",
+      "summary": "Liable products released onto the UK market from 1 October 2026 are subject to the new duty-stamp regime, with transitional rules for older stock."
+    },
+    {
+      "id": "vaping_products_duty_start",
+      "date": "2026-10-01",
+      "jurisdiction": "UK",
+      "category": "excise",
+      "title": "Vaping Products Duty starts",
+      "status": "upcoming",
+      "authority": "HM Revenue & Customs",
+      "source_url": "https://www.gov.uk/government/publications/introduction-of-vaping-products-duty-from-1-october-2026/introduction-of-vaping-products-duty-from-1-october-2026",
+      "evidence_role": "authoritative_tax_policy",
+      "summary": "A flat Vaping Products Duty of £2.20 per 10 ml is scheduled to take effect for liable vaping liquid."
+    },
+    {
+      "id": "unstamped_stock_grace_end",
+      "date": "2027-04-01",
+      "jurisdiction": "UK",
+      "category": "excise",
+      "title": "General retail grace period for unstamped pre-October stock ends",
+      "status": "future",
+      "authority": "HM Revenue & Customs",
+      "source_url": "https://www.gov.uk/guidance/handling-wholesale-or-retail-vaping-products-in-the-uk",
+      "evidence_role": "authoritative_retail_guidance",
+      "summary": "HMRC guidance states that from 1 April 2027 all vaping products outside duty suspension must have a duty stamp attached."
+    },
+    {
+      "id": "vaping_advertising_sponsorship_intended_start",
+      "date": "2027-06-01",
+      "jurisdiction": "UK",
+      "category": "advertising",
+      "title": "Government intended start date for ending vaping and nicotine product advertising and sponsorship",
+      "status": "future",
+      "authority": "Department of Health and Social Care",
+      "source_url": "https://healthmedia.blog.gov.uk/2026/06/01/ending-the-advertising-and-sponsorship-of-vaping-and-nicotine-products-from-1-june-2027/",
+      "evidence_role": "official_government_announced_intention",
+      "summary": "DHSC states an intention for the Tobacco and Vapes Act advertising and sponsorship restrictions for vaping and nicotine products to come into force across the UK from 1 June 2027; commencement should be rechecked before treating this as an operative legal date."
+    }
+  ]
+}

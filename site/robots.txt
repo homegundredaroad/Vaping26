@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://homegundredaroad.github.io/Vaping26/sitemap.xml

@@ -1,0 +1,423 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-16T08:50:50.548897+00:00",
+  "summary": {
+    "registered_sources": 35,
+    "implemented_sources": 12,
+    "attempted_sources": 9,
+    "successful_sources": 8,
+    "evidence_successful_sources": 7,
+    "discovery_successful_sources": 1,
+    "failed_attempts": 1,
+    "health_successful_sources": 4,
+    "status_counts": {
+      "configured": 2,
+      "deprecated": 1,
+      "failed": 1,
+      "not_configured": 2,
+      "records_downloaded": 8,
+      "registered": 21
+    },
+    "family_attempts": {
+      "enforcement": 1,
+      "health": 4,
+      "high_street": 1,
+      "prevalence": 2,
+      "products": 1
+    },
+    "family_evidence_successes": {
+      "health": 4,
+      "high_street": 1,
+      "prevalence": 1,
+      "products": 1
+    },
+    "no_silent_disappearance": true
+  },
+  "sources": [
+    {
+      "source_id": "europe_pmc",
+      "family": "health",
+      "evidence_role": "primary_bibliographic_discovery",
+      "catalogue_status": "configured",
+      "implementation": "active_collector",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 100,
+      "success": true
+    },
+    {
+      "source_id": "pubmed_eutils",
+      "family": "health",
+      "evidence_role": "primary_bibliographic_discovery",
+      "catalogue_status": "configured",
+      "implementation": "active_collector",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 100,
+      "success": true
+    },
+    {
+      "source_id": "crossref",
+      "family": "health",
+      "evidence_role": "supplementary_bibliographic_metadata",
+      "catalogue_status": "configured",
+      "implementation": "active_collector",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 100,
+      "success": true
+    },
+    {
+      "source_id": "clinical_trials",
+      "family": "health",
+      "evidence_role": "trial_registry",
+      "catalogue_status": "configured",
+      "implementation": "active_collector",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 100,
+      "success": true
+    },
+    {
+      "source_id": "companies_house",
+      "family": "high_street",
+      "evidence_role": "candidate_company_discovery",
+      "catalogue_status": "configured",
+      "implementation": "active_collector",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 227,
+      "success": true
+    },
+    {
+      "source_id": "mhra_ecig",
+      "family": "products",
+      "evidence_role": "official_product_register",
+      "catalogue_status": "configured",
+      "implementation": "active_collector_incremental",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 11,
+      "success": true
+    },
+    {
+      "source_id": "ons",
+      "family": "prevalence",
+      "evidence_role": "official_statistics_resource",
+      "catalogue_status": "configured",
+      "implementation": "active_resource_inventory",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 1,
+      "success": true
+    },
+    {
+      "source_id": "nhs_england",
+      "family": "prevalence",
+      "evidence_role": "official_statistics_resource",
+      "catalogue_status": "configured",
+      "implementation": "active_resource_inventory",
+      "attempted": true,
+      "run_status": "failed",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "health_survey_england",
+      "family": "prevalence",
+      "evidence_role": "official_statistics_resource",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "newsapi_leads",
+      "family": "enforcement",
+      "evidence_role": "discovery_lead_only",
+      "catalogue_status": "configured",
+      "implementation": "active_optional_discovery",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 22,
+      "success": true
+    },
+    {
+      "source_id": "govuk_legislation",
+      "family": "regulation",
+      "evidence_role": "authoritative_regulation",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "govuk_policy",
+      "family": "regulation",
+      "evidence_role": "authoritative_policy",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "hmrc",
+      "family": "regulation",
+      "evidence_role": "authoritative_tax_and_duty",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "local_authorities",
+      "family": "enforcement",
+      "evidence_role": "authoritative_enforcement",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "openstreetmap",
+      "family": "high_street",
+      "evidence_role": "candidate_retail_location_discovery",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "google_places",
+      "family": "high_street",
+      "evidence_role": "candidate_retail_location_corroboration",
+      "catalogue_status": "not_configured",
+      "implementation": "optional_phase_2",
+      "attempted": false,
+      "run_status": "not_configured",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "defra",
+      "family": "environment",
+      "evidence_role": "legacy_environment_umbrella",
+      "catalogue_status": "deprecated",
+      "implementation": "superseded_by_specific_network_entries",
+      "attempted": false,
+      "run_status": "deprecated",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "youtube_data",
+      "family": "social",
+      "evidence_role": "online_discourse_context_only",
+      "catalogue_status": "registered",
+      "implementation": "planned_social_research",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "tiktok_research",
+      "family": "social",
+      "evidence_role": "online_discourse_context_only",
+      "catalogue_status": "registered",
+      "implementation": "planned_research_access",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "meta_content_library",
+      "family": "social",
+      "evidence_role": "online_discourse_context_only",
+      "catalogue_status": "registered",
+      "implementation": "planned_research_access",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "google_trends",
+      "family": "social",
+      "evidence_role": "search_interest_context_only",
+      "catalogue_status": "registered",
+      "implementation": "planned_research_access",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "openalex",
+      "family": "health",
+      "evidence_role": "secondary_scholarly_discovery_and_enrichment",
+      "catalogue_status": "not_configured",
+      "implementation": "active_optional_enrichment",
+      "attempted": false,
+      "run_status": "not_configured",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "uk_air_sos",
+      "family": "environment",
+      "evidence_role": "environmental_catalogue_metadata_only",
+      "catalogue_status": "configured",
+      "implementation": "active_catalogue_inventory",
+      "attempted": false,
+      "run_status": "configured",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "uk_air_pcn",
+      "family": "environment",
+      "evidence_role": "authoritative_particle_number_and_speciation_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "uk_air_black_carbon",
+      "family": "environment",
+      "evidence_role": "authoritative_black_carbon_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "naei_gridded",
+      "family": "environment",
+      "evidence_role": "authoritative_emissions_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "cams_europe",
+      "family": "environment",
+      "evidence_role": "modelled_air_quality_background_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "copernicus_sentinel5p",
+      "family": "environment",
+      "evidence_role": "satellite_catalogue_metadata_only",
+      "catalogue_status": "configured",
+      "implementation": "active_catalogue_inventory",
+      "attempted": false,
+      "run_status": "configured",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "earthcare_highway",
+      "family": "environment",
+      "evidence_role": "vertical_aerosol_structure_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "sentinel4_uvn",
+      "family": "environment",
+      "evidence_role": "future_geostationary_atmospheric_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "ceda_jasmin",
+      "family": "environment",
+      "evidence_role": "atmospheric_dataset_discovery_and_archive",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "met_office",
+      "family": "environment",
+      "evidence_role": "meteorological_covariates_and_dispersion_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "breathe_london",
+      "family": "environment",
+      "evidence_role": "calibrated_dense_urban_sensor_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "oxaria",
+      "family": "environment",
+      "evidence_role": "high_frequency_sensor_benchmark_dataset",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "birmingham_air_quality_supersite",
+      "family": "environment",
+      "evidence_role": "research_grade_aerosol_and_trace_gas_reference",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    }
+  ]
+}

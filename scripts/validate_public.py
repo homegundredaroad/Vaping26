@@ -18,7 +18,12 @@ SECRET_PATTERNS = [
     re.compile(r"sk-[A-Za-z0-9_-]{20,}"),
     re.compile(r"(?i)(?:api[_ -]?key|access[_ -]?token|password|client[_ -]?secret)\s*[:=]\s*['\"][^'\"]{12,}['\"]"),
 ]
-TEXT_SUFFIXES = {".md", ".txt", ".json", ".csv", ".yml", ".yaml", ".html", ".css", ".js", ".py"}
+TEXT_SUFFIXES = {".md", ".txt", ".json", ".csv", ".yml", ".yaml", ".html", ".css", ".js", ".py", ".xml"}
+REQUIRED_ROOT_FILES = ["README.md", "METHODOLOGY.md", "LIMITATIONS.md", "DATA-LICENSING.md", "AUDITABILITY.md"]
+REQUIRED_SITE_FILES = [
+    "index.html", "evidence.html", "prevalence.html", "environment.html", "regulation.html", "sources.html", "methodology.html", "limitations.html", "downloads.html",
+    "assets/site.css", "assets/site.js", "robots.txt", "sitemap.xml",
+]
 
 
 def sha256(path: Path) -> str:
@@ -29,8 +34,8 @@ def sha256(path: Path) -> str:
     return h.hexdigest()
 
 
-def validate_manifest(errors: list[str]) -> None:
-    manifest_path = ROOT / "provenance" / "publication_manifest.json"
+def validate_manifest(errors: list[str], root: Path = ROOT) -> None:
+    manifest_path = root / "provenance" / "publication_manifest.json"
     if not manifest_path.exists():
         return  # bootstrap repositories may exist before the first publication
     try:
@@ -50,7 +55,7 @@ def validate_manifest(errors: list[str]) -> None:
         if rel.is_absolute() or ".." in rel.parts:
             errors.append(f"unsafe manifest path: {item.get('path')}")
             continue
-        path = ROOT / rel
+        path = root / rel
         if not path.exists() or not path.is_file():
             errors.append(f"manifest file missing: {rel}")
             continue
@@ -60,12 +65,12 @@ def validate_manifest(errors: list[str]) -> None:
             errors.append(f"manifest byte-size mismatch: {rel}")
 
 
-def main() -> int:
+def validate_repository(root: Path = ROOT) -> list[str]:
     errors: list[str] = []
-    for path in ROOT.rglob("*"):
-        if not path.is_file() or ".git" in path.parts:
+    for path in root.rglob("*"):
+        if not path.is_file() or ".git" in path.parts or "build" in path.parts:
             continue
-        rel = path.relative_to(ROOT)
+        rel = path.relative_to(root)
         directory_parts = {part.lower() for part in rel.parts[:-1]}
         if directory_parts & FORBIDDEN_DIRECTORY_NAMES:
             errors.append(f"forbidden public path: {rel}")
@@ -80,13 +85,20 @@ def main() -> int:
                 errors.append(f"possible secret in {rel}")
                 break
 
-    required = ["README.md", "METHODOLOGY.md", "LIMITATIONS.md", "DATA-LICENSING.md", "AUDITABILITY.md"]
-    for name in required:
-        if not (ROOT / name).exists():
+    for name in REQUIRED_ROOT_FILES:
+        if not (root / name).exists():
             errors.append(f"missing required file: {name}")
 
-    validate_manifest(errors)
+    for name in REQUIRED_SITE_FILES:
+        if not (root / "site" / name).exists():
+            errors.append(f"missing required site file: site/{name}")
 
+    validate_manifest(errors, root)
+    return errors
+
+
+def main() -> int:
+    errors = validate_repository()
     if errors:
         print("PUBLIC VALIDATION FAILED")
         for err in errors:

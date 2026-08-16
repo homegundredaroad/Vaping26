@@ -1,6 +1,74 @@
 {
+  "schema_version": 2,
   "project": "Vaping26",
-  "status": "bootstrap",
-  "generated_at": null,
-  "message": "Awaiting first approved publication from Vaping26-Research."
+  "generated_at": "2026-08-16T08:50:54.014326+00:00",
+  "publication_level": "aggregate_and_audit_metadata_only",
+  "collectors": [
+    {
+      "collector": "europe_pmc",
+      "evidence_role": "primary_bibliographic_discovery",
+      "status": "records_downloaded",
+      "records": 100
+    },
+    {
+      "collector": "pubmed_eutils",
+      "evidence_role": "primary_bibliographic_discovery",
+      "status": "records_downloaded",
+      "records": 100
+    },
+    {
+      "collector": "crossref",
+      "evidence_role": "supplementary_bibliographic_metadata",
+      "status": "records_downloaded",
+      "records": 100
+    },
+    {
+      "collector": "clinical_trials",
+      "evidence_role": "trial_registry",
+      "status": "records_downloaded",
+      "records": 100
+    },
+    {
+      "collector": "companies_house",
+      "evidence_role": "candidate_company_discovery",
+      "status": "records_downloaded",
+      "records": 227
+    },
+    {
+      "collector": "mhra_ecig",
+      "evidence_role": "official_product_register",
+      "status": "records_downloaded",
+      "records": 11
+    },
+    {
+      "collector": "ons",
+      "evidence_role": "official_statistics_resource",
+      "status": "records_downloaded",
+      "records": 1
+    },
+    {
+      "collector": "newsapi_leads",
+      "evidence_role": "discovery_lead_only",
+      "status": "records_downloaded",
+      "records": 22
+    }
+  ],
+  "source_failures": [
+    {
+      "collector": "nhs_england",
+      "status": "failed"
+    }
+  ],
+  "source_coverage": {
+    "registered_sources": 35,
+    "implemented_sources": 12,
+    "attempted_sources": 9,
+    "successful_sources": 8,
+    "evidence_successful_sources": 7,
+    "discovery_successful_sources": 1,
+    "failed_attempts": 1,
+    "health_successful_sources": 4,
+    "no_silent_disappearance": true
+  },
+  "notice": "Publication excludes raw records, news lead content, retailer/product-level investigative findings and private matching procedures."
 }

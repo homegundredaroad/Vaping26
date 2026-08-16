@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "scope": "metadata_and_source_capture_summary_only",
+  "literature": {
+    "source_records": {
+      "pubmed_eutils": 100,
+      "europe_pmc": 100,
+      "crossref": 100
+    },
+    "input_records": 300,
+    "canonical_records": 159,
+    "canonical_records_before_quality_gate": 260,
+    "quarantined_records": 101,
+    "quarantine_reason_counts": {
+      "implausible_future_publication_year": 66,
+      "retraction_record_not_primary_evidence": 1,
+      "secondary_only_title_not_vaping_specific": 100
+    },
+    "duplicates_collapsed": 40,
+    "source_overlap": {
+      "europe_pmc": 60,
+      "europe_pmc+pubmed_eutils": 40,
+      "pubmed_eutils": 59
+    },
+    "publication_year_counts": {
+      "2027": 1,
+      "2026": 158
+    },
+    "publication_type_counts": {
+      "Journal Article": 140,
+      "Review": 16,
+      "Preprint": 9,
+      "Letter": 6,
+      "Systematic Review": 6,
+      "research-article": 4,
+      "Randomized Controlled Trial": 3,
+      "English Abstract": 2,
+      "Meta-Analysis": 2,
+      "Published Erratum": 2,
+      "Editorial": 2,
+      "Case Reports": 2,
+      "Comparative Study": 1,
+      "Comment": 1,
+      "Research Support, Non-U.S. Gov't": 1,
+      "Practice Guideline": 1,
+      "Network Meta-Analysis": 1
+    },
+    "topic_counts": {
+      "cardiovascular": 4,
+      "cessation": 7,
+      "exposure_biomarkers": 2,
+      "respiratory": 17,
+      "secondhand_exposure": 1,
+      "thirdhand_residue": 2,
+      "ultrafine_particles": 1,
+      "youth": 39
+    },
+    "topic_policy": "Auditable title/journal keyword tags are navigation aids only and are not evidence-strength or effect classifications."
+  },
+  "clinical_trials": {
+    "record_count": 100,
+    "total_matches": 830,
+    "status_counts": {
+      "ACTIVE_NOT_RECRUITING": 2,
+      "COMPLETED": 63,
+      "ENROLLING_BY_INVITATION": 2,
+      "NOT_YET_RECRUITING": 9,
+      "RECRUITING": 16,
+      "TERMINATED": 1,
+      "UNKNOWN": 7
+    },
+    "study_type_counts": {
+      "INTERVENTIONAL": 88,
+      "OBSERVATIONAL": 12
+    },
+    "trials_with_results": 22
+  },
+  "official_prevalence_resources": [
+    {
+      "source_id": "ons",
+      "resource_title": "xlsx (93.9 KB)",
+      "page_url": "https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/ecigaretteuseinengland",
+      "resource_url": "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/ecigaretteuseinengland/2024/ecigaretteuseinengland2024.xlsx",
+      "bytes": 96189,
+      "sha256": "cd8d4162d16201b0ff573702a0f0910aee793b1ecf07c48b643fe7028d1d96b0",
+      "interpretation_status": "resource_captured_not_yet_statistically_parsed"
+    }
+  ],
+  "official_prevalence": {
+    "ons": {
+      "status": "parsed",
+      "latest_year": 2024,
+      "estimate_count": 1188,
+      "latest_year_estimate_count": 108,
+      "interpretation": "Official ONS survey estimates with 95% confidence limits. Survey/question changes in 2018 and 2020 affect parts of the time series; the accompanying ONS notes and change statements must be retained."
+    }
+  },
+  "regulatory_context": {
+    "milestone_count": 8,
+    "reviewed_at": "2026-08-16",
+    "notice": "This is a research timeline, not legal advice. Effective requirements must be checked against current legislation and official guidance."
+  },
+  "environment_context": {
+    "registered_sources": 15,
+    "production_candidates": 7,
+    "status_counts": {
+      "access_review_required": 1,
+      "production_candidate": 7,
+      "research_candidate": 6,
+      "watch_only": 1
+    },
+    "reviewed_at": "2026-08-16",
+    "interpretation": "Environmental and satellite data provide background/context unless a source-specific study design supports a stronger inference."
+  },
+  "limitations": [
+    "Counts are not effect estimates and do not establish causation, safety, harm or certainty.",
+    "Recent-first literature surveillance is not yet a complete historical systematic review.",
+    "Secondary bibliographic records that fail date/relevance quality gates are quarantined rather than counted as validated evidence.",
+    "ONS estimates are parsed from the captured official workbook with its confidence intervals and comparability caveats; NHS youth tables remain a separate extraction stage."
+  ]
+}

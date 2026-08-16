@@ -1,3 +1,3 @@
-# Published evidence
+# Public evidence data
 
-Public evidence summaries are generated from validated research outputs. Investigative leads and unresolved records are excluded.
+Publication-safe aggregate evidence outputs. Counts and classifications are evidence inventory metadata, not effect estimates or causal conclusions.

@@ -2,12 +2,13 @@
 
 ## UK Vaping & Nicotine Observatory
 
-Vaping26 is an independent, evidence-led research project examining vaping in the United Kingdom across four principal areas:
+Vaping26 is an independent, evidence-led research project examining vaping in the United Kingdom across connected evidence areas:
 
 - health and smoking-cessation evidence
 - youth and adult prevalence
 - high-street retail proliferation
 - product compliance, enforcement and illicit supply
+- environmental and exposure context, including ground monitoring, meteorology, emissions inventories, atmospheric models and satellite products
 
 The project is designed to distinguish evidence from assumption. It does not begin from a position that vaping is either inherently beneficial or inherently harmful. Evidence is assessed according to source quality, provenance, study design, corroboration and uncertainty.
 
@@ -41,6 +42,18 @@ Structured analysis of official Trading Standards, local-authority, MHRA, HMRC a
 
 ### Regulation
 Monitoring and analysis of UK vaping and nicotine regulation.
+
+### Environment and exposure context
+Reference ground monitoring, meteorology, emissions inventories, CAMS and satellite products are used to characterise background conditions and confounding. They do not by themselves identify indoor vaping or attribute a measurement to a retailer, premises or individual.
+
+
+## Public website
+
+The validated public observatory is deployed with GitHub Pages at:
+
+`https://homegundredaroad.github.io/Vaping26/`
+
+The deployment workflow validates the disclosure boundary and publication manifest, runs site regression tests, builds `build/site/` from the maintained `site/` source plus only approved public data roots, and deploys that artifact. GitHub Pages requires no API secrets for this repository.
 
 ## Publication boundary
 

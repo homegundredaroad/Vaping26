@@ -1,3 +1,3 @@
-# Public data
+# Public status data
 
-Only validated or explicitly qualified public-safe data belongs here. Raw private collection material must never be copied into this directory.
+Generated publication-safe Vaping26 status metadata. Source material is produced by the private Research engine and passes the public disclosure/manifest validation gate before publication.

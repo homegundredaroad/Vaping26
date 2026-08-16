@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-08-16",
+  "purpose": "Environmental context registry for Vaping26. These sources describe ambient or modelled atmospheric conditions and must not be used to attribute a measurement, health outcome, retailer, premises or individual to vaping without source-specific evidence.",
+  "source_count": 15,
+  "production_candidates": 7,
+  "status_counts": {
+    "access_review_required": 1,
+    "production_candidate": 7,
+    "research_candidate": 6,
+    "watch_only": 1
+  },
+  "implementation_phase_counts": {
+    "1": 7,
+    "2": 7,
+    "3": 1
+  },
+  "sources": [
+    {
+      "id": "uk_air_sos",
+      "name": "UK-AIR Sensor Observation Service / Timeseries REST API",
+      "authority": "Defra / Devolved Administrations",
+      "role": "ground_measurement_catalogue_and_timeseries_access",
+      "access": "public_rest_timeseries_api_and_inspire_atom_downloads",
+      "status": "production_candidate",
+      "spatial_scale": "national_monitoring_network_catalogue",
+      "temporal_scale": "near_real_time_and_archive_product_dependent",
+      "parameters": [
+        "network_stations",
+        "timeseries",
+        "measured_phenomena",
+        "monitoring_metadata"
+      ],
+      "implementation_phase": 1,
+      "notes": "Machine-readable REST catalogue and timeseries interface. Phase 1 inventories capability; future measurement ingestion must preserve network, method, unit, QA status and instrument-change metadata."
+    },
+    {
+      "id": "uk_air_pcn",
+      "name": "UK-AIR Particle Concentrations and Numbers Network",
+      "authority": "Defra / Devolved Administrations; operated by NPL and Imperial College London ERG",
+      "role": "reference_ground_aerosol_context",
+      "access": "public_data_archive",
+      "status": "production_candidate",
+      "spatial_scale": "five specialist UK sites in current network",
+      "temporal_scale": "instrument dependent",
+      "parameters": [
+        "particle_number_concentration",
+        "particle_size_distribution",
+        "elemental_carbon",
+        "organic_carbon",
+        "aerosol_chemical_speciation",
+        "elemental_composition"
+      ],
+      "implementation_phase": 1,
+      "notes": "Particularly relevant to aerosol physics. UK-AIR warns that SMPS instrument changes from 2023 affect comparability across the change dates and must be carried into provenance/QC."
+    },
+    {
+      "id": "uk_air_black_carbon",
+      "name": "UK Black Carbon Network",
+      "authority": "Defra / Devolved Administrations",
+      "role": "reference_ground_combustion_context",
+      "access": "public_data_archive",
+      "status": "production_candidate",
+      "spatial_scale": "UK network",
+      "temporal_scale": "station dependent",
+      "parameters": [
+        "black_carbon"
+      ],
+      "implementation_phase": 1
+    },
+    {
+      "id": "uk_air_pah",
+      "name": "UK Polycyclic Aromatic Hydrocarbons Network",
+      "authority": "Defra / Devolved Administrations",
+      "role": "reference_ground_chemical_context",
+      "access": "public_data_archive",
+      "status": "research_candidate",
+      "spatial_scale": "UK network",
+      "temporal_scale": "non_automatic_sampling",
+      "parameters": [
+        "polycyclic_aromatic_hydrocarbons",
+        "benzo_a_pyrene"
+      ],
+      "implementation_phase": 2
+    },
+    {
+      "id": "uk_air_metals",
+      "name": "UK Heavy Metals Network",
+      "authority": "Defra / Devolved Administrations",
+      "role": "reference_ground_chemical_context",
+      "access": "public_data_archive",
+      "status": "research_candidate",
+      "spatial_scale": "UK network",
+      "temporal_scale": "network dependent",
+      "parameters": [
+        "metals"
+      ],
+      "implementation_phase": 2
+    },
+    {
+      "id": "naei_gridded",
+      "name": "National Atmospheric Emissions Inventory gridded emissions",
+      "authority": "UK National Atmospheric Emissions Inventory",
+      "role": "emissions_source_context",
+      "access": "public_download",
+      "status": "production_candidate",
+      "spatial_scale": "approximately_1km_grid_for_supported_products",
+      "temporal_scale": "annual_inventory",
+      "parameters": [
+        "emissions_by_pollutant_and_sector",
+        "point_sources"
+      ],
+      "implementation_phase": 1
+    },
+    {
+      "id": "cams_europe",
+      "name": "CAMS European air-quality analyses and forecasts",
+      "authority": "Copernicus Atmosphere Monitoring Service / ECMWF",
+      "role": "modelled_background_and_forecast_context",
+      "access": "atmosphere_data_store",
+      "status": "production_candidate",
+      "spatial_scale": "regional_european_grid_and_station_products",
+      "temporal_scale": "hourly_to_daily_product_dependent",
+      "parameters": [
+        "no2",
+        "o3",
+        "pm10",
+        "pm2_5",
+        "model_uncertainty_context"
+      ],
+      "implementation_phase": 1,
+      "notes": "The station-optimised product uses Model Output Statistics with observations, ECMWF meteorology and raw CAMS ensemble predictions; useful as a benchmark for bounded ML."
+    },
+    {
+      "id": "copernicus_sentinel5p",
+      "name": "Copernicus Sentinel-5P atmospheric composition products",
+      "authority": "European Union Copernicus Programme / ESA",
+      "role": "satellite_column_background_context",
+      "access": "copernicus_data_space_stac",
+      "status": "production_candidate",
+      "spatial_scale": "kilometre_scale_satellite_products",
+      "temporal_scale": "orbital_overpass",
+      "parameters": [
+        "no2",
+        "co",
+        "hcho",
+        "so2",
+        "o3",
+        "ch4",
+        "aerosol_index",
+        "aerosol_layer_height"
+      ],
+      "implementation_phase": 1,
+      "notes": "Satellite columns are regional/background context and cannot identify indoor or premises-level vaping emissions."
+    },
+    {
+      "id": "earthcare_highway",
+      "name": "EarthCARE ATLID and MSI cloud-native aerosol products",
+      "authority": "European Space Agency",
+      "role": "vertical_aerosol_structure_context",
+      "access": "esa_highway_stac_zarr",
+      "status": "access_review_required",
+      "spatial_scale": "product dependent; ATLID products approximately 1km horizontal by 100m vertical",
+      "temporal_scale": "orbital_overpass",
+      "parameters": [
+        "aerosol_extinction",
+        "backscatter",
+        "depolarisation",
+        "aerosol_type",
+        "aerosol_layers",
+        "aerosol_optical_thickness"
+      ],
+      "implementation_phase": 2,
+      "notes": "Useful for transported/regional aerosol context; product access/licensing must be checked before automated ingestion."
+    },
+    {
+      "id": "sentinel4_uvn",
+      "name": "Copernicus Sentinel-4 UVN",
+      "authority": "ESA / EUMETSAT / Copernicus",
+      "role": "future_geostationary_atmospheric_context",
+      "access": "future_wekEO_eumetsat_distribution",
+      "status": "watch_only",
+      "spatial_scale": "regional_europe_geostationary",
+      "temporal_scale": "hourly_design_goal",
+      "parameters": [
+        "no2",
+        "so2",
+        "o3",
+        "hcho",
+        "aerosol_related_products"
+      ],
+      "implementation_phase": 3,
+      "notes": "EUMETSAT currently reports the instrument as not yet operational. Current release planning places demonstrational Level-2 data no earlier than Sep/Oct 2026 and pre-operational Level-2 for all users no earlier than Q2 2027."
+    },
+    {
+      "id": "ceda_jasmin",
+      "name": "CEDA Archive and JASMIN atmospheric/Earth-observation holdings",
+      "authority": "NERC / STFC CEDA",
+      "role": "research_dataset_discovery_and_archive",
+      "access": "catalogue_and_dataset_specific",
+      "status": "research_candidate",
+      "spatial_scale": "dataset dependent",
+      "temporal_scale": "dataset dependent",
+      "parameters": [
+        "atmospheric_observations",
+        "campaigns",
+        "earth_observation",
+        "model_outputs"
+      ],
+      "implementation_phase": 2
+    },
+    {
+      "id": "met_office",
+      "name": "Met Office meteorological observations and forecasts",
+      "authority": "Met Office",
+      "role": "meteorological_covariates_and_dispersion_context",
+      "access": "api_or_public_dataset_dependent",
+      "status": "production_candidate",
+      "spatial_scale": "product dependent",
+      "temporal_scale": "hourly_or_product_dependent",
+      "parameters": [
+        "wind_speed",
+        "wind_direction",
+        "temperature",
+        "relative_humidity",
+        "pressure",
+        "precipitation",
+        "boundary_layer_context"
+      ],
+      "implementation_phase": 1
+    },
+    {
+      "id": "breathe_london",
+      "name": "Breathe London calibrated sensor network",
+      "authority": "Greater London Authority / Imperial College London / CERC and network partners",
+      "role": "calibrated_dense_urban_sensor_context",
+      "access": "public_data_and_api_documented_by_network",
+      "status": "research_candidate",
+      "spatial_scale": "dense_urban_network_across_london",
+      "temporal_scale": "minute_to_hourly_product_dependent",
+      "parameters": [
+        "pm2_5",
+        "no2",
+        "o3"
+      ],
+      "implementation_phase": 2,
+      "notes": "Useful as a real-world benchmark for network calibration, sensor drift and urban spatial variability. Calibration provenance must remain attached to observations and the network must not be treated as a premises-level vaping detector."
+    },
+    {
+      "id": "oxaria",
+      "name": "OxAria high-frequency air-quality sensor dataset",
+      "authority": "University of Oxford and project partners",
+      "role": "high_frequency_sensor_benchmark_dataset",
+      "access": "public_research_dataset",
+      "status": "research_candidate",
+      "spatial_scale": "Oxford urban sensor network",
+      "temporal_scale": "10_second_15_minute_and_hourly_products",
+      "parameters": [
+        "no2",
+        "pm10",
+        "pm2_5"
+      ],
+      "implementation_phase": 2,
+      "notes": "Large research dataset suitable for calibration, temporal modelling, missing-data methods and site/time hold-out benchmarking. It is too large for routine GitHub Actions download and should be accessed through a separately cached research workflow."
+    },
+    {
+      "id": "birmingham_air_quality_supersite",
+      "name": "Birmingham Air Quality Supersite",
+      "authority": "University of Birmingham",
+      "role": "research_grade_aerosol_and_trace_gas_reference",
+      "access": "research_dataset_and_collaboration_dependent",
+      "status": "research_candidate",
+      "spatial_scale": "research_grade_urban_supersite",
+      "temporal_scale": "instrument_dependent_high_frequency",
+      "parameters": [
+        "particle_number_concentration",
+        "particle_size_distribution",
+        "aerosol_chemical_speciation",
+        "black_carbon",
+        "brown_carbon",
+        "volatile_organic_compounds",
+        "nox",
+        "o3",
+        "so2",
+        "nh3",
+        "co",
+        "co2",
+        "ch4",
+        "meteorology"
+      ],
+      "implementation_phase": 2,
+      "notes": "High-value reference/academic partnership candidate for aerosol physics and chemistry. Access and licensing are dataset-specific; no automated production ingestion should be enabled until those terms are confirmed."
+    }
+  ]
+}
