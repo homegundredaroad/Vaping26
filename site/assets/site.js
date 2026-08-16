@@ -4,227 +4,239 @@ const V26 = (() => {
   const safe = (value, fallback = "—") => (value === null || value === undefined || value === "" ? fallback : value);
   const number = (value) => Number.isFinite(Number(value)) ? fmt.format(Number(value)) : "—";
   const pct = (value) => Number.isFinite(Number(value)) ? `${Number(value).toFixed(1)}%` : "—";
+  const human = (value) => String(value || "unknown").replaceAll("_", " ").replace(/\b\w/g, c => c.toUpperCase());
   const date = (value) => {
-    if (!value) return "Awaiting first research publication";
+    if (!value) return "Awaiting research publication";
     const d = new Date(value);
     return Number.isNaN(d.valueOf()) ? String(value) : d.toLocaleString("en-GB", {dateStyle:"medium", timeStyle:"short", timeZone:"Europe/London"});
   };
+
   async function getJSON(path) {
     const response = await fetch(path, {cache:"no-store"});
     if (!response.ok) throw new Error(`${response.status} ${path}`);
     return response.json();
   }
+  async function optionalJSON(path) {
+    try { return await getJSON(path); } catch (_) { return {}; }
+  }
   function setText(id, value) { const el = q(id); if (el) el.textContent = value; }
   function ciText(row) {
     if (!row) return "95% CI unavailable";
-    const lo = row.lower_95_percent, hi = row.upper_95_percent;
+    const lo = row.lower_95_percent ?? row.lower_ci, hi = row.upper_95_percent ?? row.upper_ci;
     return Number.isFinite(Number(lo)) && Number.isFinite(Number(hi)) ? `95% CI ${Number(lo).toFixed(1)}–${Number(hi).toFixed(1)}%` : "95% CI unavailable";
   }
   function exactEstimate(data, year, group, statistic) {
     return (data?.estimates || []).find(x => Number(x.year) === Number(year) && String(x.group || "").trim() === group && String(x.statistic || "").trim() === statistic);
   }
+  function collector(status, id) {
+    return (status?.collectors || []).find(x => x.collector === id) || {};
+  }
+  function question(register, id) {
+    return (register?.questions || []).find(x => x.id === id) || {};
+  }
+  function cardLink(card) {
+    if (card.pmid) return `https://pubmed.ncbi.nlm.nih.gov/${encodeURIComponent(card.pmid)}/`;
+    if (card.doi) return `https://doi.org/${encodeURIComponent(card.doi)}`;
+    return null;
+  }
+  function renderQuestion(container, item) {
+    if (!container || !item?.id) return;
+    const article = document.createElement("article"); article.className = "question-card";
+    const h = document.createElement("h3"); h.textContent = item.title || item.id; article.appendChild(h);
+    const status = document.createElement("p"); status.className = "question-status"; status.textContent = human(item.synthesis_status || item.protocol_status); article.appendChild(status);
+    const meta = document.createElement("p"); meta.textContent = `${number(item.candidate_cards)} candidate cards · ${number(item.effect_estimate_ready_cards)} effect-ready`; article.appendChild(meta);
+    if (Array.isArray(item.comparators) && item.comparators.length) {
+      const p = document.createElement("p"); p.className = "muted"; p.textContent = `Comparators: ${item.comparators.join("; ")}`; article.appendChild(p);
+    }
+    container.appendChild(article);
+  }
+  function renderEvidenceCard(container, card) {
+    const article = document.createElement("article"); article.className = "evidence-card";
+    const top = document.createElement("div"); top.className = "evidence-meta";
+    [safe(card.year), human(card.study_design), human(card.integrity_status)].forEach(text => { const span = document.createElement("span"); span.textContent = text; top.appendChild(span); });
+    article.appendChild(top);
+    const h = document.createElement("h3"); h.textContent = card.title || "Untitled record"; article.appendChild(h);
+    const journal = document.createElement("p"); journal.className = "muted"; journal.textContent = safe(card.journal, "Journal not supplied"); article.appendChild(journal);
+    if (Array.isArray(card.topic_tags) && card.topic_tags.length) {
+      const tags = document.createElement("div"); tags.className = "tag-row";
+      card.topic_tags.forEach(t => { const span=document.createElement("span"); span.className="tag"; span.textContent=human(t); tags.appendChild(span); });
+      article.appendChild(tags);
+    }
+    const href = cardLink(card);
+    if (href) { const a=document.createElement("a"); a.href=href; a.target="_blank"; a.rel="noopener noreferrer"; a.textContent="Source record ↗"; article.appendChild(a); }
+    container.appendChild(article);
+  }
 
   async function dashboard() {
-    const results = await Promise.allSettled([
-      getJSON("data/public/research_status.json"),
-      getJSON("evidence/health_evidence_summary.json"),
-      getJSON("provenance/source_register.json"),
-      getJSON("provenance/source_coverage.json"),
-      getJSON("environment/source_registry.json"),
-      getJSON("evidence/ons_prevalence.json")
+    const [status,evidence,register,coverage,prevalence,cards,synthesis] = await Promise.all([
+      optionalJSON("data/public/research_status.json"), optionalJSON("evidence/health_evidence_summary.json"),
+      optionalJSON("provenance/source_register.json"), optionalJSON("provenance/source_coverage.json"),
+      optionalJSON("evidence/ons_prevalence.json"), optionalJSON("evidence/evidence_cards.json"),
+      optionalJSON("evidence/synthesis_register.json")
     ]);
-    const status = results[0].status === "fulfilled" ? results[0].value : {};
-    const evidence = results[1].status === "fulfilled" ? results[1].value : {};
-    const register = results[2].status === "fulfilled" ? results[2].value : {};
-    const coverage = results[3].status === "fulfilled" ? results[3].value : {};
-    const environment = results[4].status === "fulfilled" ? results[4].value : {};
-    const prevalence = results[5].status === "fulfilled" ? results[5].value : {};
     setText("metric-sources", number(register.source_count));
     setText("metric-literature", number(evidence?.literature?.canonical_records));
+    setText("metric-cards", number(cards.card_count ?? evidence?.evidence_cards?.card_count));
     setText("metric-trials", number(evidence?.clinical_trials?.record_count));
-    setText("metric-successful", number(coverage?.summary?.evidence_successful_sources));
-    setText("metric-environment", number(environment.source_count));
+    setText("metric-questions", number(synthesis.question_count ?? evidence?.synthesis?.question_count));
     const latest = prevalence.latest_year;
     const daily = exactEstimate(prevalence, latest, "All persons aged 16 and over", "Proportion of population who are daily e-cigarette users");
     setText("metric-ons-daily", pct(daily?.estimate_percent));
     if (daily) setText("metric-ons-daily-detail", `${latest} England estimate, age 16+; ${ciText(daily)}.`);
     setText("last-refresh", date(status.generated_at || register.generated_at));
-    setText("publication-level", safe(status.publication_level, "Bootstrap publication boundary"));
-    if (register.source_count !== undefined) setText("source-summary", `${number(register.source_count)} registered public source entries are currently catalogued.`);
+    setText("publication-level", safe(status.publication_level, "Publication-safe aggregate metadata"));
+    if (register.source_count !== undefined) setText("source-summary", `${number(register.source_count)} registered sources are currently catalogued across scientific, official-statistical, regulatory and discovery roles.`);
   }
 
   async function evidencePage() {
-    try {
-      const evidence = await getJSON("evidence/health_evidence_summary.json");
-      setText("e-lit", number(evidence?.literature?.canonical_records));
-      setText("e-input", number(evidence?.literature?.input_records));
-      setText("e-dupes", number(evidence?.literature?.duplicates_collapsed));
-      setText("e-quarantined", number(evidence?.literature?.quarantined_records));
-      setText("e-trials", number(evidence?.clinical_trials?.record_count));
-      setText("e-results", number(evidence?.clinical_trials?.trials_with_results));
-      setText("e-prevalence", number(evidence?.official_prevalence_resources?.length));
-      const topics = q("e-topic-counts");
-      if (topics && evidence?.literature?.topic_counts) {
-        topics.innerHTML = "";
-        const labels = {
-          secondhand_exposure: "Second-hand aerosol exposure",
-          thirdhand_residue: "Third-hand residue",
-          indoor_air: "Indoor air / confined spaces",
-          ultrafine_particles: "Ultrafine particles / particle number",
-          aerosol_chemistry: "Aerosol chemistry / emissions",
-          exposure_biomarkers: "Exposure biomarkers",
-          cessation: "Smoking cessation / switching",
-          youth: "Children / adolescents / young people",
-          cardiovascular: "Cardiovascular outcomes",
-          respiratory: "Respiratory outcomes"
-        };
-        const rows = Object.entries(evidence.literature.topic_counts).sort((a,b) => b[1]-a[1]);
-        for (const [key, count] of rows) {
-          const li = document.createElement("li");
-          li.textContent = `${labels[key] || key}: ${number(count)}`;
-          topics.appendChild(li);
-        }
-        if (!rows.length) topics.innerHTML = "<li>No topic tags are present in this publication.</li>";
-      }
-      const limits = q("evidence-limitations");
-      if (limits && Array.isArray(evidence.limitations)) {
-        limits.innerHTML = "";
-        for (const item of evidence.limitations) {
-          const li = document.createElement("li"); li.textContent = item; limits.appendChild(li);
-        }
-      }
-    } catch (err) {
-      setText("evidence-status", "No generated evidence summary has been published yet. The page will populate automatically after an approved Research publication.");
+    const [evidence,cards,synthesis] = await Promise.all([
+      optionalJSON("evidence/health_evidence_summary.json"), optionalJSON("evidence/evidence_cards.json"), optionalJSON("evidence/synthesis_register.json")
+    ]);
+    setText("e-lit", number(evidence?.literature?.canonical_records));
+    setText("e-input", number(evidence?.literature?.input_records));
+    setText("e-dupes", number(evidence?.literature?.duplicates_collapsed));
+    setText("e-quarantined", number(evidence?.literature?.quarantined_records));
+    setText("e-cards", number(cards.card_count ?? evidence?.evidence_cards?.card_count));
+    setText("e-trials", number(evidence?.clinical_trials?.record_count));
+    setText("e-results", number(evidence?.clinical_trials?.trials_with_results));
+    setText("e-questions", number(synthesis.question_count ?? evidence?.synthesis?.question_count));
+
+    const topics = q("e-topic-counts");
+    if (topics) {
+      topics.innerHTML = "";
+      const rows = Object.entries(evidence?.literature?.topic_counts || {}).sort((a,b)=>b[1]-a[1]);
+      if (!rows.length) { const li=document.createElement("li"); li.textContent="No topic-tag summary is available in this publication."; topics.appendChild(li); }
+      rows.forEach(([key,count]) => { const li=document.createElement("li"); li.textContent=`${human(key)}: ${number(count)}`; topics.appendChild(li); });
     }
+    const limits = q("evidence-limitations");
+    if (limits) {
+      limits.innerHTML="";
+      const items = Array.isArray(evidence.limitations) ? evidence.limitations : ["No generated limitations summary is available yet."];
+      items.forEach(item=>{const li=document.createElement("li"); li.textContent=item; limits.appendChild(li);});
+    }
+
+    const all = Array.isArray(cards.records) ? cards.records : [];
+    const container=q("evidence-cards"), count=q("ev-count");
+    if (!container || !all.length) {
+      if (count) count.textContent="Evidence-card publication will populate after the first v3 Research run.";
+      return;
+    }
+    const topic=q("ev-topic"), design=q("ev-design"), integrity=q("ev-integrity"), year=q("ev-year"), search=q("ev-search");
+    const values = (key, multi=false) => [...new Set(all.flatMap(c => multi ? (c[key]||[]) : [c[key]]).filter(Boolean))].sort((a,b)=>String(a).localeCompare(String(b)));
+    values("topic_tags",true).forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=human(v);topic.appendChild(o);});
+    values("study_design").forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=human(v);design.appendChild(o);});
+    values("integrity_status").forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=human(v);integrity.appendChild(o);});
+    values("year").sort((a,b)=>Number(b)-Number(a)).forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;year.appendChild(o);});
+    const apply=()=>{
+      const term=String(search.value||"").trim().toLowerCase();
+      const filtered=all.filter(c => (!term || `${c.title||""} ${c.journal||""}`.toLowerCase().includes(term)) && (!topic.value || (c.topic_tags||[]).includes(topic.value)) && (!design.value || c.study_design===design.value) && (!integrity.value || c.integrity_status===integrity.value) && (!year.value || String(c.year)===year.value));
+      container.innerHTML=""; filtered.slice(0,200).forEach(c=>renderEvidenceCard(container,c));
+      count.textContent=`${number(filtered.length)} matching evidence card${filtered.length===1?"":"s"}${filtered.length>200?"; first 200 shown":""}.`;
+    };
+    [topic,design,integrity,year,search].forEach(el=>el.addEventListener(el.tagName==="INPUT"?"input":"change",apply)); apply();
+  }
+
+  async function healthPage() {
+    const [synthesis,cards] = await Promise.all([optionalJSON("evidence/synthesis_register.json"), optionalJSON("evidence/evidence_cards.json")]);
+    const r=question(synthesis,"respiratory_health"), c=question(synthesis,"cardiovascular_health");
+    setText("h-respiratory",number(r.candidate_cards)); setText("h-cardiovascular",number(c.candidate_cards));
+    const integrity = cards.integrity_status_counts || {};
+    setText("h-integrity", number((integrity.retracted||0)+(integrity.expression_of_concern||0)));
+    setText("h-ready",number((r.effect_estimate_ready_cards||0)+(c.effect_estimate_ready_cards||0)));
+    const container=q("health-questions"); if (container) { container.innerHTML=""; [r,c].forEach(x=>renderQuestion(container,x)); if(!r.id&&!c.id) container.textContent="The health synthesis register will appear after the first v3 publication."; }
+  }
+
+  async function cessationPage() {
+    const [synthesis,evidence,cards] = await Promise.all([optionalJSON("evidence/synthesis_register.json"), optionalJSON("evidence/health_evidence_summary.json"), optionalJSON("evidence/evidence_cards.json")]);
+    const item=question(synthesis,"cessation_nicotine_ecig_vs_nrt");
+    setText("c-candidates",number(item.candidate_cards)); setText("c-ready",number(item.effect_estimate_ready_cards));
+    setText("c-trials",number(evidence?.clinical_trials?.record_count)); setText("c-results",number(evidence?.clinical_trials?.trials_with_results));
+    setText("c-population",safe(item.population)); setText("c-comparators",Array.isArray(item.comparators)?item.comparators.join("; "):"—"); setText("c-outcomes",Array.isArray(item.primary_outcomes)?item.primary_outcomes.join("; "):"—"); setText("c-status",human(item.synthesis_status));
+    const container=q("cessation-cards"); if(container){container.innerHTML=""; const rows=(cards.records||[]).filter(c=>(c.topic_tags||[]).includes("cessation")); rows.slice(0,60).forEach(c=>renderEvidenceCard(container,c)); if(!rows.length) container.textContent="Candidate evidence cards will appear after the first v3 publication.";}
+  }
+
+  async function youngPeoplePage() {
+    const [youth,synthesis] = await Promise.all([optionalJSON("evidence/youth_prevalence.json"), optionalJSON("evidence/synthesis_register.json")]);
+    const rows=Array.isArray(youth.records)?youth.records:[]; const indicators=Array.isArray(youth.indicators)?youth.indicators:[];
+    setText("y-rows",number(youth.record_count)); setText("y-indicators",number(indicators.length)); setText("y-candidates",number(question(synthesis,"youth_use").candidate_cards)); setText("y-areas",number(new Set(rows.map(r=>r.area_code||r.area_name).filter(Boolean)).size));
+    const tbody=q("youth-rows"); if(!tbody || !rows.length) return;
+    const indicatorSel=q("y-filter-indicator"), timeSel=q("y-filter-time"), areaInput=q("y-filter-area"), count=q("youth-filter-count");
+    indicators.forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;indicatorSel.appendChild(o);});
+    [...new Set(rows.map(r=>r.time_period).filter(Boolean))].sort().reverse().forEach(v=>{const o=document.createElement("option");o.value=v;o.textContent=v;timeSel.appendChild(o);});
+    const apply=()=>{
+      const area=String(areaInput.value||"").trim().toLowerCase(); const filtered=rows.filter(r=>(!indicatorSel.value||r.indicator===indicatorSel.value)&&(!timeSel.value||String(r.time_period)===timeSel.value)&&(!area||String(r.area_name||"").toLowerCase().includes(area)));
+      tbody.innerHTML=""; filtered.slice(0,250).forEach(r=>{const tr=document.createElement("tr"); const val=Number.isFinite(Number(r.value))?String(r.value):"—"; const group=[r.sex,r.category_type,r.category].filter(Boolean).join(" · ")||"—"; [r.indicator||"—",r.time_period||"—",r.area_name||r.area_code||"—",r.age||"—",group,val,ciText(r)].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)}); tbody.appendChild(tr);});
+      count.textContent=`${number(filtered.length)} matching row${filtered.length===1?"":"s"}${filtered.length>250?"; first 250 shown":""}.`;
+    }; [indicatorSel,timeSel].forEach(el=>el.addEventListener("change",apply)); areaInput.addEventListener("input",apply); apply();
   }
 
   async function prevalencePage() {
-    const body = q("prevalence-age-rows");
-    try {
-      const data = await getJSON("evidence/ons_prevalence.json");
-      const year = data.latest_year;
-      setText("p-year", number(year));
-      setText("p-count", number(data.estimate_count));
-      const group = "All persons aged 16 and over";
-      const dailyStat = "Proportion of population who are daily e-cigarette users";
-      const occasionalStat = "Proportion of population who are occasional e-cigarette user";
-      const daily = exactEstimate(data, year, group, dailyStat);
-      const occasional = exactEstimate(data, year, group, occasionalStat);
-      setText("p-daily", pct(daily?.estimate_percent)); setText("p-daily-ci", `All persons aged 16+; ${ciText(daily)}.`);
-      setText("p-occasional", pct(occasional?.estimate_percent)); setText("p-occasional-ci", `All persons aged 16+; ${ciText(occasional)}.`);
-      setText("prevalence-status", data.interpretation || "");
+    const data = await optionalJSON("evidence/ons_prevalence.json"); const body=q("prevalence-age-rows");
+    if (!data.latest_year) { if(body) body.innerHTML='<tr><td colspan="5">No validated ONS prevalence extract has been published yet.</td></tr>'; return; }
+    const year=data.latest_year; setText("p-year",number(year)); setText("p-count",number(data.estimate_count));
+    const group="All persons aged 16 and over", dailyStat="Proportion of population who are daily e-cigarette users", occasionalStat="Proportion of population who are occasional e-cigarette user";
+    const daily=exactEstimate(data,year,group,dailyStat), occasional=exactEstimate(data,year,group,occasionalStat);
+    setText("p-daily",pct(daily?.estimate_percent)); setText("p-daily-ci",`All persons aged 16+; ${ciText(daily)}.`); setText("p-occasional",pct(occasional?.estimate_percent)); setText("p-occasional-ci",`All persons aged 16+; ${ciText(occasional)}.`); setText("prevalence-status",data.interpretation||"Official survey estimates");
+    if(body){body.innerHTML=""; ["16-24","25-34","35-49","50-59","60 and over","16 and over"].forEach(age=>{const g=`All persons aged ${age}`,d=exactEstimate(data,year,g,dailyStat),o=exactEstimate(data,year,g,occasionalStat); if(!d&&!o)return; const tr=document.createElement("tr");[g.replace("All persons aged ",""),pct(d?.estimate_percent),ciText(d),pct(o?.estimate_percent),ciText(o)].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)});body.appendChild(tr);});}
+    const changes=q("prevalence-changes"); if(changes){changes.innerHTML="";(data.important_data_changes||[]).slice(0,8).forEach(v=>{const li=document.createElement("li");li.textContent=v;changes.appendChild(li)});}
+  }
 
-      if (body) {
-        body.innerHTML = "";
-        const ages = ["16-24", "25-34", "35-49", "50-59", "60 and over", "16 and over"];
-        for (const age of ages) {
-          const g = `All persons aged ${age}`;
-          const d = exactEstimate(data, year, g, dailyStat);
-          const o = exactEstimate(data, year, g, occasionalStat);
-          if (!d && !o) continue;
-          const tr = document.createElement("tr");
-          [g.replace("All persons aged ", ""), pct(d?.estimate_percent), ciText(d), pct(o?.estimate_percent), ciText(o)].forEach((value, idx) => {
-            const td = document.createElement("td"); td.textContent = value; if (idx === 2 || idx === 4) td.className = "confidence"; tr.appendChild(td);
-          });
-          body.appendChild(tr);
-        }
-      }
-      const changes = q("prevalence-changes");
-      if (changes && Array.isArray(data.important_data_changes)) {
-        changes.innerHTML = "";
-        for (const change of data.important_data_changes.slice(0, 6)) { const li = document.createElement("li"); li.textContent = change; changes.appendChild(li); }
-      }
-    } catch (err) {
-      if (body) body.innerHTML = '<tr><td colspan="5">No validated ONS prevalence extract has been published yet.</td></tr>';
-      setText("prevalence-status", "Awaiting an approved prevalence publication.");
-    }
+  async function exposurePage() {
+    const [synthesis,evidence] = await Promise.all([optionalJSON("evidence/synthesis_register.json"),optionalJSON("evidence/health_evidence_summary.json")]);
+    const second=question(synthesis,"secondhand_exposure"), third=question(synthesis,"thirdhand_residue");
+    setText("x-secondhand",number(second.candidate_cards)); setText("x-thirdhand",number(third.candidate_cards)); setText("x-particles",number(evidence?.literature?.topic_counts?.ultrafine_particles)); setText("x-biomarkers",number(evidence?.literature?.topic_counts?.exposure_biomarkers));
+    const container=q("exposure-questions"); if(container){container.innerHTML="";[second,third].forEach(x=>renderQuestion(container,x));if(!second.id&&!third.id)container.textContent="Exposure synthesis questions will appear after the first v3 publication.";}
+  }
+
+  async function productsPage() {
+    const [status,register] = await Promise.all([optionalJSON("data/public/research_status.json"),optionalJSON("provenance/source_register.json")]);
+    const mhra=collector(status,"mhra_ecig"); const source=(register.sources||[]).find(s=>String(s.id||"").includes("mhra"))||{};
+    setText("prod-status",human(mhra.status||source.status)); setText("prod-records",number(mhra.records)); setText("prod-authority",safe(source.authority||source.name,"MHRA"));
+  }
+
+  async function retailPage() {
+    const [status,register] = await Promise.all([optionalJSON("data/public/research_status.json"),optionalJSON("provenance/source_register.json")]);
+    setText("ret-company",number(collector(status,"companies_house").records)); setText("ret-news",number(collector(status,"newsapi_leads").records));
+    const count=(register.sources||[]).filter(s=>String(s.family||"").toLowerCase().includes("enforcement")||String(s.evidence_role||"").toLowerCase().includes("enforcement")).length; setText("ret-enforcement-sources",number(count));
   }
 
   async function environmentPage() {
-    const body = q("environment-rows");
-    try {
-      const data = await getJSON("environment/source_registry.json");
-      setText("env-count", number(data.source_count));
-      setText("env-production", number(data.production_candidates));
-      setText("env-reviewed", safe(data.reviewed_at));
-      const s4 = (data.sources || []).find(x => x.id === "sentinel4_uvn");
-      setText("env-s4", safe(s4?.status));
-      if (body) {
-        body.innerHTML = "";
-        for (const source of data.sources || []) {
-          const tr = document.createElement("tr");
-          const values = [source.name || source.id, source.role || "—", source.status || "—", source.spatial_scale || "—", (source.parameters || []).join(", "), source.implementation_phase ?? "—"];
-          values.forEach((value, idx) => {
-            const td = document.createElement("td");
-            if (idx === 2) { const span = document.createElement("span"); span.className = `status ${String(value).replace(/[^a-z0-9_-]/gi,"-")}`; span.textContent = value; td.appendChild(span); }
-            else td.textContent = value;
-            tr.appendChild(td);
-          });
-          body.appendChild(tr);
-        }
-      }
-    } catch (err) {
-      if (body) body.innerHTML = '<tr><td colspan="6">The environmental source registry has not yet been published.</td></tr>';
-    }
+    const data=await optionalJSON("environment/source_registry.json"); const body=q("environment-rows"); setText("env-count",number(data.source_count));setText("env-production",number(data.production_candidates));setText("env-reviewed",safe(data.reviewed_at)); const s4=(data.sources||[]).find(x=>x.id==="sentinel4_uvn");setText("env-s4",safe(s4?.status)); if(!body)return; body.innerHTML=""; if(!(data.sources||[]).length){body.innerHTML='<tr><td colspan="6">The optional environmental capability registry is not available.</td></tr>';return;} (data.sources||[]).forEach(source=>{const tr=document.createElement("tr");[source.name||source.id,source.role||"—",source.status||"—",source.spatial_scale||"—",(source.parameters||[]).join(", "),source.implementation_phase??"—"].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)});body.appendChild(tr)});
   }
 
   async function regulationPage() {
-    const container = q("regulation-timeline");
-    try {
-      const data = await getJSON("regulation/timeline.json");
-      setText("r-count", number(data.milestone_count));
-      setText("r-reviewed", safe(data.reviewed_at));
-      const today = new Date();
-      const future = (data.milestones || []).filter(x => new Date(`${x.date}T00:00:00Z`) >= today).sort((a,b) => String(a.date).localeCompare(String(b.date)));
-      const next = future[0];
-      setText("r-next-date", safe(next?.date));
-      setText("r-next-title", safe(next?.title));
-      if (container) {
-        container.innerHTML = "";
-        for (const item of data.milestones || []) {
-          const article = document.createElement("article"); article.className = "timeline-item";
-          const dateBox = document.createElement("div"); dateBox.className = "timeline-date"; dateBox.textContent = item.date || "—";
-          const body = document.createElement("div");
-          const h = document.createElement("h3"); h.textContent = item.title || item.id; body.appendChild(h);
-          const meta = document.createElement("p"); meta.textContent = `${item.status || "—"} · ${item.authority || "—"}`; body.appendChild(meta);
-          const desc = document.createElement("p"); desc.textContent = item.summary || ""; body.appendChild(desc);
-          if (item.source_url) { const a = document.createElement("a"); a.href = item.source_url; a.target = "_blank"; a.rel = "noopener noreferrer"; a.textContent = "Official source ↗"; body.appendChild(a); }
-          article.appendChild(dateBox); article.appendChild(body); container.appendChild(article);
-        }
-      }
-    } catch (err) {
-      if (container) container.innerHTML = '<p>The verified regulatory timeline has not yet been published.</p>';
-    }
+    const data=await optionalJSON("regulation/timeline.json"); const container=q("regulation-timeline"); setText("r-count",number(data.milestone_count));setText("r-reviewed",safe(data.reviewed_at)); const today=new Date(),future=(data.milestones||[]).filter(x=>new Date(`${x.date}T00:00:00Z`)>=today).sort((a,b)=>String(a.date).localeCompare(String(b.date))),next=future[0];setText("r-next-date",safe(next?.date));setText("r-next-title",safe(next?.title)); if(!container)return; container.innerHTML=""; if(!(data.milestones||[]).length){container.textContent="The verified regulatory timeline has not yet been published.";return;} (data.milestones||[]).forEach(item=>{const article=document.createElement("article");article.className="timeline-item";const db=document.createElement("div");db.className="timeline-date";db.textContent=item.date||"—";const body=document.createElement("div"),h=document.createElement("h3");h.textContent=item.title||item.id;body.appendChild(h);const meta=document.createElement("p");meta.textContent=`${item.status||"—"} · ${item.authority||"—"}`;body.appendChild(meta);const desc=document.createElement("p");desc.textContent=item.summary||"";body.appendChild(desc);if(item.source_url){const a=document.createElement("a");a.href=item.source_url;a.target="_blank";a.rel="noopener noreferrer";a.textContent="Official source ↗";body.appendChild(a)}article.appendChild(db);article.appendChild(body);container.appendChild(article)});
+  }
+
+  async function downloadsPage() {
+    const container = q("optional-downloads");
+    if (!container) return;
+    const candidates = [
+      ["evidence/ons_prevalence.json", "ONS adult prevalence", "Validated adult estimates with 95% confidence limits and comparability notes."],
+      ["evidence/youth_prevalence.json", "Youth prevalence", "Official OHID vaping indicators with geography, age/category and confidence limits."],
+      ["evidence/evidence_cards.json", "Evidence cards", "Publication-safe bibliographic and classification metadata for synthesis candidates."],
+      ["evidence/synthesis_register.json", "Synthesis register", "Pre-specified research questions and current extraction/synthesis readiness."],
+      ["evidence/trial_publication_links.json", "Trial-publication links", "Identifier-based ClinicalTrials.gov to publication evidence-card links."],
+      ["provenance/release_evidence.json", "Release evidence", "Compact Research run, code revision and source-snapshot provenance."],
+    ];
+    const checks = await Promise.all(candidates.map(async item => {
+      try { const response = await fetch(item[0], {cache:"no-store"}); return response.ok ? item : null; } catch (_) { return null; }
+    }));
+    container.innerHTML = "";
+    const available = checks.filter(Boolean);
+    if (!available.length) { container.textContent = "No optional files are present in this release."; return; }
+    available.forEach(([path,title,description]) => {
+      const row=document.createElement("div"); row.className="download";
+      const body=document.createElement("div"), strong=document.createElement("strong"), p=document.createElement("p");
+      strong.textContent=title; p.textContent=description; body.appendChild(strong); body.appendChild(p);
+      const a=document.createElement("a"); a.className="mono"; a.href=path; a.textContent=path.split("/").pop();
+      row.appendChild(body); row.appendChild(a); container.appendChild(row);
+    });
   }
 
   async function sourcesPage() {
-    const body = q("source-rows");
-    if (!body) return;
-    try {
-      const [register, coverage] = await Promise.all([
-        getJSON("provenance/source_register.json"),
-        getJSON("provenance/source_coverage.json").catch(() => ({}))
-      ]);
-      const runMap = new Map((coverage.sources || []).map(x => [x.source_id, x]));
-      body.innerHTML = "";
-      for (const source of register.sources || []) {
-        const run = runMap.get(source.id) || {};
-        const tr = document.createElement("tr");
-        const cells = [source.name || source.id, source.family || "—", source.evidence_role || "—", source.authority || "—", source.status || "—", run.run_status || "not attempted in published run"];
-        cells.forEach((value, index) => {
-          const td = document.createElement("td");
-          if (index === 4) { const span = document.createElement("span"); span.className = `status ${String(value).replace(/[^a-z0-9_-]/gi, "-")}`; span.textContent = value; td.appendChild(span); }
-          else td.textContent = value;
-          tr.appendChild(td);
-        });
-        body.appendChild(tr);
-      }
-      setText("source-count", number(register.source_count));
-      setText("source-generated", date(register.generated_at));
-    } catch (err) {
-      body.innerHTML = '<tr><td colspan="6">The public source register has not yet been generated.</td></tr>';
-    }
+    const body=q("source-rows"); if(!body)return; const [register,coverage]=await Promise.all([optionalJSON("provenance/source_register.json"),optionalJSON("provenance/source_coverage.json")]); const runMap=new Map((coverage.sources||[]).map(x=>[x.source_id,x])); body.innerHTML=""; if(!(register.sources||[]).length){body.innerHTML='<tr><td colspan="6">The public source register has not yet been generated.</td></tr>';return;} (register.sources||[]).forEach(source=>{const run=runMap.get(source.id)||{},tr=document.createElement("tr");[source.name||source.id,source.family||"—",source.evidence_role||"—",source.authority||"—",source.status||"—",run.run_status||"not attempted in published run"].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)});body.appendChild(tr)});setText("source-count",number(register.source_count));setText("source-generated",date(register.generated_at));
   }
 
-  return {dashboard, evidencePage, prevalencePage, environmentPage, regulationPage, sourcesPage};
+  return {dashboard,evidencePage,healthPage,cessationPage,youngPeoplePage,prevalencePage,exposurePage,productsPage,retailPage,environmentPage,regulationPage,downloadsPage,sourcesPage};
 })();

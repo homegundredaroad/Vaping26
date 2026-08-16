@@ -21,7 +21,10 @@ SECRET_PATTERNS = [
 TEXT_SUFFIXES = {".md", ".txt", ".json", ".csv", ".yml", ".yaml", ".html", ".css", ".js", ".py", ".xml"}
 REQUIRED_ROOT_FILES = ["README.md", "METHODOLOGY.md", "LIMITATIONS.md", "DATA-LICENSING.md", "AUDITABILITY.md"]
 REQUIRED_SITE_FILES = [
-    "index.html", "evidence.html", "prevalence.html", "environment.html", "regulation.html", "sources.html", "methodology.html", "limitations.html", "downloads.html",
+    "index.html", "health.html", "cessation.html", "young-people.html", "prevalence.html",
+    "exposure.html", "products.html", "retail-enforcement.html", "regulation.html", "evidence.html",
+    "sources.html", "methodology.html", "limitations.html", "downloads.html",
+    "environment.html",  # legacy optional background-context compatibility page
     "assets/site.css", "assets/site.js", "robots.txt", "sitemap.xml",
 ]
 

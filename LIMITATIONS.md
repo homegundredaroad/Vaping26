@@ -1,15 +1,19 @@
 # Limitations
 
-Vaping26 is an observational evidence project and cannot eliminate all uncertainty.
+Vaping26 is an evolving evidence observatory. It is not yet a completed historical systematic review, a clinical guideline, an enforcement authority or a laboratory exposure programme.
 
 Key limitations include:
 
-- official datasets may be delayed, incomplete or revised;
-- business directories can contain duplicates, stale listings and classification errors;
-- automated entity matching can produce false positives and false negatives;
+- recent-first literature surveillance does not by itself establish complete historical coverage;
+- publication counts are not effect estimates or certainty ratings;
+- bibliographic study-design classification can be wrong when metadata are incomplete and remains provisional until review;
+- observational health evidence may be confounded by smoking history, dual use, socioeconomic factors and other exposures;
+- short-term biomarkers or emissions cannot automatically be translated into long-term disease risk;
+- survey definitions, modes, age coverage and question wording can change over time;
+- business directories and company searches can contain duplicates, stale candidates and classification errors;
 - a product not matched automatically to a regulatory record is not thereby illegal;
 - enforcement activity reflects detection and enforcement priorities as well as underlying behaviour;
-- observational health studies may be affected by smoking history, dual use and other confounding factors;
-- long-term evidence can change as longer follow-up becomes available.
+- AI-assisted extraction can be wrong and must not become an autonomous source of conclusion-sensitive evidence;
+- general air-quality or satellite information cannot detect an individual vaping event and can only provide background context in an appropriate exposure study.
 
 No single source establishes causation, retailer misconduct, product illegality, regulatory non-compliance, criminality or health impact.

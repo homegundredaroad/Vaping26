@@ -1,39 +1,57 @@
 # Methodology
 
-Vaping26 separates **collection, interpretation and publication**. The public repository is the audited publication surface; collection rules, credentials and unresolved investigative work remain in a private feeder repository.
+Vaping26 separates **discovery, collection, validation, evidence extraction, synthesis and publication**. The public repository is the audited publication surface; raw records, credentials and unresolved investigative work remain in the private Research engine.
 
-## Evidence pipeline
+## V3 evidence pipeline
 
-1. Source registration and evidence-role assignment
-2. Collection or official-resource capture
-3. Immutable raw snapshot/hash where practical
-4. Schema and non-empty-response validation
-5. Normalisation and canonical identifiers
-6. Cross-source reconciliation and deduplication
-7. Source-health and coverage audit
-8. Evidence classification and analysis
-9. Publication review
-10. Deny-by-default sanitisation/disclosure checks
-11. Public manifest generation and release
+1. register each source and assign an evidence role;
+2. harvest or capture an official resource;
+3. preserve source provenance and hashes where practical;
+4. validate expected structure and non-empty responses;
+5. normalise identifiers and metadata;
+6. reconcile duplicates conservatively;
+7. apply relevance/date/research-integrity checks;
+8. create structured evidence cards;
+9. map cards to pre-specified synthesis questions;
+10. extract outcomes/effect estimates only from source-grounded material;
+11. assess methodological limitations and risk of bias;
+12. run the deny-by-default public publication gate;
+13. publish a manifest and compact release provenance.
 
-## Health and scientific evidence
+## Evidence cards
 
-Bibliographic surveillance uses multiple sources rather than treating one index as complete. Duplicate publications are reconciled using identifiers such as PMID and DOI, with a conservative title/year fallback. Registered clinical trials are kept distinct from publications and outcomes.
+Evidence cards are intended to hold identifiers, study design, population, smoking history, dual-use status, intervention/exposure, comparator, outcomes, quantitative estimates, funding/conflicts, publication-integrity status and risk of bias.
 
-Health evidence will be assessed for study design, population, smoking history, exclusive/dual use, exposure duration, comparator, outcomes, confounding, funding and limitations. Study design or publication count is not treated as an automatic truth score.
+V3 automatically classifies only bibliographic fields that can be supported from collected metadata. Quantitative or interpretation-sensitive fields must remain absent until source-grounded extraction and review.
 
-## Prevalence evidence
+## Study design and certainty
 
-Official ONS and NHS statistical resources can be captured and hashed before table extraction. A captured workbook is source evidence, but its numerical interpretation is a separate, testable stage. Survey changes, definitions and comparability warnings must remain attached to derived estimates.
+Study design is recorded but is not a universal ranking of truth. Assessment should consider the research question plus risk of bias, directness, precision, consistency, comparator quality, confounding control, applicability, funding/conflicts and publication integrity.
 
-## Retail and product evidence
+## Health and smoking cessation
 
-Retailer or product records may be observed, candidate-matched, unresolved or verified. Companies House search results are candidate companies rather than a physical-shop census. Automated entity/product matching never establishes illegality or misconduct. Public statements of non-compliance require suitable authoritative evidence.
+Comparisons with never-users, continuing smokers, former smokers and dual users answer different questions and must not be mixed silently. Smoking-cessation efficacy is analysed separately from other health effects.
 
-## Enforcement and media evidence
+## Trials
 
-Official enforcement events are attributed to the originating authority. News and social-media material are discovery/context streams only unless corroborated; they do not independently establish criminality, product illegality or causation.
+ClinicalTrials.gov records are kept distinct from publications. V3 captures registered outcomes, enrolment, result modules, adverse-event group counts and publication references where available so registry-to-publication reconciliation can be developed.
+
+## Prevalence
+
+ONS adult estimates and youth/school-age indicators are separate statistical series. Geography, age, sex/category, period, confidence intervals, value notes and survey-method changes must be retained before trend comparison.
+
+## Products, retail and enforcement
+
+Companies House or directory records are candidate discovery, not a physical-shop census. Automated product/entity matching never establishes illegality. News/media remain discovery/context unless corroborated. Enforcement findings require authoritative source evidence.
+
+## Bounded AI
+
+AI may assist candidate extraction from licensed source text, but it must attach exact provenance, pass deterministic schema validation and undergo human review before conclusion-sensitive fields enter synthesis. AI may not autonomously determine causation, safety, diagnosis, product illegality, retailer misconduct or criminality.
+
+## Exposure and ambient context
+
+Vaping aerosol/second-hand/third-hand exposure is a core Vaping26 topic. General ambient air-quality, emissions, models or satellite data can only serve as optional background-control information in a justified study design; they cannot identify an individual vaping event.
 
 ## Reproducibility
 
-Generated public outputs include a source register, source-coverage summary and SHA-256 publication manifest. See `AUDITABILITY.md` for the public audit surface and its limits.
+Generated public outputs include a source register, source-coverage audit, SHA-256 publication manifest and, from V3, a compact release-evidence record linking the public release to the Research run/code and source snapshots where available.

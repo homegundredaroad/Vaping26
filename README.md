@@ -1,72 +1,57 @@
 # Vaping26
 
-## UK Vaping & Nicotine Observatory
+## UK Vaping & Nicotine Evidence Observatory
 
-Vaping26 is an independent, evidence-led research project examining vaping in the United Kingdom across connected evidence areas:
+Vaping26 is an independent, evidence-led UK project designed to answer distinct questions about vaping rather than reduce the subject to a single verdict.
 
-- health and smoking-cessation evidence
-- youth and adult prevalence
-- high-street retail proliferation
-- product compliance, enforcement and illicit supply
-- environmental and exposure context, including ground monitoring, meteorology, emissions inventories, atmospheric models and satellite products
+Core research areas are:
 
-The project is designed to distinguish evidence from assumption. It does not begin from a position that vaping is either inherently beneficial or inherently harmful. Evidence is assessed according to source quality, provenance, study design, corroboration and uncertainty.
+- health evidence, including respiratory and cardiovascular outcomes;
+- smoking cessation and switching;
+- vaping among children and young people;
+- adult and youth prevalence using official statistics;
+- vaping aerosol, second-hand exposure, third-hand residues and biomarkers;
+- products and public regulatory records;
+- retail/high-street change and authoritative enforcement evidence;
+- UK regulation and policy change.
 
-## Core principles
+## V3 direction: from harvesting to synthesis
 
-- Evidence before conclusion.
-- No single source establishes causation, illegality or misconduct.
-- Association and causation are reported separately.
-- Provenance should be visible for published findings.
-- Published outputs must be reproducible from approved evidence.
-- Uncertainty and data gaps must be explicit.
-- Investigative leads remain separate from validated public evidence.
-- Personal and sensitive information must not be published.
+The project now separates four stages that must not be confused:
 
-## Research areas
+1. **discovery** — finding potentially relevant records;
+2. **validation** — deduplication, relevance checks and research-integrity checks;
+3. **evidence cards** — structured study metadata for explicit research questions;
+4. **synthesis** — source-grounded analysis after comparator, outcome, effect-estimate and quality fields have been validated.
 
-### Health
-Scientific and clinical evidence concerning vaping, nicotine exposure, smoking cessation and potential health effects.
+Publication counts are not treated as health effects or certainty ratings.
 
-### Prevalence
-Adult and youth vaping trends using official population surveys and statistical sources.
+## Evidence cards
 
-### High street
-Geographic and temporal analysis of vaping-related retailers and changes to UK town centres.
+The public Research publication may include bibliographic evidence cards with study design, topic tags, identifiers and publication-integrity status. Fields capable of changing a scientific conclusion — for example effect estimates, risk of bias, comparator interpretation and causal conclusions — are not filled autonomously from unsupported inference.
 
-### Products
-Analysis of notified vaping products, brands, manufacturers and regulatory records.
+## Young people and official statistics
 
-### Enforcement
-Structured analysis of official Trading Standards, local-authority, MHRA, HMRC and other enforcement information.
+Adult ONS prevalence and youth/school-age indicators are kept as separate evidence streams. Survey mode, age coverage, question wording, geography, confidence limits and data-quality notes must remain attached to estimates.
 
-### Regulation
-Monitoring and analysis of UK vaping and nicotine regulation.
+## Products, retail and enforcement
 
-### Environment and exposure context
-Reference ground monitoring, meteorology, emissions inventories, CAMS and satellite products are used to characterise background conditions and confounding. They do not by themselves identify indoor vaping or attribute a measurement to a retailer, premises or individual.
+A product, retailer, company or study appearing in Vaping26 does not itself establish wrongdoing, regulatory non-compliance, causation or health harm. Business/media records are treated according to their evidence role and authoritative enforcement material is kept distinct from discovery leads.
 
+## Exposure rather than general air quality
+
+Vaping26 focuses on vaping aerosol and exposure. General ambient air-quality, model or satellite data are **not direct evidence of vaping** and are no longer part of the normal weekly core harvest. Optional environmental collectors remain available only as background controls for a specific exposure-study design.
 
 ## Public website
 
-The validated public observatory is deployed with GitHub Pages at:
+The validated observatory is deployed at:
 
 `https://homegundredaroad.github.io/Vaping26/`
 
-The deployment workflow validates the disclosure boundary and publication manifest, runs site regression tests, builds `build/site/` from the maintained `site/` source plus only approved public data roots, and deploys that artifact. GitHub Pages requires no API secrets for this repository.
+The Pages workflow validates the disclosure boundary and publication manifest, runs regression tests, builds `build/site/` from maintained site code plus allowlisted public outputs, and deploys only after those checks pass.
 
 ## Publication boundary
 
-This public repository contains only approved public outputs: methodology, validated or appropriately qualified derived evidence, public datasets, reports, provenance summaries and the public website.
+The public repository contains only approved public outputs. Raw collection data, credentials, unresolved investigative material, full-text working copies and private matching procedures remain in the private Research repository.
 
-Raw collection infrastructure, unpublished investigative material, sensitive records and security-sensitive processes are maintained separately in the private research repository.
-
-## Important limitation
-
-A product, retailer, company or study appearing in a Vaping26 dataset does not itself establish wrongdoing, regulatory non-compliance, causation or health harm.
-
-Only findings supported by appropriate evidence and publication checks are released publicly.
-
-## Status
-
-Vaping26 is under active development. Published material should not be interpreted as medical, legal or regulatory advice.
+Vaping26 is under active development and is not medical, legal or regulatory advice.
