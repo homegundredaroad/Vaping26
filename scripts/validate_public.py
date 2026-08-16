@@ -25,6 +25,9 @@ REQUIRED_SITE_FILES = [
     "assets/site.css", "assets/site.js", "robots.txt", "sitemap.xml",
 ]
 
+MANIFESTED_DATA_ROOTS = ("data/public", "evidence", "environment", "regulation", "provenance")
+MANIFEST_STATIC_EXCEPTIONS = {"data/public/README.md", "evidence/README.md", "provenance/README.md"}
+
 
 def sha256(path: Path) -> str:
     h = hashlib.sha256()
@@ -36,8 +39,24 @@ def sha256(path: Path) -> str:
 
 def validate_manifest(errors: list[str], root: Path = ROOT) -> None:
     manifest_path = root / "provenance" / "publication_manifest.json"
+    generated_files: set[str] = set()
+    for rel_root in MANIFESTED_DATA_ROOTS:
+        source = root / rel_root
+        if not source.exists():
+            continue
+        for path in source.rglob("*"):
+            if not path.is_file():
+                continue
+            rel = path.relative_to(root).as_posix()
+            if rel == "provenance/publication_manifest.json" or rel in MANIFEST_STATIC_EXCEPTIONS:
+                continue
+            generated_files.add(rel)
+
     if not manifest_path.exists():
-        return  # bootstrap repositories may exist before the first publication
+        if generated_files:
+            errors.append("publication manifest missing while generated public data are present")
+        return
+
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
@@ -47,6 +66,8 @@ def validate_manifest(errors: list[str], root: Path = ROOT) -> None:
     if not isinstance(files, list):
         errors.append("publication manifest has no files list")
         return
+
+    manifested_paths: set[str] = set()
     for item in files:
         if not isinstance(item, dict) or not isinstance(item.get("path"), str):
             errors.append("publication manifest contains an invalid file entry")
@@ -55,6 +76,11 @@ def validate_manifest(errors: list[str], root: Path = ROOT) -> None:
         if rel.is_absolute() or ".." in rel.parts:
             errors.append(f"unsafe manifest path: {item.get('path')}")
             continue
+        rel_text = rel.as_posix()
+        if rel_text in manifested_paths:
+            errors.append(f"duplicate manifest path: {rel_text}")
+            continue
+        manifested_paths.add(rel_text)
         path = root / rel
         if not path.exists() or not path.is_file():
             errors.append(f"manifest file missing: {rel}")
@@ -63,6 +89,17 @@ def validate_manifest(errors: list[str], root: Path = ROOT) -> None:
             errors.append(f"manifest hash mismatch: {rel}")
         if item.get("bytes") != path.stat().st_size:
             errors.append(f"manifest byte-size mismatch: {rel}")
+
+    unmanifested = sorted(generated_files - manifested_paths)
+    for rel in unmanifested:
+        errors.append(f"generated public data not covered by publication manifest: {rel}")
+
+    unexpected = sorted(
+        rel for rel in manifested_paths
+        if rel not in generated_files and rel not in MANIFEST_STATIC_EXCEPTIONS
+    )
+    for rel in unexpected:
+        errors.append(f"manifest references file outside generated public data contract: {rel}")
 
 
 def validate_repository(root: Path = ROOT) -> list[str]:

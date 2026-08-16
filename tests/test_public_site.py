@@ -80,6 +80,33 @@ class PublicSiteTests(unittest.TestCase):
         for forbidden in ("raw", "working", "investigation", "private", "secrets"):
             self.assertFalse(any(forbidden in p.parts for p in target.rglob("*")), forbidden)
 
+    def test_manifest_rejects_unmanifested_generated_data(self) -> None:
+        scripts = ROOT / "scripts"
+        sys.path.insert(0, str(scripts))
+        try:
+            spec = importlib.util.spec_from_file_location("validate_public", scripts / "validate_public.py")
+            self.assertIsNotNone(spec)
+            module = importlib.util.module_from_spec(spec)
+            assert spec and spec.loader
+            spec.loader.exec_module(module)
+        finally:
+            sys.path.remove(str(scripts))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "provenance").mkdir(parents=True)
+            (root / "evidence").mkdir(parents=True)
+            (root / "provenance" / "publication_manifest.json").write_text(
+                '{"schema_version":2,"files":[]}\n', encoding="utf-8"
+            )
+            (root / "evidence" / "rogue.json").write_text('{"unexpected":true}\n', encoding="utf-8")
+            errors: list[str] = []
+            module.validate_manifest(errors, root)
+            self.assertTrue(
+                any("not covered by publication manifest" in error for error in errors),
+                errors,
+            )
+
 
 if __name__ == "__main__":
     unittest.main()
