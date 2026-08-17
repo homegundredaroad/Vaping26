@@ -1,21 +1,20 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-17T19:41:11.725960+00:00",
+  "generated_at": "2026-08-17T20:00:27.692540+00:00",
   "summary": {
     "registered_sources": 43,
     "implemented_sources": 14,
     "attempted_sources": 11,
-    "successful_sources": 10,
-    "evidence_successful_sources": 9,
+    "successful_sources": 11,
+    "evidence_successful_sources": 10,
     "discovery_successful_sources": 1,
-    "failed_attempts": 1,
+    "failed_attempts": 0,
     "health_successful_sources": 5,
     "status_counts": {
       "configured": 2,
       "deprecated": 1,
-      "failed": 1,
       "not_configured": 2,
-      "records_downloaded": 10,
+      "records_downloaded": 11,
       "registered": 27
     },
     "family_attempts": {
@@ -28,7 +27,7 @@
     "family_evidence_successes": {
       "health": 5,
       "high_street": 1,
-      "prevalence": 2,
+      "prevalence": 3,
       "products": 1
     },
     "no_silent_disappearance": true
@@ -129,9 +128,9 @@
       "catalogue_status": "configured",
       "implementation": "active_resource_inventory",
       "attempted": true,
-      "run_status": "failed",
-      "records": null,
-      "success": false
+      "run_status": "records_downloaded",
+      "records": 1,
+      "success": true
     },
     {
       "source_id": "ohid_fingertips",

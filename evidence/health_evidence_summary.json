@@ -197,6 +197,15 @@
       "bytes": 96189,
       "sha256": "cd8d4162d16201b0ff573702a0f0910aee793b1ecf07c48b643fe7028d1d96b0",
       "interpretation_status": "resource_captured_not_yet_statistically_parsed"
+    },
+    {
+      "source_id": "nhs_england",
+      "resource_title": "Smoking, drinking and drug use among young people, England, 2023: Part 4 data tables - Electronic cigarette use",
+      "page_url": "https://digital.nhs.uk/data-and-information/publications/statistical/smoking-drinking-and-drug-use-among-young-people-in-england/2023/data-tables",
+      "resource_url": "https://files.digital.nhs.uk/17/54B245/sdd_2023_tab4.xlsx",
+      "bytes": 104683,
+      "sha256": "3cae36aa0c061ebec91fec62a3c6aaa62431bd6408548991818e06a6110f3264",
+      "interpretation_status": "resource_captured_not_yet_statistically_parsed"
     }
   ],
   "official_prevalence": {

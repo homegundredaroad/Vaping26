@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "project": "Vaping26",
-  "generated_at": "2026-08-17T19:41:14.332446+00:00",
+  "generated_at": "2026-08-17T20:00:29.640569+00:00",
   "publication_level": "aggregate_and_audit_metadata_only",
   "collectors": [
     {
@@ -53,6 +53,12 @@
       "records": 1
     },
     {
+      "collector": "nhs_england",
+      "evidence_role": "official_statistics_resource",
+      "status": "records_downloaded",
+      "records": 1
+    },
+    {
       "collector": "ohid_fingertips",
       "evidence_role": "official_youth_and_regional_statistics",
       "status": "records_downloaded",
@@ -65,20 +71,15 @@
       "records": 21
     }
   ],
-  "source_failures": [
-    {
-      "collector": "nhs_england",
-      "status": "failed"
-    }
-  ],
+  "source_failures": [],
   "source_coverage": {
     "registered_sources": 43,
     "implemented_sources": 14,
     "attempted_sources": 11,
-    "successful_sources": 10,
-    "evidence_successful_sources": 9,
+    "successful_sources": 11,
+    "evidence_successful_sources": 10,
     "discovery_successful_sources": 1,
-    "failed_attempts": 1,
+    "failed_attempts": 0,
     "health_successful_sources": 5,
     "no_silent_disappearance": true
   },
