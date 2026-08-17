@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import re
 import sys
 import tempfile
@@ -62,7 +63,7 @@ class PublicSiteTests(unittest.TestCase):
             self.assertIn('<html lang="en-gb">', low, page.name)
             self.assertIn('<meta name="viewport"', low, page.name)
             self.assertIn('<meta name="description"', low, page.name)
-            self.assertIn('<main', low, page.name)
+            self.assertIn("<main", low, page.name)
             self.assertIn('href="#main"', low, page.name)
             self.assertEqual(len(re.findall(r'<h1(?:\s[^>]*)?>', text, re.I)), 1, page.name)
 
@@ -117,6 +118,81 @@ class PublicSiteTests(unittest.TestCase):
             errors: list[str] = []
             module.validate_manifest(errors, root)
             self.assertTrue(any("not covered by publication manifest" in error for error in errors), errors)
+
+    def test_evidence_gate_rejects_implausible_future_year_and_unreviewed_ready_state(self) -> None:
+        scripts = ROOT / "scripts"
+        sys.path.insert(0, str(scripts))
+        try:
+            spec = importlib.util.spec_from_file_location("validate_public", scripts / "validate_public.py")
+            self.assertIsNotNone(spec)
+            module = importlib.util.module_from_spec(spec)
+            assert spec and spec.loader
+            spec.loader.exec_module(module)
+        finally:
+            sys.path.remove(str(scripts))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "evidence").mkdir(parents=True)
+            payload = {
+                "card_count": 1,
+                "study_design_counts": {"unknown": 1},
+                "integrity_status_counts": {"unknown": 1},
+                "records": [{
+                    "evidence_id": "test:future",
+                    "year": "2030",
+                    "study_design": "unknown",
+                    "integrity_status": "unknown",
+                    "synthesis_readiness": "synthesis_ready",
+                    "human_review_status": "not_reviewed",
+                    "sources": ["test"]
+                }]
+            }
+            (root / "evidence" / "evidence_cards.json").write_text(
+                json.dumps(payload), encoding="utf-8"
+            )
+            errors: list[str] = []
+            module.validate_evidence_cards(errors, root, current_year=2026)
+            self.assertTrue(any("implausible future publication year" in e for e in errors), errors)
+            self.assertTrue(any("requires completed human review" in e for e in errors), errors)
+
+    def test_evidence_gate_allows_next_year_issue_with_identifier(self) -> None:
+        scripts = ROOT / "scripts"
+        sys.path.insert(0, str(scripts))
+        try:
+            spec = importlib.util.spec_from_file_location("validate_public", scripts / "validate_public.py")
+            self.assertIsNotNone(spec)
+            module = importlib.util.module_from_spec(spec)
+            assert spec and spec.loader
+            spec.loader.exec_module(module)
+        finally:
+            sys.path.remove(str(scripts))
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "evidence").mkdir(parents=True)
+            payload = {
+                "card_count": 1,
+                "study_design_counts": {"animal_study": 1},
+                "integrity_status_counts": {"unknown": 1},
+                "records": [{
+                    "evidence_id": "pmid:42480878",
+                    "year": "2027",
+                    "pmid": "42480878",
+                    "doi": "10.1016/j.jep.2026.122218",
+                    "study_design": "animal_study",
+                    "integrity_status": "unknown",
+                    "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+                    "human_review_status": "not_reviewed",
+                    "sources": ["pubmed_eutils"]
+                }]
+            }
+            (root / "evidence" / "evidence_cards.json").write_text(
+                json.dumps(payload), encoding="utf-8"
+            )
+            errors: list[str] = []
+            module.validate_evidence_cards(errors, root, current_year=2026)
+            self.assertEqual(errors, [])
 
 
 if __name__ == "__main__":
