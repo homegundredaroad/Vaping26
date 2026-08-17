@@ -15,20 +15,32 @@ Core research areas are:
 - retail/high-street change and authoritative enforcement evidence;
 - UK regulation and policy change.
 
-## V3 direction: from harvesting to synthesis
+## V4 direction: external review and synthesis readiness
 
-The project now separates four stages that must not be confused:
+Vaping26 is now being prepared for independent methodological review. The project should not move from evidence infrastructure to conclusion-sensitive synthesis merely because the collection is large.
+
+The external-review protocol is in [`EXTERNAL_REVIEW.md`](EXTERNAL_REVIEW.md). Reviewers are explicitly invited to identify critical weaknesses in comparator handling, study-design classification, extraction boundaries, duplication with established systematic reviews and the minimum evidence needed before synthesis is useful.
+
+## Evidence pipeline
+
+The project separates stages that must not be confused:
 
 1. **discovery** — finding potentially relevant records;
 2. **validation** — deduplication, relevance checks and research-integrity checks;
 3. **evidence cards** — structured study metadata for explicit research questions;
-4. **synthesis** — source-grounded analysis after comparator, outcome, effect-estimate and quality fields have been validated.
+4. **source-grounded extraction** — population, comparator, outcomes and quantitative fields;
+5. **human review** — verification of conclusion-sensitive fields;
+6. **synthesis** — analysis only after question-specific eligibility and review gates are met.
 
 Publication counts are not treated as health effects or certainty ratings.
 
 ## Evidence cards
 
 The public Research publication may include bibliographic evidence cards with study design, topic tags, identifiers and publication-integrity status. Fields capable of changing a scientific conclusion — for example effect estimates, risk of bias, comparator interpretation and causal conclusions — are not filled autonomously from unsupported inference.
+
+## Publication dates
+
+Electronic publication dates and assigned issue/volume dates can differ. A future issue year is therefore not automatically rejected if an authoritative bibliographic source confirms online publication. Implausible future dates are quarantined, while legitimate ahead-of-print/forthcoming issue metadata should carry explicit provenance and review status.
 
 ## Young people and official statistics
 

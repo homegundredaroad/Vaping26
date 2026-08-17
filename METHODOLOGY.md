@@ -1,40 +1,68 @@
 # Methodology
 
-Vaping26 separates **discovery, collection, validation, evidence extraction, synthesis and publication**. The public repository is the audited publication surface; raw records, credentials and unresolved investigative work remain in the private Research engine.
+Vaping26 separates **discovery, collection, validation, evidence extraction, human review, synthesis and publication**. The public repository is the audited publication surface; raw records, credentials and unresolved investigative work remain in the private Research engine.
 
-## V3 evidence pipeline
+## Evidence pipeline
 
 1. register each source and assign an evidence role;
 2. harvest or capture an official resource;
 3. preserve source provenance and hashes where practical;
 4. validate expected structure and non-empty responses;
-5. normalise identifiers and metadata;
+5. normalise identifiers and bibliographic metadata;
 6. reconcile duplicates conservatively;
 7. apply relevance/date/research-integrity checks;
 8. create structured evidence cards;
 9. map cards to pre-specified synthesis questions;
-10. extract outcomes/effect estimates only from source-grounded material;
+10. extract population, comparator, outcomes/effect estimates only from source-grounded material;
 11. assess methodological limitations and risk of bias;
-12. run the deny-by-default public publication gate;
-13. publish a manifest and compact release provenance.
+12. require human review for conclusion-sensitive fields;
+13. run the deny-by-default public publication gate;
+14. publish a manifest and compact release provenance.
 
 ## Evidence cards
 
 Evidence cards are intended to hold identifiers, study design, population, smoking history, dual-use status, intervention/exposure, comparator, outcomes, quantitative estimates, funding/conflicts, publication-integrity status and risk of bias.
 
-V3 automatically classifies only bibliographic fields that can be supported from collected metadata. Quantitative or interpretation-sensitive fields must remain absent until source-grounded extraction and review.
+Bibliographic fields may be automatically classified only when supported by collected metadata. Quantitative or interpretation-sensitive fields must remain absent or explicitly unverified until source-grounded extraction and review.
 
 ## Study design and certainty
 
 Study design is recorded but is not a universal ranking of truth. Assessment should consider the research question plus risk of bias, directness, precision, consistency, comparator quality, confounding control, applicability, funding/conflicts and publication integrity.
 
-## Health and smoking cessation
+## Comparator discipline
 
-Comparisons with never-users, continuing smokers, former smokers and dual users answer different questions and must not be mixed silently. Smoking-cessation efficacy is analysed separately from other health effects.
+Comparisons with never-users, continuing smokers, former smokers and dual users answer different questions and must not be mixed silently. Smoking-cessation efficacy is analysed separately from other health effects. A result can only enter a synthesis question when its comparator matches that question's eligibility rules.
+
+## Publication-date normalisation
+
+A single `year` field is not sufficient for all bibliographic records. Electronic publication, issue/volume assignment and print publication can differ.
+
+Where source data permit, the Research engine should retain:
+
+- source-reported year;
+- electronic-publication date;
+- issue/print publication date;
+- retrieval date;
+- verifying source/identifier;
+- date-anomaly or review reason.
+
+A next-year issue assignment can be legitimate for an already-online publication. Such a record should be flagged for date normalisation/review rather than automatically discarded. Dates beyond a reasonable forthcoming-issue window should fail closed or be quarantined pending verification.
+
+## Synthesis-readiness gate
+
+A bibliographic record is not synthesis-ready merely because it has a study-design label.
+
+Conclusion-sensitive synthesis requires question-specific eligibility plus source-grounded population, exposure/intervention, comparator and outcome fields. Quantitative synthesis additionally requires validated estimates and uncertainty measures where applicable. Records marked not reviewed must not be promoted to a conclusion-sensitive ready state.
+
+## External review
+
+Before mature synthesis claims are published, Vaping26 should obtain independent methodological review. Review is intended to find weaknesses rather than provide a ceremonial endorsement.
+
+The public review questions and requested reviewer classifications are documented in `EXTERNAL_REVIEW.md`. Review observations and resulting methodological changes should be recorded so the audit trail shows how criticism affected the project.
 
 ## Trials
 
-ClinicalTrials.gov records are kept distinct from publications. V3 captures registered outcomes, enrolment, result modules, adverse-event group counts and publication references where available so registry-to-publication reconciliation can be developed.
+ClinicalTrials.gov records are kept distinct from publications. The project captures registered outcomes, enrolment, result modules, adverse-event group counts and publication references where available so registry-to-publication reconciliation can be developed.
 
 ## Prevalence
 
@@ -54,4 +82,4 @@ Vaping aerosol/second-hand/third-hand exposure is a core Vaping26 topic. General
 
 ## Reproducibility
 
-Generated public outputs include a source register, source-coverage audit, SHA-256 publication manifest and, from V3, a compact release-evidence record linking the public release to the Research run/code and source snapshots where available.
+Generated public outputs include a source register, source-coverage audit, SHA-256 publication manifest and compact release-evidence record linking the public release to the Research run/code and source snapshots where available.
