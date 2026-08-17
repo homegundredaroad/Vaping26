@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections import Counter
+from datetime import datetime, timezone
 import hashlib
 import json
 import re
@@ -19,17 +21,25 @@ SECRET_PATTERNS = [
     re.compile(r"(?i)(?:api[_ -]?key|access[_ -]?token|password|client[_ -]?secret)\s*[:=]\s*['\"][^'\"]{12,}['\"]"),
 ]
 TEXT_SUFFIXES = {".md", ".txt", ".json", ".csv", ".yml", ".yaml", ".html", ".css", ".js", ".py", ".xml"}
-REQUIRED_ROOT_FILES = ["README.md", "METHODOLOGY.md", "LIMITATIONS.md", "DATA-LICENSING.md", "AUDITABILITY.md"]
+REQUIRED_ROOT_FILES = [
+    "README.md", "METHODOLOGY.md", "LIMITATIONS.md", "DATA-LICENSING.md",
+    "AUDITABILITY.md", "EXTERNAL_REVIEW.md"
+]
 REQUIRED_SITE_FILES = [
     "index.html", "health.html", "cessation.html", "young-people.html", "prevalence.html",
     "exposure.html", "products.html", "retail-enforcement.html", "regulation.html", "evidence.html",
     "sources.html", "methodology.html", "limitations.html", "downloads.html",
-    "environment.html",  # legacy optional background-context compatibility page
+    "environment.html",
     "assets/site.css", "assets/site.js", "robots.txt", "sitemap.xml",
 ]
 
 MANIFESTED_DATA_ROOTS = ("data/public", "evidence", "environment", "regulation", "provenance")
 MANIFEST_STATIC_EXCEPTIONS = {"data/public/README.md", "evidence/README.md", "provenance/README.md"}
+REVIEWED_STATES = {"reviewed", "verified", "validated", "human_reviewed"}
+SYNTHESIS_READY_STATES = {
+    "synthesis_ready", "ready_for_synthesis", "validated_for_synthesis",
+    "quantitative_synthesis_ready"
+}
 
 
 def sha256(path: Path) -> str:
@@ -105,6 +115,79 @@ def validate_manifest(errors: list[str], root: Path = ROOT) -> None:
         errors.append(f"manifest references file outside generated public data contract: {rel}")
 
 
+def validate_evidence_cards(errors: list[str], root: Path = ROOT, *, current_year: int | None = None) -> None:
+    path = root / "evidence" / "evidence_cards.json"
+    if not path.exists():
+        return
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        errors.append(f"invalid evidence cards: {exc}")
+        return
+
+    records = payload.get("records")
+    if not isinstance(records, list):
+        errors.append("evidence cards have no records list")
+        return
+
+    if payload.get("card_count") != len(records):
+        errors.append(
+            f"evidence card_count mismatch: declared={payload.get('card_count')!r} actual={len(records)}"
+        )
+
+    design_counts = Counter()
+    integrity_counts = Counter()
+    year_now = current_year if current_year is not None else datetime.now(timezone.utc).year
+
+    for index, record in enumerate(records):
+        if not isinstance(record, dict):
+            errors.append(f"evidence record {index} is not an object")
+            continue
+
+        design = str(record.get("study_design") or "unknown")
+        integrity = str(record.get("integrity_status") or "unknown")
+        design_counts[design] += 1
+        integrity_counts[integrity] += 1
+
+        evidence_id = record.get("evidence_id")
+        if not isinstance(evidence_id, str) or not evidence_id.strip():
+            errors.append(f"evidence record {index} has no stable evidence_id")
+
+        year = record.get("year")
+        if year not in (None, ""):
+            year_text = str(year).strip()
+            if not re.fullmatch(r"\d{4}", year_text):
+                errors.append(f"{evidence_id or index}: invalid publication year {year!r}")
+            else:
+                year_value = int(year_text)
+                if year_value > year_now + 1:
+                    errors.append(
+                        f"{evidence_id or index}: implausible future publication year {year_value}"
+                    )
+                elif year_value == year_now + 1:
+                    has_identifier = any(record.get(key) for key in ("pmid", "pmcid", "doi"))
+                    if not has_identifier:
+                        errors.append(
+                            f"{evidence_id or index}: next-year publication needs a stable "
+                            "bibliographic identifier for date verification"
+                        )
+
+        readiness = str(record.get("synthesis_readiness") or "").strip().lower()
+        review_state = str(record.get("human_review_status") or "").strip().lower()
+        if readiness in SYNTHESIS_READY_STATES and review_state not in REVIEWED_STATES:
+            errors.append(
+                f"{evidence_id or index}: synthesis-ready state requires completed human review"
+            )
+
+    declared_design = payload.get("study_design_counts")
+    if isinstance(declared_design, dict) and dict(design_counts) != declared_design:
+        errors.append("study_design_counts do not reconcile with evidence records")
+
+    declared_integrity = payload.get("integrity_status_counts")
+    if isinstance(declared_integrity, dict) and dict(integrity_counts) != declared_integrity:
+        errors.append("integrity_status_counts do not reconcile with evidence records")
+
+
 def validate_repository(root: Path = ROOT) -> list[str]:
     errors: list[str] = []
     for path in root.rglob("*"):
@@ -134,6 +217,7 @@ def validate_repository(root: Path = ROOT) -> list[str]:
             errors.append(f"missing required site file: site/{name}")
 
     validate_manifest(errors, root)
+    validate_evidence_cards(errors, root)
     return errors
 
 
