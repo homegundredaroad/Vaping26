@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "project": "Vaping26",
-  "generated_at": "2026-08-17T07:49:40.945618+00:00",
+  "generated_at": "2026-08-17T19:41:14.332446+00:00",
   "publication_level": "aggregate_and_audit_metadata_only",
   "collectors": [
     {
@@ -32,7 +32,7 @@
       "collector": "clinical_trials",
       "evidence_role": "trial_registry",
       "status": "records_downloaded",
-      "records": 830
+      "records": 831
     },
     {
       "collector": "companies_house",
@@ -44,7 +44,7 @@
       "collector": "mhra_ecig",
       "evidence_role": "official_product_register",
       "status": "records_downloaded",
-      "records": 11
+      "records": 13
     },
     {
       "collector": "ons",
