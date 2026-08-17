@@ -1,12 +1,12 @@
 {
-  "schema_version": 2,
-  "generated_at": "2026-08-16T08:50:54.014326+00:00",
+  "schema_version": 3,
+  "generated_at": "2026-08-17T07:49:40.945618+00:00",
   "publication_contract": "deny-by-default-v2",
   "files": [
     {
       "path": "data/public/research_status.json",
-      "sha256": "9b35d35e37318ea56772aff32abe3be37f6a7e0f42339dc37d0b3b40e32432ac",
-      "bytes": 2023
+      "sha256": "e83a3ee36e0f8b8549042b74a99c50b3b9d1dadc92fea062db4afe3a5994f599",
+      "bytes": 2376
     },
     {
       "path": "environment/source_registry.json",
@@ -14,9 +14,14 @@
       "bytes": 11394
     },
     {
+      "path": "evidence/evidence_cards.json",
+      "sha256": "ed08b3783178e7d23c93434a9dc1826c83d4c5dfa89a36e03ed321d6ec7e2ee7",
+      "bytes": 811847
+    },
+    {
       "path": "evidence/health_evidence_summary.json",
-      "sha256": "4b2f648bb37b6c2dc465db567adf9e917f533edb9664e64d65d00bfae27f8d0c",
-      "bytes": 4361
+      "sha256": "67b3c511bbdb35172a4d95d808b63922705aed04ca499e89a1e6be2da9e2fd03",
+      "bytes": 8748
     },
     {
       "path": "evidence/ons_prevalence.json",
@@ -24,14 +29,34 @@
       "bytes": 358311
     },
     {
+      "path": "evidence/synthesis_register.json",
+      "sha256": "afd0fb710a01df8dfef9ec1f4ba0d6c18de9ef1cfafa736e585e64c0da1d6862",
+      "bytes": 6780
+    },
+    {
+      "path": "evidence/trial_publication_links.json",
+      "sha256": "3e91661fa53b9d61e648987bbac250913136b52cef2327513e0685b951be1129",
+      "bytes": 271290
+    },
+    {
+      "path": "evidence/youth_prevalence.json",
+      "sha256": "418b3864ab4369faaf6900881bf0ae3fe3d1808cf5538726e345715574652ea7",
+      "bytes": 47840
+    },
+    {
+      "path": "provenance/release_evidence.json",
+      "sha256": "c3a8f7afda456229005d63c9741291f7c88efee406a66f4211f8fdf7913d7218",
+      "bytes": 6956
+    },
+    {
       "path": "provenance/source_coverage.json",
-      "sha256": "0b6fca80f57737b46cff7d2a396ea970d683a47145ff62043fafbdebfd96f8ee",
-      "bytes": 12343
+      "sha256": "379d978bb78afcae28e2f127403f74a0f17951b12838c2895b3c3484078fb58e",
+      "bytes": 14978
     },
     {
       "path": "provenance/source_register.json",
-      "sha256": "fb49243a668ec8564da615bfc752b3b8a9d7241e664d157ed46b3ff00c72e6b2",
-      "bytes": 15471
+      "sha256": "86102b2faaa4b22f49a6c42897937fcb367cb0d704ec4cc79abb9d30b62b027b",
+      "bytes": 19313
     },
     {
       "path": "regulation/timeline.json",

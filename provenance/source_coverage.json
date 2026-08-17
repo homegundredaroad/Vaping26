@@ -1,34 +1,34 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-16T08:50:50.548897+00:00",
+  "generated_at": "2026-08-17T07:49:38.468882+00:00",
   "summary": {
-    "registered_sources": 35,
-    "implemented_sources": 12,
-    "attempted_sources": 9,
-    "successful_sources": 8,
-    "evidence_successful_sources": 7,
+    "registered_sources": 43,
+    "implemented_sources": 14,
+    "attempted_sources": 11,
+    "successful_sources": 10,
+    "evidence_successful_sources": 9,
     "discovery_successful_sources": 1,
     "failed_attempts": 1,
-    "health_successful_sources": 4,
+    "health_successful_sources": 5,
     "status_counts": {
       "configured": 2,
       "deprecated": 1,
       "failed": 1,
       "not_configured": 2,
-      "records_downloaded": 8,
-      "registered": 21
+      "records_downloaded": 10,
+      "registered": 27
     },
     "family_attempts": {
       "enforcement": 1,
-      "health": 4,
+      "health": 5,
       "high_street": 1,
-      "prevalence": 2,
+      "prevalence": 3,
       "products": 1
     },
     "family_evidence_successes": {
-      "health": 4,
+      "health": 5,
       "high_street": 1,
-      "prevalence": 1,
+      "prevalence": 2,
       "products": 1
     },
     "no_silent_disappearance": true
@@ -42,7 +42,7 @@
       "implementation": "active_collector",
       "attempted": true,
       "run_status": "records_downloaded",
-      "records": 100,
+      "records": 1000,
       "success": true
     },
     {
@@ -68,6 +68,17 @@
       "success": true
     },
     {
+      "source_id": "crossref_retraction_watch",
+      "family": "health",
+      "evidence_role": "research_integrity_enrichment",
+      "catalogue_status": "configured",
+      "implementation": "active_collector",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 200,
+      "success": true
+    },
+    {
       "source_id": "clinical_trials",
       "family": "health",
       "evidence_role": "trial_registry",
@@ -75,7 +86,7 @@
       "implementation": "active_collector",
       "attempted": true,
       "run_status": "records_downloaded",
-      "records": 100,
+      "records": 830,
       "success": true
     },
     {
@@ -123,6 +134,61 @@
       "success": false
     },
     {
+      "source_id": "ohid_fingertips",
+      "family": "prevalence",
+      "evidence_role": "official_youth_and_regional_statistics",
+      "catalogue_status": "configured",
+      "implementation": "active_collector",
+      "attempted": true,
+      "run_status": "records_downloaded",
+      "records": 96,
+      "success": true
+    },
+    {
+      "source_id": "scotland_youth_vaping_ash",
+      "family": "prevalence",
+      "evidence_role": "official_devolved_youth_statistics",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "wales_shrn_vaping",
+      "family": "prevalence",
+      "evidence_role": "official_devolved_youth_statistics",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "ni_health_survey_vaping",
+      "family": "prevalence",
+      "evidence_role": "official_devolved_adult_statistics",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "ni_youth_vaping",
+      "family": "prevalence",
+      "evidence_role": "official_devolved_youth_statistics",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
       "source_id": "health_survey_england",
       "family": "prevalence",
       "evidence_role": "official_statistics_resource",
@@ -141,7 +207,7 @@
       "implementation": "active_optional_discovery",
       "attempted": true,
       "run_status": "records_downloaded",
-      "records": 22,
+      "records": 21,
       "success": true
     },
     {
@@ -302,6 +368,28 @@
       "source_id": "uk_air_black_carbon",
       "family": "environment",
       "evidence_role": "authoritative_black_carbon_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "uk_air_pah",
+      "family": "environment",
+      "evidence_role": "authoritative_pah_chemical_context",
+      "catalogue_status": "registered",
+      "implementation": "planned",
+      "attempted": false,
+      "run_status": "registered",
+      "records": null,
+      "success": false
+    },
+    {
+      "source_id": "uk_air_metals",
+      "family": "environment",
+      "evidence_role": "authoritative_heavy_metals_context",
       "catalogue_status": "registered",
       "implementation": "planned",
       "attempted": false,

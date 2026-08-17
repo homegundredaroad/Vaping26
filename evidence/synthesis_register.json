@@ -1,0 +1,211 @@
+{
+  "schema_version": 1,
+  "question_count": 6,
+  "questions": [
+    {
+      "id": "cessation_nicotine_ecig_vs_nrt",
+      "title": "Nicotine e-cigarettes for sustained smoking cessation",
+      "population": "Adults who smoke and are attempting to quit",
+      "comparators": [
+        "nicotine replacement therapy",
+        "non-nicotine e-cigarettes",
+        "behavioural support or no support"
+      ],
+      "primary_outcomes": [
+        "sustained abstinence at 6 months or longer",
+        "serious adverse events"
+      ],
+      "preferred_designs": [
+        "systematic_review_or_meta_analysis",
+        "randomised_controlled_trial"
+      ],
+      "protocol_status": "protocol_ready",
+      "candidate_cards": 49,
+      "design_counts": {
+        "commentary_or_editorial": 3,
+        "cross_sectional": 2,
+        "qualitative_study": 3,
+        "randomised_controlled_trial": 9,
+        "retrospective_cohort": 1,
+        "systematic_review_or_meta_analysis": 7,
+        "unknown": 24
+      },
+      "integrity_status_counts": {
+        "unknown": 49
+      },
+      "effect_estimate_ready_cards": 0,
+      "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+    },
+    {
+      "id": "respiratory_health",
+      "title": "Respiratory health outcomes associated with vaping",
+      "population": null,
+      "comparators": [
+        "never use",
+        "continued smoking",
+        "former smoking without vaping",
+        "dual use"
+      ],
+      "primary_outcomes": [
+        "diagnosed respiratory disease",
+        "symptoms",
+        "lung function",
+        "exacerbations"
+      ],
+      "preferred_designs": [],
+      "protocol_status": "protocol_ready",
+      "candidate_cards": 102,
+      "design_counts": {
+        "animal_study": 2,
+        "case_report": 10,
+        "case_series": 1,
+        "commentary_or_editorial": 3,
+        "cross_sectional": 4,
+        "in_vitro": 2,
+        "prospective_cohort": 1,
+        "qualitative_study": 1,
+        "randomised_controlled_trial": 1,
+        "systematic_review_or_meta_analysis": 4,
+        "unknown": 73
+      },
+      "integrity_status_counts": {
+        "unknown": 102
+      },
+      "effect_estimate_ready_cards": 0,
+      "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+    },
+    {
+      "id": "cardiovascular_health",
+      "title": "Cardiovascular outcomes associated with vaping",
+      "population": null,
+      "comparators": [
+        "never use",
+        "continued smoking",
+        "former smoking without vaping",
+        "dual use"
+      ],
+      "primary_outcomes": [
+        "cardiovascular disease",
+        "events",
+        "blood pressure",
+        "vascular and cardiac biomarkers"
+      ],
+      "preferred_designs": [],
+      "protocol_status": "protocol_ready",
+      "candidate_cards": 37,
+      "design_counts": {
+        "animal_study": 1,
+        "commentary_or_editorial": 3,
+        "in_vitro": 1,
+        "randomised_controlled_trial": 1,
+        "unknown": 31
+      },
+      "integrity_status_counts": {
+        "unknown": 37
+      },
+      "effect_estimate_ready_cards": 0,
+      "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+    },
+    {
+      "id": "youth_use",
+      "title": "Vaping among children and young people",
+      "population": null,
+      "comparators": [
+        "never smokers",
+        "ever smokers",
+        "current smokers",
+        "age and socioeconomic groups"
+      ],
+      "primary_outcomes": [
+        "ever use",
+        "current use",
+        "regular use",
+        "nicotine use",
+        "subsequent smoking"
+      ],
+      "preferred_designs": [],
+      "protocol_status": "protocol_ready",
+      "candidate_cards": 226,
+      "design_counts": {
+        "case_report": 2,
+        "commentary_or_editorial": 5,
+        "cross_sectional": 21,
+        "non_randomised_intervention": 1,
+        "qualitative_study": 2,
+        "randomised_controlled_trial": 12,
+        "systematic_review_or_meta_analysis": 15,
+        "unknown": 168
+      },
+      "integrity_status_counts": {
+        "unknown": 226
+      },
+      "effect_estimate_ready_cards": 0,
+      "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+    },
+    {
+      "id": "secondhand_exposure",
+      "title": "Second-hand vaping aerosol exposure",
+      "population": null,
+      "comparators": [
+        "no vaping exposure",
+        "cigarette smoke exposure",
+        "ambient background"
+      ],
+      "primary_outcomes": [
+        "particle number and size",
+        "nicotine",
+        "carbonyls and VOCs",
+        "biomarkers",
+        "symptoms"
+      ],
+      "preferred_designs": [],
+      "protocol_status": "protocol_ready",
+      "candidate_cards": 21,
+      "design_counts": {
+        "cross_sectional": 1,
+        "in_vitro": 1,
+        "prospective_cohort": 1,
+        "randomised_controlled_trial": 1,
+        "systematic_review_or_meta_analysis": 1,
+        "unknown": 16
+      },
+      "integrity_status_counts": {
+        "unknown": 21
+      },
+      "effect_estimate_ready_cards": 0,
+      "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+    },
+    {
+      "id": "thirdhand_residue",
+      "title": "Third-hand vaping residues and exposure",
+      "population": null,
+      "comparators": [
+        "unexposed surfaces or environments",
+        "tobacco smoke residues"
+      ],
+      "primary_outcomes": [
+        "surface nicotine",
+        "chemical transformation",
+        "transfer or biomarker evidence"
+      ],
+      "preferred_designs": [],
+      "protocol_status": "protocol_ready",
+      "candidate_cards": 2,
+      "design_counts": {
+        "unknown": 2
+      },
+      "integrity_status_counts": {
+        "unknown": 2
+      },
+      "effect_estimate_ready_cards": 0,
+      "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+    }
+  ],
+  "governance": "No pooled effect or causal conclusion is produced until comparator, outcome, effect-estimate and risk-of-bias fields have been source-grounded and reviewed."
+}

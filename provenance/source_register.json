@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-16T08:50:54.028614+00:00",
-  "source_count": 35,
+  "generated_at": "2026-08-17T07:49:40.978201+00:00",
+  "source_count": 43,
   "sources": [
     {
       "id": "europe_pmc",
@@ -34,6 +34,18 @@
       "name": "Crossref REST API",
       "authority": "Crossref",
       "url": "https://api.crossref.org/works",
+      "access": "api",
+      "auth": "none_polite_pool_email",
+      "implementation": "active_collector",
+      "status": "configured"
+    },
+    {
+      "id": "crossref_retraction_watch",
+      "family": "health",
+      "evidence_role": "research_integrity_enrichment",
+      "name": "Crossref Retraction Watch integration",
+      "authority": "Crossref / Retraction Watch",
+      "url": "https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/",
       "access": "api",
       "auth": "none_polite_pool_email",
       "implementation": "active_collector",
@@ -98,6 +110,66 @@
       "auth": "none",
       "implementation": "active_resource_inventory",
       "status": "configured"
+    },
+    {
+      "id": "ohid_fingertips",
+      "family": "prevalence",
+      "evidence_role": "official_youth_and_regional_statistics",
+      "name": "OHID Fingertips Smoking Profile",
+      "authority": "Office for Health Improvement and Disparities / DHSC",
+      "url": "https://fingertips.phe.org.uk/profile/tobacco-control",
+      "access": "public_api_csv_json",
+      "auth": "none",
+      "implementation": "active_collector",
+      "status": "configured"
+    },
+    {
+      "id": "scotland_youth_vaping_ash",
+      "family": "prevalence",
+      "evidence_role": "official_devolved_youth_statistics",
+      "name": "Scottish Government - vaping and smoking among Scottish adolescents",
+      "authority": "Scottish Government",
+      "url": "https://www.gov.scot/publications/vaping-smoking-scottish-adolescents-results-ash-smokefree-gb-youth-survey-2025/",
+      "access": "official_report_and_xlsx",
+      "auth": "none",
+      "implementation": "planned",
+      "status": "registered"
+    },
+    {
+      "id": "wales_shrn_vaping",
+      "family": "prevalence",
+      "evidence_role": "official_devolved_youth_statistics",
+      "name": "Public Health Wales / SHRN youth vaping surveillance",
+      "authority": "Public Health Wales / Welsh Government",
+      "url": "https://phw.nhs.wales/reports/vaping-and-smoking-amongst-learners-in-year-7-to-11-in-wales/",
+      "access": "official_report_dashboard",
+      "auth": "none",
+      "implementation": "planned",
+      "status": "registered"
+    },
+    {
+      "id": "ni_health_survey_vaping",
+      "family": "prevalence",
+      "evidence_role": "official_devolved_adult_statistics",
+      "name": "Health Survey Northern Ireland - smoking and e-cigarettes",
+      "authority": "Department of Health Northern Ireland",
+      "url": "https://www.health-ni.gov.uk/publications/health-survey-northern-ireland-first-results-202425",
+      "access": "official_report_and_xlsx",
+      "auth": "none",
+      "implementation": "planned",
+      "status": "registered"
+    },
+    {
+      "id": "ni_youth_vaping",
+      "family": "prevalence",
+      "evidence_role": "official_devolved_youth_statistics",
+      "name": "Northern Ireland youth vaping evidence",
+      "authority": "Department of Health / Public Health Agency Northern Ireland",
+      "url": "https://www.health-ni.gov.uk/news/young-persons-behaviour-attitudes-survey-2022-substance-use-smoking-alcohol-drugs",
+      "access": "official_report",
+      "auth": "none",
+      "implementation": "planned",
+      "status": "registered"
     },
     {
       "id": "health_survey_england",
@@ -296,6 +368,30 @@
       "family": "environment",
       "evidence_role": "authoritative_black_carbon_context",
       "name": "UK Black Carbon Network",
+      "authority": "Defra / Devolved Administrations",
+      "url": "https://uk-air.defra.gov.uk/",
+      "access": "public_web_and_archive",
+      "auth": "none",
+      "implementation": "planned",
+      "status": "registered"
+    },
+    {
+      "id": "uk_air_pah",
+      "family": "environment",
+      "evidence_role": "authoritative_pah_chemical_context",
+      "name": "UK Polycyclic Aromatic Hydrocarbons Network",
+      "authority": "Defra / Devolved Administrations",
+      "url": "https://uk-air.defra.gov.uk/",
+      "access": "public_web_and_archive",
+      "auth": "none",
+      "implementation": "planned",
+      "status": "registered"
+    },
+    {
+      "id": "uk_air_metals",
+      "family": "environment",
+      "evidence_role": "authoritative_heavy_metals_context",
+      "name": "UK Heavy Metals Network",
       "authority": "Defra / Devolved Administrations",
       "url": "https://uk-air.defra.gov.uk/",
       "access": "public_web_and_archive",
