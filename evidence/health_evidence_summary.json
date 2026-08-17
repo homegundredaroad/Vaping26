@@ -196,7 +196,7 @@
       "resource_url": "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/ecigaretteuseinengland/2024/ecigaretteuseinengland2024.xlsx",
       "bytes": 96189,
       "sha256": "cd8d4162d16201b0ff573702a0f0910aee793b1ecf07c48b643fe7028d1d96b0",
-      "interpretation_status": "resource_captured_not_yet_statistically_parsed"
+      "interpretation_status": "resource_captured_for_statistical_parser"
     },
     {
       "source_id": "nhs_england",
@@ -205,7 +205,7 @@
       "resource_url": "https://files.digital.nhs.uk/17/54B245/sdd_2023_tab4.xlsx",
       "bytes": 104683,
       "sha256": "3cae36aa0c061ebec91fec62a3c6aaa62431bd6408548991818e06a6110f3264",
-      "interpretation_status": "resource_captured_not_yet_statistically_parsed"
+      "interpretation_status": "resource_captured_for_statistical_parser"
     }
   ],
   "official_prevalence": {
@@ -223,7 +223,37 @@
         "Have ever used e-cigarettes, 15 year olds",
         "Regular e-cigarette users, 15 year olds"
       ],
-      "interpretation": "Official public-health indicator estimates. Comparability, confidence intervals, geography and source metadata must be considered before trend interpretation."
+      "interpretation": "Official youth-vaping estimates from NHS England SDD and OHID are kept with survey/geography/demographic provenance. Percentages, unweighted bases and weighted bases must not be mixed across survey definitions or interpreted as causal health effects. NHS table schema changes fail closed for review."
+    },
+    "nhs_youth": {
+      "status": "parsed",
+      "record_count": 423,
+      "survey_year": 2023,
+      "tables_structured": [
+        "4.2",
+        "4.3",
+        "4.4",
+        "4.5",
+        "4.6"
+      ],
+      "indicators": [
+        "Current e-cigarette user",
+        "Current e-cigarettes users",
+        "Ever used e-cigarettes",
+        "Ex e-cigarette user",
+        "Never used e-cigarettes",
+        "Occasional e-cigarette user",
+        "Regular e-cigarette user",
+        "Tried using e-cigarettes"
+      ],
+      "release_check": {
+        "discovery_status": "checked_no_newer_release",
+        "freshness_status": "awaiting_scheduled_release",
+        "expected_next_survey_year": 2025,
+        "expected_publication_year": 2026,
+        "expected_publication_window_end": "2026-11-30"
+      },
+      "interpretation": "Official youth-vaping estimates from NHS England SDD and OHID are kept with survey/geography/demographic provenance. Percentages, unweighted bases and weighted bases must not be mixed across survey definitions or interpreted as causal health effects. NHS table schema changes fail closed for review."
     }
   },
   "regulatory_context": {
