@@ -17,6 +17,11 @@ Key limitations include:
 - a product not matched automatically to a regulatory record is not thereby illegal;
 - enforcement activity reflects detection and enforcement priorities as well as underlying behaviour;
 - AI-assisted extraction can be wrong and must not become an autonomous source of conclusion-sensitive evidence;
+- ML study-design suggestions are review-prioritisation signals, not validated scientific classifications; early model evaluation can be optimistic because current training labels are largely deterministic/heuristic rather than independent expert gold-standard labels;
+- aggregate ML accuracy can conceal poor performance in rare classes, so per-class support and error patterns must be inspected before use;
+- explicit trial-family grouping reduces some train/test leakage, but unlinked publications from the same cohort or study family may still cross validation folds;
+- current ML model scores are not calibrated probabilities of correctness and must not be presented as such;
+- study protocols and post-publication notices may be relevant to research tracking and integrity but are not completed result-bearing studies and must not inflate synthesis-ready evidence counts;
 - general air-quality or satellite information cannot detect an individual vaping event and can only provide background context in an appropriate exposure study.
 
 No single source establishes causation, retailer misconduct, product illegality, regulatory non-compliance, criminality or health impact.

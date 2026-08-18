@@ -29,6 +29,10 @@ Bibliographic fields may be automatically classified only when supported by coll
 
 Study design is recorded but is not a universal ranking of truth. Assessment should consider the research question plus risk of bias, directness, precision, consistency, comparator quality, confounding control, applicability, funding/conflicts and publication integrity.
 
+## Protocols and post-publication notices
+
+Study protocols describe planned methods and are not treated as completed result-bearing studies. Corrections, errata, corrigenda and retraction notices are retained for provenance/integrity purposes but are also separated from result-bearing study designs. Synthesis candidate counts may report these records for auditability, while result-bearing counts exclude them.
+
 ## Comparator discipline
 
 Comparisons with never-users, continuing smokers, former smokers and dual users answer different questions and must not be mixed silently. Smoking-cessation efficacy is analysed separately from other health effects. A result can only enter a synthesis question when its comparator matches that question's eligibility rules.
@@ -71,6 +75,14 @@ ONS adult estimates and youth/school-age indicators are separate statistical ser
 ## Products, retail and enforcement
 
 Companies House or directory records are candidate discovery, not a physical-shop census. Automated product/entity matching never establishes illegality. News/media remain discovery/context unless corroborated. Enforcement findings require authoritative source evidence.
+
+## Bounded machine learning
+
+Machine learning may assist private review prioritisation. The first evidence-side model uses reproducible text features from titles, publication types and available abstracts to propose study-design candidates for human review. It must abstain when support is weak, excludes rare classes without sufficient training examples, and cannot automatically alter an evidence card or synthesis status.
+
+Where training labels are derived from deterministic rules rather than independent expert review, cross-validation is reported as **bootstrap/weak-label reproduction**, not external scientific accuracy. Validation reports per-class precision/recall/F1/support, confusion matrices, a majority-class baseline and high/moderate/abstain coverage. Related publications are kept within the same validation fold where explicit ClinicalTrials.gov publication-family links allow this; unlinked study families remain a recognised leakage risk.
+
+Human-reviewed labels should replace weak labels as the reviewed corpus grows. A separate blind human benchmark must be withheld from training before scientific classification accuracy is claimed. Model scores remain uncalibrated review-prioritisation scores until sufficient independent human-labelled data exist for calibration. ML review queues and human-review ledgers remain private and are not part of the public evidence bundle.
 
 ## Bounded AI
 

@@ -15,7 +15,7 @@ Core research areas are:
 - retail/high-street change and authoritative enforcement evidence;
 - UK regulation and policy change.
 
-## V4 direction: external review and synthesis readiness
+## V5.1 direction: external review, synthesis readiness and bounded ML
 
 Vaping26 is now being prepared for independent methodological review. The project should not move from evidence infrastructure to conclusion-sensitive synthesis merely because the collection is large.
 
@@ -41,6 +41,16 @@ The public Research publication may include bibliographic evidence cards with st
 ## Publication dates
 
 Electronic publication dates and assigned issue/volume dates can differ. A future issue year is therefore not automatically rejected if an authoritative bibliographic source confirms online publication. Implausible future dates are quarantined, while legitimate ahead-of-print/forthcoming issue metadata should carry explicit provenance and review status.
+
+## Bounded machine learning
+
+The private Research engine may use machine learning to **prioritise records for human review**. The initial evidence-side model suggests possible study-design labels for currently unclassified records using bibliographic metadata and abstracts. ML suggestions do not overwrite public evidence cards, do not determine synthesis eligibility and are not exported as evidence.
+
+Until a sufficiently large human-reviewed training set exists, model evaluation is explicitly treated as weak-label/bootstrap evaluation because most current training labels were produced by deterministic metadata rules. Reports expose per-class performance, support, a trivial baseline, abstention/coverage behaviour and explicit study-family grouping where identifiers permit it. A model score is a triage signal, not a calibrated probability that a scientific classification is correct.
+
+Any future claim of scientific classification accuracy requires an independent, source-checked human benchmark that is withheld from model training. Benchmark reviews should be performed blind to the ML suggestion where practicable.
+
+Study protocols and post-publication notices are now separated from result-bearing study designs so they cannot inflate the apparent pool of completed evidence.
 
 ## Young people and official statistics
 
