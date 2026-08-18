@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-18T05:41:39.696648+00:00",
+  "generated_at": "2026-08-18T07:57:14.049473+00:00",
   "summary": {
     "registered_sources": 43,
     "implemented_sources": 14,
@@ -107,7 +107,7 @@
       "implementation": "active_collector_incremental",
       "attempted": true,
       "run_status": "records_downloaded",
-      "records": 11,
+      "records": 12,
       "success": true
     },
     {

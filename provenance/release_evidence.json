@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "run_id": "32103793483",
+  "run_id": "32113776394",
   "code_revision": "54af3811a9833d7c525ce828e059062aa534518b",
-  "started_at": "2026-08-18T05:40:57.663833+00:00",
-  "finished_at": "2026-08-18T05:41:39.665231+00:00",
+  "started_at": "2026-08-18T07:55:56.296360+00:00",
+  "finished_at": "2026-08-18T07:57:14.018551+00:00",
   "source_provenance": [
     {
       "source": {
@@ -15,7 +15,7 @@
       },
       "sha256": "13ab61c6002927befdc4e7a895b86a9cea4ad32e7d1e0eded80c0b3bfe3cc68a",
       "bytes": 27248555,
-      "collected_at": "2026-08-18T05:41:22.288660+00:00",
+      "collected_at": "2026-08-18T07:56:57.250554+00:00",
       "immutable_snapshot_sha256_uncompressed": "13ab61c6002927befdc4e7a895b86a9cea4ad32e7d1e0eded80c0b3bfe3cc68a"
     },
     {
@@ -29,10 +29,10 @@
         "role": "candidate_company_discovery",
         "url": "https://api.company-information.service.gov.uk/search/companies"
       },
-      "sha256": "d75d4bb36d252416c156a77936cdeac63778cc764a3d0c262b35463d30a1f3df",
+      "sha256": "35c36ef9e21a173e57c910a34e1b20351e2b8b946ec6829b9ec11f35ac397b04",
       "bytes": 196593,
-      "collected_at": "2026-08-18T05:41:23.768147+00:00",
-      "immutable_snapshot_sha256_uncompressed": "d75d4bb36d252416c156a77936cdeac63778cc764a3d0c262b35463d30a1f3df"
+      "collected_at": "2026-08-18T07:56:58.556701+00:00",
+      "immutable_snapshot_sha256_uncompressed": "35c36ef9e21a173e57c910a34e1b20351e2b8b946ec6829b9ec11f35ac397b04"
     },
     {
       "source": {
@@ -42,10 +42,10 @@
         "role": "supplementary_bibliographic_metadata",
         "url": "https://api.crossref.org/works?query.bibliographic=vaping+OR+%22electronic+cigarette%22+OR+%22e-cigarette%22+OR+%22electronic+nicotine+delivery+system%22&rows=100&sort=published&order=desc&filter=from-pub-date%3A2003-01-01%2Cuntil-pub-date%3A2027-12-31%2Ctype%3Ajournal-article&select=DOI%2Ctitle%2Ccontainer-title%2Ctype%2Cpublished%2Cpublished-print%2Cpublished-online%2Cissued%2Ccreated%2CURL&mailto=scottchowen%40gmail.com"
       },
-      "sha256": "afeca589d9dce193f7eee5ac986abdaaeb133fa0149a3063ba12edd252dd4eea",
+      "sha256": "d58d640138b180e90ab290b066cfa6649f259f945959da640ac9a40f541a4e89",
       "bytes": 106437,
-      "collected_at": "2026-08-18T05:41:20.075632+00:00",
-      "immutable_snapshot_sha256_uncompressed": "afeca589d9dce193f7eee5ac986abdaaeb133fa0149a3063ba12edd252dd4eea"
+      "collected_at": "2026-08-18T07:56:55.127828+00:00",
+      "immutable_snapshot_sha256_uncompressed": "d58d640138b180e90ab290b066cfa6649f259f945959da640ac9a40f541a4e89"
     },
     {
       "source": {
@@ -55,10 +55,10 @@
         "role": "research_integrity_enrichment",
         "url": "https://api.crossref.org/works?query.bibliographic=vaping+OR+%22electronic+cigarette%22+OR+%22e-cigarette%22+OR+%22electronic+nicotine+delivery+system%22&filter=update-type%3Aretraction&rows=200&sort=updated&order=desc&mailto=scottchowen%40gmail.com"
       },
-      "sha256": "5bf8aeec1feaadf48b9b942fef1f30178b2a8d054c401dd88146c90d123b0fd4",
-      "bytes": 4068795,
-      "collected_at": "2026-08-18T05:41:20.743110+00:00",
-      "immutable_snapshot_sha256_uncompressed": "5bf8aeec1feaadf48b9b942fef1f30178b2a8d054c401dd88146c90d123b0fd4"
+      "sha256": "2c56b119abbfa5fd48023bd820025c87691e2a8e14e955c88b7142bb725121fd",
+      "bytes": 4068777,
+      "collected_at": "2026-08-18T07:56:55.660321+00:00",
+      "immutable_snapshot_sha256_uncompressed": "2c56b119abbfa5fd48023bd820025c87691e2a8e14e955c88b7142bb725121fd"
     },
     {
       "source": {
@@ -70,7 +70,7 @@
       },
       "sha256": "7205c973448468d2f35105f7c5e531c0644932497ae74321c761551b1ca4ea80",
       "bytes": 10345972,
-      "collected_at": "2026-08-18T05:41:18.595874+00:00",
+      "collected_at": "2026-08-18T07:56:53.443362+00:00",
       "immutable_snapshot_sha256_uncompressed": "7205c973448468d2f35105f7c5e531c0644932497ae74321c761551b1ca4ea80"
     },
     {
@@ -82,7 +82,7 @@
       },
       "sha256": "0fa5e191a8b354b31e4d07a12b160b58ebfc3c4a7f38b2fc509535a996adc79f",
       "bytes": 20366,
-      "collected_at": "2026-08-18T05:41:39.663305+00:00",
+      "collected_at": "2026-08-18T07:57:14.016692+00:00",
       "immutable_snapshot_sha256_uncompressed": "0fa5e191a8b354b31e4d07a12b160b58ebfc3c4a7f38b2fc509535a996adc79f"
     },
     {
@@ -91,10 +91,10 @@
         "id": "nhs_england_sdd_release_check",
         "series": "https://digital.nhs.uk/data-and-information/publications/statistical/smoking-drinking-and-drug-use-among-young-people-in-england"
       },
-      "sha256": "2acfc10e0969286122e599f04db4db833dbd328d6f4b51ef6d9819ee3a3cbd50",
+      "sha256": "405add2c5cfe43c9daabdb4b8310e088617b71051de40d42c18c1d672d7b4275",
       "bytes": 1193,
-      "collected_at": "2026-08-18T05:41:36.532770+00:00",
-      "immutable_snapshot_sha256_uncompressed": "2acfc10e0969286122e599f04db4db833dbd328d6f4b51ef6d9819ee3a3cbd50"
+      "collected_at": "2026-08-18T07:57:11.663519+00:00",
+      "immutable_snapshot_sha256_uncompressed": "405add2c5cfe43c9daabdb4b8310e088617b71051de40d42c18c1d672d7b4275"
     },
     {
       "source": {
@@ -102,10 +102,10 @@
         "resource_url": "https://files.digital.nhs.uk/17/54B245/sdd_2023_tab4.xlsx",
         "url": "https://digital.nhs.uk/data-and-information/publications/statistical/smoking-drinking-and-drug-use-among-young-people-in-england/2023/data-tables"
       },
-      "sha256": "c9260c17ccae23e6c1d874b314bb9f074644efd4cdebf72a4daaf5598747e848",
+      "sha256": "2a3bdb488289e560a166e782628eb8ffa73a4f22fb8a73b9e1163017d25592b6",
       "bytes": 1094,
-      "collected_at": "2026-08-18T05:41:38.597759+00:00",
-      "immutable_snapshot_sha256_uncompressed": "c9260c17ccae23e6c1d874b314bb9f074644efd4cdebf72a4daaf5598747e848"
+      "collected_at": "2026-08-18T07:57:12.996832+00:00",
+      "immutable_snapshot_sha256_uncompressed": "2a3bdb488289e560a166e782628eb8ffa73a4f22fb8a73b9e1163017d25592b6"
     },
     {
       "source": {
@@ -116,7 +116,7 @@
       },
       "sha256": "a47a2d69db4708853cd4e0f777137c043a8579ddcce6dff1f3c268be0daab004",
       "bytes": 100967,
-      "collected_at": "2026-08-18T05:41:39.529639+00:00",
+      "collected_at": "2026-08-18T07:57:13.858475+00:00",
       "immutable_snapshot_sha256_uncompressed": "a47a2d69db4708853cd4e0f777137c043a8579ddcce6dff1f3c268be0daab004"
     },
     {
@@ -125,10 +125,10 @@
         "resource_url": "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/ecigaretteuseinengland/2024/ecigaretteuseinengland2024.xlsx",
         "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/ecigaretteuseinengland"
       },
-      "sha256": "dceb850dcb9d9304448ceec5aae7fe4231eee2c9ffd4bdca14bb42c3f0e36d3a",
+      "sha256": "569547d219c48fd70a3e8a0bee3166d71bbff8e9569e70238a449efbfe13ccea",
       "bytes": 782,
-      "collected_at": "2026-08-18T05:41:35.751411+00:00",
-      "immutable_snapshot_sha256_uncompressed": "dceb850dcb9d9304448ceec5aae7fe4231eee2c9ffd4bdca14bb42c3f0e36d3a"
+      "collected_at": "2026-08-18T07:57:10.831598+00:00",
+      "immutable_snapshot_sha256_uncompressed": "569547d219c48fd70a3e8a0bee3166d71bbff8e9569e70238a449efbfe13ccea"
     },
     {
       "source": {
@@ -138,7 +138,7 @@
       },
       "sha256": "576c44f874c2ff9e2b363f45297d53f4e579e34d30a0f5d8fcff6d0d656da310",
       "bytes": 330425,
-      "collected_at": "2026-08-18T05:41:19.787797+00:00",
+      "collected_at": "2026-08-18T07:56:54.633063+00:00",
       "immutable_snapshot_sha256_uncompressed": "576c44f874c2ff9e2b363f45297d53f4e579e34d30a0f5d8fcff6d0d656da310"
     }
   ],

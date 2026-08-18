@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "project": "Vaping26",
-  "generated_at": "2026-08-18T05:42:02.105364+00:00",
+  "generated_at": "2026-08-18T07:57:34.992857+00:00",
   "publication_level": "aggregate_and_audit_metadata_only",
   "collectors": [
     {
@@ -44,7 +44,7 @@
       "collector": "mhra_ecig",
       "evidence_role": "official_product_register",
       "status": "records_downloaded",
-      "records": 11
+      "records": 12
     },
     {
       "collector": "ons",
