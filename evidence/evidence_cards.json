@@ -10,13 +10,15 @@
     "cross_sectional": 77,
     "in_vitro": 7,
     "modelling_study": 1,
-    "non_randomised_intervention": 3,
-    "prospective_cohort": 11,
+    "non_randomised_intervention": 1,
+    "post_publication_notice": 10,
+    "prospective_cohort": 6,
     "qualitative_study": 21,
-    "randomised_controlled_trial": 41,
+    "randomised_controlled_trial": 34,
     "retrospective_cohort": 2,
+    "study_protocol": 27,
     "systematic_review_or_meta_analysis": 51,
-    "unknown": 729
+    "unknown": 706
   },
   "integrity_status_counts": {
     "unknown": 1016
@@ -1382,9 +1384,9 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "randomised_controlled_trial",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "randomized controlled trial"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -2108,8 +2110,10 @@
       "topic_tags": [
         "respiratory"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -4492,8 +4496,10 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -4516,8 +4522,10 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -4669,29 +4677,6 @@
       ],
       "integrity_status": "unknown",
       "open_access": false,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
-      "evidence_id": "pmid:41575297",
-      "title": "Steering health through uncertainty: leadership and transformation in the WHO European Region.",
-      "year": "2026",
-      "journal": "European journal of public health",
-      "pmid": "41575297",
-      "pmcid": "PMC13129196",
-      "doi": "10.1093/eurpub/ckaf267",
-      "sources": [
-        "europe_pmc"
-      ],
-      "publication_types": [
-        "research-article",
-        "Journal Article"
-      ],
-      "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
-      "integrity_status": "unknown",
-      "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -5828,9 +5813,9 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "prospective_cohort",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "longitudinal cohort"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": false,
@@ -5995,8 +5980,10 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -6277,8 +6264,10 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "post_publication_notice",
+      "study_design_basis": [
+        "publication type/title identifies a correction, erratum or retraction notice"
+      ],
       "integrity_status": "unknown",
       "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -6542,9 +6531,9 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "randomised_controlled_trial",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "randomized controlled trial"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": false,
@@ -6663,30 +6652,6 @@
       "topic_tags": [],
       "study_design": "unknown",
       "study_design_basis": [],
-      "integrity_status": "unknown",
-      "open_access": null,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
-      "evidence_id": "pmid:42275902",
-      "title": "Real-world evidence from a prospective longitudinal cohort study assessing changes in smoking behavior among adults using NJOY ACE tobacco and menthol ENDS products.",
-      "year": "2026",
-      "journal": "Drug and alcohol dependence",
-      "pmid": "42275902",
-      "pmcid": null,
-      "doi": "10.1016/j.drugalcdep.2026.113223",
-      "sources": [
-        "pubmed_eutils"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "topic_tags": [],
-      "study_design": "prospective_cohort",
-      "study_design_basis": [
-        "longitudinal cohort"
-      ],
       "integrity_status": "unknown",
       "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -7074,8 +7039,10 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -7214,9 +7181,9 @@
       "topic_tags": [
         "cessation"
       ],
-      "study_design": "randomised_controlled_trial",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "randomized controlled trial"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -9535,9 +9502,9 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "randomised_controlled_trial",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "randomized trial"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -10526,9 +10493,9 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "prospective_cohort",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "longitudinal cohort"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -10555,8 +10522,10 @@
         "exposure_biomarkers",
         "respiratory"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -11484,9 +11453,9 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "prospective_cohort",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "prospective cohort"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -12323,8 +12292,10 @@
         "Preprint"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -12666,6 +12637,7 @@
       "pmcid": null,
       "doi": "10.1111/add.70584",
       "sources": [
+        "europe_pmc",
         "pubmed_eutils"
       ],
       "publication_types": [
@@ -12697,8 +12669,10 @@
       "topic_tags": [
         "cardiovascular"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -12792,9 +12766,9 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "prospective_cohort",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "prospective cohort"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -13643,31 +13617,6 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
-      "integrity_status": "unknown",
-      "open_access": true,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
-      "evidence_id": "pmid:41575360",
-      "title": "Health Needs and Challenges in Preventing Secondhand Smoke Exposure Among Rural Adolescents: Implications for Innovative Health Education.",
-      "year": "2026",
-      "journal": "The journal of nursing research : JNR",
-      "pmid": "41575360",
-      "pmcid": "PMC13023088",
-      "doi": "10.1097/jnr.0000000000000724",
-      "sources": [
-        "europe_pmc"
-      ],
-      "publication_types": [
-        "research-article",
-        "Journal Article"
-      ],
-      "topic_tags": [
-        "youth"
-      ],
       "study_design": "unknown",
       "study_design_basis": [],
       "integrity_status": "unknown",
@@ -14956,9 +14905,9 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "non_randomised_intervention",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "clinical trial publication type/title"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -15056,9 +15005,9 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "non_randomised_intervention",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "clinical trial publication type/title"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": false,
@@ -15594,9 +15543,9 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "randomised_controlled_trial",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "randomized controlled trial"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -16466,6 +16415,28 @@
       "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": true,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
+      "evidence_id": "pmid:42608198",
+      "title": "E-liquid flavour ban in the Netherlands: fewer notified e-cigarettes, more with a tobacco flavour.",
+      "year": "2026",
+      "journal": "Tobacco control",
+      "pmid": "42608198",
+      "pmcid": null,
+      "doi": "10.1136/tc-2026-060246",
+      "sources": [
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "topic_tags": [],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -17527,8 +17498,10 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -17797,9 +17770,9 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "randomised_controlled_trial",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "randomized controlled trial"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -18419,9 +18392,9 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "randomised_controlled_trial",
+      "study_design": "post_publication_notice",
       "study_design_basis": [
-        "randomized trial"
+        "publication type/title identifies a correction, erratum or retraction notice"
       ],
       "integrity_status": "unknown",
       "open_access": false,
@@ -18443,8 +18416,10 @@
         "Published Erratum"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "post_publication_notice",
+      "study_design_basis": [
+        "publication type/title identifies a correction, erratum or retraction notice"
+      ],
       "integrity_status": "unknown",
       "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -18466,8 +18441,10 @@
         "correction"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "post_publication_notice",
+      "study_design_basis": [
+        "publication type/title identifies a correction, erratum or retraction notice"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -18491,8 +18468,10 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "post_publication_notice",
+      "study_design_basis": [
+        "publication type/title identifies a correction, erratum or retraction notice"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -18514,8 +18493,10 @@
         "correction"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "post_publication_notice",
+      "study_design_basis": [
+        "publication type/title identifies a correction, erratum or retraction notice"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -18537,8 +18518,10 @@
         "correction"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "post_publication_notice",
+      "study_design_basis": [
+        "publication type/title identifies a correction, erratum or retraction notice"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -18559,8 +18542,10 @@
         "Published Erratum"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "post_publication_notice",
+      "study_design_basis": [
+        "publication type/title identifies a correction, erratum or retraction notice"
+      ],
       "integrity_status": "unknown",
       "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -18582,8 +18567,10 @@
         "correction"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "post_publication_notice",
+      "study_design_basis": [
+        "publication type/title identifies a correction, erratum or retraction notice"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -18604,8 +18591,10 @@
         "Published Erratum"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "post_publication_notice",
+      "study_design_basis": [
+        "publication type/title identifies a correction, erratum or retraction notice"
+      ],
       "integrity_status": "unknown",
       "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -18726,8 +18715,10 @@
         "exposure_biomarkers",
         "respiratory"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -19282,8 +19273,10 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -20850,6 +20843,29 @@
       "human_review_status": "not_reviewed"
     },
     {
+      "evidence_id": "pmid:42607427",
+      "title": "Beyond the battery paradox: A technical review of 4th-Generation ENDS architecture and a strategic circular design framework.",
+      "year": "2026",
+      "journal": "Journal of environmental management",
+      "pmid": "42607427",
+      "pmcid": null,
+      "doi": "10.1016/j.jenvman.2026.130731",
+      "sources": [
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article",
+        "Review"
+      ],
+      "topic_tags": [],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": null,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
       "evidence_id": "pmid:42210285",
       "title": "Beyond the Bud: new cannabis products and modes of consumption in Ontario, Canada's legal hybrid market.",
       "year": "2026",
@@ -21990,13 +22006,12 @@
       "pmcid": null,
       "doi": "10.1007/s11739-026-04430-x",
       "sources": [
-        "europe_pmc",
-        "pubmed_eutils"
+        "europe_pmc"
       ],
       "publication_types": [
-        "Journal Article",
         "Meta-Analysis",
-        "Systematic Review"
+        "Systematic Review",
+        "Journal Article"
       ],
       "topic_tags": [],
       "study_design": "systematic_review_or_meta_analysis",
@@ -22005,7 +22020,7 @@
         "meta-analysis"
       ],
       "integrity_status": "unknown",
-      "open_access": null,
+      "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -23154,9 +23169,9 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "randomised_controlled_trial",
+      "study_design": "study_protocol",
       "study_design_basis": [
-        "randomised controlled trial"
+        "title/publication type identifies a protocol rather than completed results"
       ],
       "integrity_status": "unknown",
       "open_access": true,
@@ -23226,8 +23241,10 @@
         "Journal Article"
       ],
       "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -23251,8 +23268,10 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -23912,8 +23931,7 @@
       "pmcid": null,
       "doi": "10.1016/j.cbi.2026.112206",
       "sources": [
-        "europe_pmc",
-        "pubmed_eutils"
+        "europe_pmc"
       ],
       "publication_types": [
         "Journal Article"
@@ -23924,7 +23942,7 @@
       "study_design": "unknown",
       "study_design_basis": [],
       "integrity_status": "unknown",
-      "open_access": null,
+      "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -24287,8 +24305,10 @@
         "cardiovascular",
         "youth"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
+      "study_design": "study_protocol",
+      "study_design_basis": [
+        "title/publication type identifies a protocol rather than completed results"
+      ],
       "integrity_status": "unknown",
       "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -24344,6 +24364,35 @@
       "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": false,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
+      "evidence_id": "pmid:42606863",
+      "title": "A Digital Behavioral Health Game for Adolescent Mental Health: A Prespecified Secondary Analysis of a Randomized Clinical Trial.",
+      "year": "2026",
+      "journal": "JAMA network open",
+      "pmid": "42606863",
+      "pmcid": null,
+      "doi": "10.1001/jamanetworkopen.2026.29173",
+      "sources": [
+        "europe_pmc",
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "IM",
+        "Journal Article",
+        "Randomized Controlled Trial"
+      ],
+      "topic_tags": [
+        "youth"
+      ],
+      "study_design": "randomised_controlled_trial",
+      "study_design_basis": [
+        "randomized controlled trial"
+      ],
+      "integrity_status": "unknown",
+      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },

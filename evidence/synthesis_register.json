@@ -21,12 +21,18 @@
       ],
       "protocol_status": "protocol_ready",
       "candidate_cards": 49,
+      "result_bearing_candidate_cards": 48,
+      "excluded_non_result_cards": 1,
+      "excluded_non_result_design_counts": {
+        "study_protocol": 1
+      },
       "design_counts": {
         "commentary_or_editorial": 3,
         "cross_sectional": 2,
         "qualitative_study": 3,
-        "randomised_controlled_trial": 9,
+        "randomised_controlled_trial": 8,
         "retrospective_cohort": 1,
+        "study_protocol": 1,
         "systematic_review_or_meta_analysis": 7,
         "unknown": 24
       },
@@ -35,7 +41,7 @@
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
-      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment. Protocols and post-publication notices are separately counted and excluded from result-bearing synthesis. Quantitative readiness also requires human review and a non-retracted integrity state."
     },
     {
       "id": "respiratory_health",
@@ -56,6 +62,11 @@
       "preferred_designs": [],
       "protocol_status": "protocol_ready",
       "candidate_cards": 102,
+      "result_bearing_candidate_cards": 99,
+      "excluded_non_result_cards": 3,
+      "excluded_non_result_design_counts": {
+        "study_protocol": 3
+      },
       "design_counts": {
         "animal_study": 2,
         "case_report": 10,
@@ -66,15 +77,16 @@
         "prospective_cohort": 1,
         "qualitative_study": 1,
         "randomised_controlled_trial": 1,
+        "study_protocol": 3,
         "systematic_review_or_meta_analysis": 4,
-        "unknown": 73
+        "unknown": 70
       },
       "integrity_status_counts": {
         "unknown": 102
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
-      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment. Protocols and post-publication notices are separately counted and excluded from result-bearing synthesis. Quantitative readiness also requires human review and a non-retracted integrity state."
     },
     {
       "id": "cardiovascular_health",
@@ -95,19 +107,25 @@
       "preferred_designs": [],
       "protocol_status": "protocol_ready",
       "candidate_cards": 37,
+      "result_bearing_candidate_cards": 35,
+      "excluded_non_result_cards": 2,
+      "excluded_non_result_design_counts": {
+        "study_protocol": 2
+      },
       "design_counts": {
         "animal_study": 1,
         "commentary_or_editorial": 3,
         "in_vitro": 1,
         "randomised_controlled_trial": 1,
-        "unknown": 31
+        "study_protocol": 2,
+        "unknown": 29
       },
       "integrity_status_counts": {
         "unknown": 37
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
-      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment. Protocols and post-publication notices are separately counted and excluded from result-bearing synthesis. Quantitative readiness also requires human review and a non-retracted integrity state."
     },
     {
       "id": "youth_use",
@@ -129,22 +147,30 @@
       "preferred_designs": [],
       "protocol_status": "protocol_ready",
       "candidate_cards": 226,
+      "result_bearing_candidate_cards": 214,
+      "excluded_non_result_cards": 12,
+      "excluded_non_result_design_counts": {
+        "post_publication_notice": 3,
+        "study_protocol": 9
+      },
       "design_counts": {
         "case_report": 2,
         "commentary_or_editorial": 5,
         "cross_sectional": 21,
         "non_randomised_intervention": 1,
+        "post_publication_notice": 3,
         "qualitative_study": 2,
-        "randomised_controlled_trial": 12,
+        "randomised_controlled_trial": 8,
+        "study_protocol": 9,
         "systematic_review_or_meta_analysis": 15,
-        "unknown": 168
+        "unknown": 160
       },
       "integrity_status_counts": {
         "unknown": 226
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
-      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment. Protocols and post-publication notices are separately counted and excluded from result-bearing synthesis. Quantitative readiness also requires human review and a non-retracted integrity state."
     },
     {
       "id": "secondhand_exposure",
@@ -165,20 +191,26 @@
       "preferred_designs": [],
       "protocol_status": "protocol_ready",
       "candidate_cards": 21,
+      "result_bearing_candidate_cards": 19,
+      "excluded_non_result_cards": 2,
+      "excluded_non_result_design_counts": {
+        "study_protocol": 2
+      },
       "design_counts": {
         "cross_sectional": 1,
         "in_vitro": 1,
         "prospective_cohort": 1,
         "randomised_controlled_trial": 1,
+        "study_protocol": 2,
         "systematic_review_or_meta_analysis": 1,
-        "unknown": 16
+        "unknown": 14
       },
       "integrity_status_counts": {
         "unknown": 21
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
-      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment. Protocols and post-publication notices are separately counted and excluded from result-bearing synthesis. Quantitative readiness also requires human review and a non-retracted integrity state."
     },
     {
       "id": "thirdhand_residue",
@@ -196,6 +228,9 @@
       "preferred_designs": [],
       "protocol_status": "protocol_ready",
       "candidate_cards": 2,
+      "result_bearing_candidate_cards": 2,
+      "excluded_non_result_cards": 0,
+      "excluded_non_result_design_counts": {},
       "design_counts": {
         "unknown": 2
       },
@@ -204,7 +239,7 @@
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
-      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment."
+      "notice": "Candidate count is a navigation/triage measure, not an effect estimate or certainty assessment. Protocols and post-publication notices are separately counted and excluded from result-bearing synthesis. Quantitative readiness also requires human review and a non-retracted integrity state."
     }
   ],
   "governance": "No pooled effect or causal conclusion is produced until comparator, outcome, effect-estimate and risk-of-bias fields have been source-grounded and reviewed."

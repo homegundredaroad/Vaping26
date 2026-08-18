@@ -29,13 +29,13 @@
     },
     "publication_type_counts": {
       "Journal Article": 930,
-      "research-article": 358,
-      "Review": 99,
+      "research-article": 356,
+      "Review": 100,
       "review-article": 64,
       "Preprint": 46,
       "Systematic Review": 34,
       "Case Reports": 29,
-      "Randomized Controlled Trial": 27,
+      "Randomized Controlled Trial": 28,
       "case-report": 17,
       "Letter": 16,
       "Meta-Analysis": 14,
@@ -64,6 +64,7 @@
       "Practice Guideline": 2,
       "Pragmatic Clinical Trial": 2,
       "Validation Study": 2,
+      "IM": 2,
       "Abstract": 2,
       "Brief Report": 1,
       "Clinical Trial": 1,
@@ -74,7 +75,6 @@
       "Conference Proceedings": 1,
       "Video-Audio Media": 1,
       "Network Meta-Analysis": 1,
-      "IM": 1,
       "data-paper": 1
     },
     "topic_counts": {
@@ -102,13 +102,15 @@
       "cross_sectional": 77,
       "in_vitro": 7,
       "modelling_study": 1,
-      "non_randomised_intervention": 3,
-      "prospective_cohort": 11,
+      "non_randomised_intervention": 1,
+      "post_publication_notice": 10,
+      "prospective_cohort": 6,
       "qualitative_study": 21,
-      "randomised_controlled_trial": 41,
+      "randomised_controlled_trial": 34,
       "retrospective_cohort": 2,
+      "study_protocol": 27,
       "systematic_review_or_meta_analysis": 51,
-      "unknown": 729
+      "unknown": 706
     },
     "integrity_status_counts": {
       "unknown": 1016
