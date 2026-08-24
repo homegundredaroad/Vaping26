@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "trial_count_with_publication_references": 284,
-  "trials_with_matched_evidence_cards": 0,
-  "unique_referenced_pmids": 1184,
-  "unique_pmids_matched_to_evidence_cards": 0,
+  "trial_count_with_publication_references": 285,
+  "trials_with_matched_evidence_cards": 12,
+  "unique_referenced_pmids": 1185,
+  "unique_pmids_matched_to_evidence_cards": 12,
   "unmatched_referenced_pmids": [
     "10093176",
     "10170434",
@@ -1063,7 +1063,6 @@
     "39827790",
     "39868569",
     "39893864",
-    "39947698",
     "39983103",
     "40003532",
     "40036117",
@@ -1122,32 +1121,22 @@
     "41863629",
     "41875428",
     "41884082",
-    "41952225",
     "41997468",
     "42059106",
     "42143578",
-    "42154285",
-    "42154468",
-    "42161504",
     "42180350",
-    "42205972",
-    "42249341",
     "42278704",
-    "42288659",
-    "42293363",
     "42303314",
     "42323577",
     "42332640",
     "42351094",
     "42395095",
     "42406436",
-    "42468964",
     "42504048",
     "42523979",
-    "42537925",
-    "42538285",
     "42560883",
     "42584385",
+    "42606856",
     "4459223",
     "5785179",
     "6120322",
@@ -3382,7 +3371,12 @@
         {
           "pmid": "42154468",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42154468",
+          "title": "Toxicant Exposures After Switching From Cigarettes to a Pod-Based Electronic Cigarette: A Randomized Clinical Trial.",
+          "year": "2026",
+          "doi": "10.1001/jamanetworkopen.2026.13292",
+          "integrity_status": "unknown"
         }
       ]
     },
@@ -6035,6 +6029,19 @@
       ]
     },
     {
+      "nct_id": "NCT04969198",
+      "brief_title": "UW Withdraw From Tobacco Study",
+      "overall_status": "COMPLETED",
+      "has_results": true,
+      "publication_references": [
+        {
+          "pmid": "42606856",
+          "reference_type": "DERIVED",
+          "matched_to_evidence_card": false
+        }
+      ]
+    },
+    {
       "nct_id": "NCT04974580",
       "brief_title": "Research and Innovation to Stop E-cigarette/Vaping in Young Adults",
       "overall_status": "COMPLETED",
@@ -6639,7 +6646,12 @@
         {
           "pmid": "42288659",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42288659",
+          "title": "Predicting nicotine emissions and plasma nicotine boost in E-cigarette users using machine learning.",
+          "year": "2026",
+          "doi": "10.1038/s41598-026-57341-4",
+          "integrity_status": "unknown"
         },
         {
           "pmid": "39058490",
@@ -6734,7 +6746,12 @@
         {
           "pmid": "42154285",
           "reference_type": "RESULT",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42154285",
+          "title": "A Web-Based Virtual Environment Behavioral Intervention as Cardiovascular Disease and Metabolic Disease Prevention Education in Persons With HIV: Evaluation of the LEARN Randomized Controlled Trial.",
+          "year": "2026",
+          "doi": "10.2196/91145",
+          "integrity_status": "unknown"
         }
       ]
     },
@@ -6747,7 +6764,12 @@
         {
           "pmid": "42161504",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42161504",
+          "title": "Water addition to e-liquids to reduce flavour aldehyde acetal formation: chemistry and user sensory experience and appeal.",
+          "year": "2026",
+          "doi": "10.1136/tc-2025-060013",
+          "integrity_status": "unknown"
         }
       ]
     },
@@ -6878,7 +6900,12 @@
         {
           "pmid": "42288659",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42288659",
+          "title": "Predicting nicotine emissions and plasma nicotine boost in E-cigarette users using machine learning.",
+          "year": "2026",
+          "doi": "10.1038/s41598-026-57341-4",
+          "integrity_status": "unknown"
         },
         {
           "pmid": "40813093",
@@ -7611,7 +7638,12 @@
         {
           "pmid": "42538285",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42538285",
+          "title": "Pilot randomised controlled trial of an e-cigarette and tobacco use intervention for hospitalised youth.",
+          "year": "2026",
+          "doi": "10.1136/tc-2025-060006",
+          "integrity_status": "unknown"
         },
         {
           "pmid": "39779271",
@@ -7900,7 +7932,12 @@
         {
           "pmid": "42468964",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42468964",
+          "title": "Evaluating cannabis-nicotine substitution and demand during nicotine cessation treatment in young adults: protocol for a prospective, remote 12-week nicotine cessation trial in the USA.",
+          "year": "2026",
+          "doi": "10.1136/bmjopen-2025-110992",
+          "integrity_status": "unknown"
         }
       ]
     },
@@ -7931,7 +7968,12 @@
         {
           "pmid": "42293363",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42293363",
+          "title": "Evaluating the substitutability of fruit versus menthol and tobacco-flavored e-cigarettes on combustible cigarette cessation: Randomized clinical trial protocol.",
+          "year": "2026",
+          "doi": "10.1016/j.conctc.2026.101652",
+          "integrity_status": "unknown"
         }
       ]
     },
@@ -8310,7 +8352,12 @@
         {
           "pmid": "39947698",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:39947698",
+          "title": "Impact of Instagram and TikTok influencer marketing on perceptions of e-cigarettes and perceptions of influencers in young adults: a randomised survey-based experiment.",
+          "year": "2026",
+          "doi": "10.1136/tc-2024-059021",
+          "integrity_status": "unknown"
         }
       ]
     },
@@ -8699,12 +8746,22 @@
         {
           "pmid": "42205972",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42205972",
+          "title": "Acceptance and preferences for different nicotine substitute products to reduce tobacco smoking in people living with HIV: Results from an internal pilot study of a randomized trial.",
+          "year": "2026",
+          "doi": "10.18332/tid/218987",
+          "integrity_status": "unknown"
         },
         {
           "pmid": "41952225",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:41952225",
+          "title": "Offer of a menu of different nicotine substitute products to REduce Tobacco Use iN pEople living with HIV (RETUNE): a protocol for a pragmatic randomized trial within the Swiss HIV Cohort Study.",
+          "year": "2026",
+          "doi": "10.1186/s13063-026-09622-6",
+          "integrity_status": "unknown"
         }
       ]
     },
@@ -8748,7 +8805,12 @@
         {
           "pmid": "42249341",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42249341",
+          "title": "Study protocol for a quasi-experimental investigation of the effectiveness of the 'CATCH My Breath' vaping prevention curriculum at preventing vaping outcomes among high school students in Ontario, Canada.",
+          "year": "2026",
+          "doi": "10.1186/s12889-026-28027-3",
+          "integrity_status": "unknown"
         }
       ]
     },
@@ -9530,7 +9592,12 @@
         {
           "pmid": "42537925",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:42537925",
+          "title": "Remotely delivered parents helping parents for youth nicotine vaping cessation recruited via electronic health records: Protocol for a feasibility randomized controlled trial.",
+          "year": "2026",
+          "doi": "10.1016/j.cct.2026.108416",
+          "integrity_status": "unknown"
         }
       ]
     },

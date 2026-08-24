@@ -4,67 +4,115 @@
   "literature": {
     "source_records": {
       "pubmed_eutils": 100,
+      "europe_pmc": 1000,
       "crossref": 100
     },
-    "input_records": 200,
-    "canonical_records": 100,
-    "canonical_records_before_quality_gate": 200,
-    "quarantined_records": 100,
+    "input_records": 1200,
+    "canonical_records": 1009,
+    "canonical_records_before_quality_gate": 1110,
+    "quarantined_records": 101,
     "quarantine_reason_counts": {
+      "retraction_record_not_primary_evidence": 1,
       "secondary_only_title_not_vaping_specific": 100
     },
-    "duplicates_collapsed": 0,
+    "duplicates_collapsed": 90,
     "source_overlap": {
-      "pubmed_eutils": 100
+      "europe_pmc": 909,
+      "europe_pmc+pubmed_eutils": 85,
+      "pubmed_eutils": 15
     },
     "publication_year_counts": {
+      "unknown": 5,
       "2027": 1,
-      "2026": 99
+      "2026": 1002,
+      "2025": 1
     },
     "publication_type_counts": {
-      "Journal Article": 96,
-      "Review": 7,
-      "Randomized Controlled Trial": 4,
-      "Letter": 3,
-      "Systematic Review": 2,
-      "Case Reports": 2,
-      "English Abstract": 1,
-      "Meta-Analysis": 1,
-      "Published Erratum": 1,
-      "Comparative Study": 1,
-      "Comment": 1,
-      "Research Support, Non-U.S. Gov't": 1,
-      "Practice Guideline": 1,
-      "Network Meta-Analysis": 1
+      "Journal Article": 919,
+      "research-article": 344,
+      "Review": 98,
+      "review-article": 67,
+      "Preprint": 49,
+      "Systematic Review": 37,
+      "Case Reports": 28,
+      "Randomized Controlled Trial": 28,
+      "Letter": 19,
+      "case-report": 18,
+      "Meta-Analysis": 15,
+      "Research Support, Non-U.S. Gov't": 15,
+      "Research Support, N.I.H., Extramural": 10,
+      "Editorial": 9,
+      "Published Erratum": 9,
+      "discussion": 7,
+      "brief-report": 7,
+      "Clinical Trial Protocol": 7,
+      "systematic-review": 6,
+      "case-study": 5,
+      "Multicenter Study": 5,
+      "Scoping Review": 5,
+      "Comparative Study": 5,
+      "Comment": 4,
+      "Observational Study": 4,
+      "correction": 4,
+      "Abstract": 4,
+      "English Abstract": 3,
+      "Consensus Statement": 3,
+      "methods-article": 3,
+      "letter": 3,
+      "Research Support, U.S. Gov't, Non-P.H.S.": 2,
+      "other": 2,
+      "Practice Guideline": 2,
+      "Pragmatic Clinical Trial": 2,
+      "Validation Study": 2,
+      "article-commentary": 1,
+      "Clinical Trial": 1,
+      "Evaluation Study": 1,
+      "News": 1,
+      "abstract": 1,
+      "Clinical Trial, Phase II": 1,
+      "Twin Study": 1,
+      "Conference Proceedings": 1,
+      "Video-Audio Media": 1,
+      "Network Meta-Analysis": 1,
+      "data-paper": 1
     },
     "topic_counts": {
-      "cardiovascular": 3,
-      "cessation": 6,
-      "exposure_biomarkers": 2,
-      "respiratory": 10,
-      "secondhand_exposure": 1,
-      "thirdhand_residue": 1,
-      "ultrafine_particles": 1,
-      "youth": 29
+      "aerosol_chemistry": 4,
+      "cardiovascular": 36,
+      "cessation": 47,
+      "exposure_biomarkers": 16,
+      "indoor_air": 3,
+      "respiratory": 98,
+      "secondhand_exposure": 4,
+      "thirdhand_residue": 2,
+      "ultrafine_particles": 2,
+      "youth": 222
     },
     "topic_policy": "Auditable title/journal keyword tags are navigation aids only and are not evidence-strength or effect classifications."
   },
   "evidence_cards": {
-    "card_count": 100,
+    "card_count": 1009,
     "study_design_counts": {
-      "animal_study": 1,
-      "case_report": 2,
-      "commentary_or_editorial": 4,
-      "cross_sectional": 8,
-      "in_vitro": 2,
-      "post_publication_notice": 1,
-      "qualitative_study": 1,
-      "randomised_controlled_trial": 5,
-      "systematic_review_or_meta_analysis": 3,
-      "unknown": 73
+      "animal_study": 7,
+      "case_control": 1,
+      "case_report": 33,
+      "case_series": 1,
+      "commentary_or_editorial": 31,
+      "cross_sectional": 76,
+      "in_vitro": 7,
+      "modelling_study": 2,
+      "non_randomised_intervention": 1,
+      "post_publication_notice": 9,
+      "prospective_cohort": 6,
+      "qualitative_study": 19,
+      "randomised_controlled_trial": 38,
+      "retrospective_cohort": 2,
+      "study_protocol": 26,
+      "systematic_review_or_meta_analysis": 53,
+      "unknown": 697
     },
     "integrity_status_counts": {
-      "unknown": 100
+      "unknown": 1009
     },
     "extraction_policy": "Metadata classification is automated and provisional. Integrity status remains unknown unless a collected source supplies an explicit post-publication update. Effect estimates, comparators, confounding, funding and risk-of-bias fields require source-grounded extraction and review before synthesis."
   },
@@ -74,42 +122,42 @@
       {
         "id": "cessation_nicotine_ecig_vs_nrt",
         "title": "Nicotine e-cigarettes for sustained smoking cessation",
-        "candidate_cards": 6,
+        "candidate_cards": 47,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
       {
         "id": "respiratory_health",
         "title": "Respiratory health outcomes associated with vaping",
-        "candidate_cards": 10,
+        "candidate_cards": 98,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
       {
         "id": "cardiovascular_health",
         "title": "Cardiovascular outcomes associated with vaping",
-        "candidate_cards": 3,
+        "candidate_cards": 36,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
       {
         "id": "youth_use",
         "title": "Vaping among children and young people",
-        "candidate_cards": 29,
+        "candidate_cards": 222,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
       {
         "id": "secondhand_exposure",
         "title": "Second-hand vaping aerosol exposure",
-        "candidate_cards": 4,
+        "candidate_cards": 22,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
       {
         "id": "thirdhand_residue",
         "title": "Third-hand vaping residues and exposure",
-        "candidate_cards": 1,
+        "candidate_cards": 2,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       }
@@ -120,26 +168,26 @@
     "record_count": 832,
     "total_matches": 832,
     "status_counts": {
-      "ACTIVE_NOT_RECRUITING": 33,
+      "ACTIVE_NOT_RECRUITING": 34,
       "COMPLETED": 488,
-      "ENROLLING_BY_INVITATION": 12,
-      "NOT_YET_RECRUITING": 54,
-      "RECRUITING": 133,
+      "ENROLLING_BY_INVITATION": 13,
+      "NOT_YET_RECRUITING": 52,
+      "RECRUITING": 132,
       "SUSPENDED": 2,
       "TERMINATED": 30,
       "UNKNOWN": 55,
-      "WITHDRAWN": 25
+      "WITHDRAWN": 26
     },
     "study_type_counts": {
       "INTERVENTIONAL": 694,
       "OBSERVATIONAL": 138
     },
-    "trials_with_results": 187,
+    "trials_with_results": 188,
     "trials_with_primary_outcomes": 832,
-    "trials_with_result_outcome_measures": 187,
-    "publication_pmids_linked": 1184,
-    "trials_with_matched_evidence_cards": 0,
-    "unmatched_referenced_pmids": 1184
+    "trials_with_result_outcome_measures": 188,
+    "publication_pmids_linked": 1185,
+    "trials_with_matched_evidence_cards": 12,
+    "unmatched_referenced_pmids": 1173
   },
   "official_prevalence_resources": [
     {
