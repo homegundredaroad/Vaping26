@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "card_count": 1054,
+  "card_count": 1055,
   "study_design_counts": {
     "animal_study": 8,
     "case_report": 18,
     "commentary_or_editorial": 32,
-    "cross_sectional": 66,
+    "cross_sectional": 65,
     "in_vitro": 5,
     "modelling_study": 1,
     "non_randomised_intervention": 15,
@@ -15,10 +15,10 @@
     "randomised_controlled_trial": 111,
     "study_protocol": 41,
     "systematic_review_or_meta_analysis": 50,
-    "unknown": 678
+    "unknown": 680
   },
   "integrity_status_counts": {
-    "unknown": 1054
+    "unknown": 1055
   },
   "records": [
     {
@@ -439,28 +439,6 @@
       ],
       "integrity_status": "unknown",
       "open_access": false,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
-      "evidence_id": "pmid:42619537",
-      "title": "Why the current evidence does not support classifying e-cigarettes as likely carcinogenic to humans.",
-      "year": "2026",
-      "journal": "Carcinogenesis",
-      "pmid": "42619537",
-      "pmcid": null,
-      "doi": "10.1093/carcin/bgag059",
-      "sources": [
-        "pubmed_eutils"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
-      "integrity_status": "unknown",
-      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -1016,11 +994,9 @@
       "pmcid": null,
       "doi": "10.1136/bmj-2026-100684",
       "sources": [
-        "europe_pmc",
         "pubmed_eutils"
       ],
       "publication_types": [
-        "IM",
         "Journal Article"
       ],
       "topic_tags": [],
@@ -3379,6 +3355,31 @@
         "Journal Article"
       ],
       "topic_tags": [],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": true,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
+      "evidence_id": "pmid:42040083",
+      "title": "Social media exposure, school prevention, and adolescent vaping: a structural equation model-based secondary analysis of the Florida youth tobacco survey.",
+      "year": "2026",
+      "journal": "Frontiers in public health",
+      "pmid": "42040083",
+      "pmcid": "PMC13102572",
+      "doi": "10.3389/fpubh.2026.1738207",
+      "sources": [
+        "europe_pmc"
+      ],
+      "publication_types": [
+        "research-article",
+        "Journal Article"
+      ],
+      "topic_tags": [
+        "youth"
+      ],
       "study_design": "unknown",
       "study_design_basis": [],
       "integrity_status": "unknown",
@@ -8583,32 +8584,6 @@
       "human_review_status": "not_reviewed"
     },
     {
-      "evidence_id": "pmid:42645446",
-      "title": "Inflammatory Biomarker Profiles in Gingival Crevicular Fluid of Electronic Cigarette Users: A Cross-Sectional Study. ",
-      "year": "2026",
-      "journal": "Dentistry journal",
-      "pmid": "42645446",
-      "pmcid": null,
-      "doi": "10.3390/dj14080472",
-      "sources": [
-        "europe_pmc"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "topic_tags": [
-        "exposure_biomarkers"
-      ],
-      "study_design": "cross_sectional",
-      "study_design_basis": [
-        "cross-sectional"
-      ],
-      "integrity_status": "unknown",
-      "open_access": false,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
       "evidence_id": "doi:10.21203/rs.3.rs-9861658/v1",
       "title": "Inferential Transparency and Local Closure in Regulatory Policy Documents: A Conservative Sentinel Audit Across Tobacco, Vaping, Alcohol, and Sugar",
       "year": "2026",
@@ -9905,6 +9880,28 @@
       "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": false,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
+      "evidence_id": "pmid:42666488",
+      "title": "Examining current E-cigarette use among U.S. adults by groups stratified by demographic characteristics, 2014-2023.",
+      "year": "2026",
+      "journal": "Preventive medicine reports",
+      "pmid": "42666488",
+      "pmcid": null,
+      "doi": "10.1016/j.pmedr.2026.103536",
+      "sources": [
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "topic_tags": [],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -11238,11 +11235,9 @@
       "pmcid": null,
       "doi": "10.1038/s41568-026-00976-2",
       "sources": [
-        "europe_pmc",
         "pubmed_eutils"
       ],
       "publication_types": [
-        "IM",
         "Journal Article"
       ],
       "topic_tags": [],
@@ -13846,6 +13841,28 @@
       "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": null,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
+      "evidence_id": "doi:10.64898/2026.04.07.26350354",
+      "title": "Characteristics and Correlates of Older Smokers’ Experiences with E-Cigarette-Related Content on Social Media: Findings from a U.S.-Based Survey",
+      "year": "2026",
+      "journal": null,
+      "pmid": null,
+      "pmcid": null,
+      "doi": "10.64898/2026.04.07.26350354",
+      "sources": [
+        "europe_pmc"
+      ],
+      "publication_types": [
+        "Preprint"
+      ],
+      "topic_tags": [],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
