@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-08-29T11:07:37.199708+00:00",
+  "generated_at": "2026-08-29T11:08:55.745825+00:00",
   "publication_contract": "deny-by-default-v2",
   "files": [
     {
       "path": "data/public/research_status.json",
-      "sha256": "27b58f6dd16c78c474f079ea92600d9e1b5f113951efe0647c7c186ff8589a19",
+      "sha256": "cf3bf479681d8a493fc9bd23c13d47331ce5ddcb3c92afef1608524f7956d6de",
       "bytes": 2462
     },
     {
@@ -45,17 +45,17 @@
     },
     {
       "path": "provenance/release_evidence.json",
-      "sha256": "7764c7b394ef78118d1716afc0cfd98207ed4374da6931386e7d882a8da160d2",
+      "sha256": "6543275f8173147b4361181c1a59feec7d986b5d79cab09be019f7ae9d27a30c",
       "bytes": 8124
     },
     {
       "path": "provenance/source_coverage.json",
-      "sha256": "4c083ac43e9ade947890ce59e410b1bb29c6871e50d6f474c8e8a72f3eee674a",
+      "sha256": "de31f40a05ea872c2d28eb584d42bb3597ec377c5f8f860a61d4acce913a997d",
       "bytes": 14968
     },
     {
       "path": "provenance/source_register.json",
-      "sha256": "2ced6bde7764a828ef96d8bfa538479c5b9334171510592855ce9718f49af136",
+      "sha256": "05c80c8045e807d8c7b6fcb63b1b8e00c183177cd82508ead2d1cd75a79caf9d",
       "bytes": 19313
     },
     {
