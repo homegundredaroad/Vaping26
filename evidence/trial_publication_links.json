@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "trial_count_with_publication_references": 285,
+  "trial_count_with_publication_references": 286,
   "trials_with_matched_evidence_cards": 12,
-  "unique_referenced_pmids": 1185,
-  "unique_pmids_matched_to_evidence_cards": 12,
+  "unique_referenced_pmids": 1195,
+  "unique_pmids_matched_to_evidence_cards": 11,
   "unmatched_referenced_pmids": [
     "10093176",
     "10170434",
@@ -87,6 +87,7 @@
     "15801567",
     "15804680",
     "15824536",
+    "15876899",
     "1595997",
     "15983263",
     "16019961",
@@ -320,6 +321,7 @@
     "24252691",
     "24267765",
     "24297188",
+    "24309397",
     "24334991",
     "24336346",
     "24350225",
@@ -330,6 +332,8 @@
     "24373737",
     "24394215",
     "24399548",
+    "24399553",
+    "24399556",
     "24403868",
     "24436327",
     "24478933",
@@ -442,6 +446,7 @@
     "26442992",
     "26459151",
     "26459355",
+    "26509694",
     "26518976",
     "26525063",
     "26551991",
@@ -539,6 +544,7 @@
     "28363720",
     "28376818",
     "28381414",
+    "28391593",
     "28393086",
     "28393137",
     "28398572",
@@ -935,6 +941,8 @@
     "36257323",
     "36257330",
     "36320180",
+    "36349495",
+    "36349498",
     "36355684",
     "363748",
     "36384511",
@@ -957,6 +965,7 @@
     "36907374",
     "36947466",
     "36974605",
+    "36976558",
     "37009114",
     "37014673",
     "37028103",
@@ -993,6 +1002,7 @@
     "37857774",
     "37868257",
     "37902830",
+    "37947094",
     "37957321",
     "37964431",
     "37988256",
@@ -1118,12 +1128,13 @@
     "41721367",
     "41724253",
     "41814066",
-    "41863629",
     "41875428",
     "41884082",
+    "41952225",
     "41997468",
     "42059106",
     "42143578",
+    "42154285",
     "42180350",
     "42278704",
     "42303314",
@@ -4387,7 +4398,12 @@
         {
           "pmid": "41863629",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": false
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:41863629",
+          "title": "Effects of nicotine form and tobacco flavor on pharmacokinetics, subjective effects, and behavioral indicators of abuse liability of e-cigarettes.",
+          "year": "2026",
+          "doi": "10.1093/ntr/ntag058",
+          "integrity_status": "unknown"
         }
       ]
     },
@@ -5726,8 +5742,8 @@
     {
       "nct_id": "NCT04678245",
       "brief_title": "Network Intervention to Prevent Vaping",
-      "overall_status": "ACTIVE_NOT_RECRUITING",
-      "has_results": false,
+      "overall_status": "COMPLETED",
+      "has_results": true,
       "publication_references": [
         {
           "pmid": "11148298",
@@ -6746,12 +6762,7 @@
         {
           "pmid": "42154285",
           "reference_type": "RESULT",
-          "matched_to_evidence_card": true,
-          "evidence_id": "pmid:42154285",
-          "title": "A Web-Based Virtual Environment Behavioral Intervention as Cardiovascular Disease and Metabolic Disease Prevention Education in Persons With HIV: Evaluation of the LEARN Randomized Controlled Trial.",
-          "year": "2026",
-          "doi": "10.2196/91145",
-          "integrity_status": "unknown"
+          "matched_to_evidence_card": false
         }
       ]
     },
@@ -8756,12 +8767,7 @@
         {
           "pmid": "41952225",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": true,
-          "evidence_id": "pmid:41952225",
-          "title": "Offer of a menu of different nicotine substitute products to REduce Tobacco Use iN pEople living with HIV (RETUNE): a protocol for a pragmatic randomized trial within the Swiss HIV Cohort Study.",
-          "year": "2026",
-          "doi": "10.1186/s13063-026-09622-6",
-          "integrity_status": "unknown"
+          "matched_to_evidence_card": false
         }
       ]
     },
@@ -9980,6 +9986,64 @@
         },
         {
           "pmid": "27663578",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT07789132",
+      "brief_title": "Evaluation of Community Health Worker Support to Help People With Serious Mental Illness to Quit Smoking",
+      "overall_status": "NOT_YET_RECRUITING",
+      "has_results": false,
+      "publication_references": [
+        {
+          "pmid": "24399553",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "15876899",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "37947094",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "28391593",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "24309397",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "36349498",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "36349495",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "36976558",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "26509694",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "24399556",
           "reference_type": "BACKGROUND",
           "matched_to_evidence_card": false
         }
