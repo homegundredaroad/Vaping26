@@ -35,6 +35,22 @@ jobs:
       - name: Build validated static site
         run: python scripts/build_site.py
 
+      - name: Assert deployable evidence is inside Pages artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s build/site/index.html
+          test -s build/site/assets/site.js
+          test -s build/site/data/public/research_status.json
+          test -s build/site/evidence/evidence_cards.json
+          test -s build/site/evidence/health_evidence_summary.json
+          test -s build/site/evidence/ons_prevalence.json
+          test -s build/site/evidence/synthesis_register.json
+          test -s build/site/evidence/youth_prevalence.json
+          test -s build/site/provenance/source_register.json
+          test -s build/site/provenance/source_coverage.json
+          test -s build/site/provenance/publication_manifest.json
+
       - name: Upload GitHub Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
@@ -56,3 +72,55 @@ jobs:
       - name: Deploy Vaping26 Observatory to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5
+
+      - name: Verify live publication parity
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          import os
+          import time
+          import urllib.error
+          import urllib.request
+
+          base = os.environ["PAGE_URL"].rstrip("/") + "/"
+          checks = {
+              "data/public/research_status.json": lambda p: bool(p.get("generated_at")),
+              "evidence/evidence_cards.json": lambda p: int(p.get("card_count", 0)) > 0 and bool(p.get("records")),
+              "evidence/health_evidence_summary.json": lambda p: bool(p.get("literature")),
+              "evidence/ons_prevalence.json": lambda p: bool(p.get("latest_year")) and bool(p.get("estimates")),
+              "evidence/synthesis_register.json": lambda p: int(p.get("question_count", 0)) > 0 and bool(p.get("questions")),
+              "evidence/youth_prevalence.json": lambda p: int(p.get("record_count", 0)) > 0 and bool(p.get("records")),
+              "provenance/source_register.json": lambda p: int(p.get("source_count", 0)) > 0,
+              "provenance/source_coverage.json": lambda p: isinstance(p, dict) and bool(p),
+          }
+
+          failures = []
+          for rel, predicate in checks.items():
+              url = base + rel
+              last_error = None
+              for attempt in range(8):
+                  try:
+                      req = urllib.request.Request(url, headers={"User-Agent": "Vaping26-live-parity-check/1.0"})
+                      with urllib.request.urlopen(req, timeout=20) as response:
+                          if response.status != 200:
+                              raise RuntimeError(f"HTTP {response.status}")
+                          payload = json.load(response)
+                      if not predicate(payload):
+                          raise RuntimeError("semantic content check failed")
+                      print(f"PASS {rel}")
+                      break
+                  except Exception as exc:
+                      last_error = exc
+                      if attempt < 7:
+                          time.sleep(5)
+              else:
+                  failures.append(f"{rel}: {last_error}")
+
+          if failures:
+              raise SystemExit("LIVE PUBLICATION PARITY FAILED\n - " + "\n - ".join(failures))
+          print("LIVE PUBLICATION PARITY PASS")
+          PY
