@@ -20,19 +20,23 @@
         "randomised_controlled_trial"
       ],
       "protocol_status": "protocol_ready",
-      "candidate_cards": 34,
-      "result_bearing_candidate_cards": 34,
-      "excluded_non_result_cards": 0,
-      "excluded_non_result_design_counts": {},
+      "candidate_cards": 73,
+      "result_bearing_candidate_cards": 67,
+      "excluded_non_result_cards": 6,
+      "excluded_non_result_design_counts": {
+        "study_protocol": 6
+      },
       "design_counts": {
         "commentary_or_editorial": 1,
-        "cross_sectional": 2,
-        "randomised_controlled_trial": 6,
-        "systematic_review_or_meta_analysis": 6,
-        "unknown": 19
+        "cross_sectional": 3,
+        "non_randomised_intervention": 1,
+        "randomised_controlled_trial": 26,
+        "study_protocol": 6,
+        "systematic_review_or_meta_analysis": 10,
+        "unknown": 26
       },
       "integrity_status_counts": {
-        "unknown": 34
+        "unknown": 73
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
@@ -56,22 +60,27 @@
       ],
       "preferred_designs": [],
       "protocol_status": "protocol_ready",
-      "candidate_cards": 67,
-      "result_bearing_candidate_cards": 67,
-      "excluded_non_result_cards": 0,
-      "excluded_non_result_design_counts": {},
+      "candidate_cards": 111,
+      "result_bearing_candidate_cards": 109,
+      "excluded_non_result_cards": 2,
+      "excluded_non_result_design_counts": {
+        "study_protocol": 2
+      },
       "design_counts": {
-        "animal_study": 2,
-        "case_report": 5,
-        "commentary_or_editorial": 4,
+        "animal_study": 4,
+        "case_report": 6,
+        "commentary_or_editorial": 7,
         "cross_sectional": 3,
         "in_vitro": 2,
+        "non_randomised_intervention": 1,
         "qualitative_study": 1,
+        "randomised_controlled_trial": 10,
+        "study_protocol": 2,
         "systematic_review_or_meta_analysis": 3,
-        "unknown": 47
+        "unknown": 72
       },
       "integrity_status_counts": {
-        "unknown": 67
+        "unknown": 111
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
@@ -95,18 +104,23 @@
       ],
       "preferred_designs": [],
       "protocol_status": "protocol_ready",
-      "candidate_cards": 21,
-      "result_bearing_candidate_cards": 21,
-      "excluded_non_result_cards": 0,
-      "excluded_non_result_design_counts": {},
+      "candidate_cards": 43,
+      "result_bearing_candidate_cards": 42,
+      "excluded_non_result_cards": 1,
+      "excluded_non_result_design_counts": {
+        "study_protocol": 1
+      },
       "design_counts": {
         "animal_study": 1,
+        "cross_sectional": 1,
         "in_vitro": 1,
-        "randomised_controlled_trial": 1,
-        "unknown": 18
+        "non_randomised_intervention": 1,
+        "randomised_controlled_trial": 6,
+        "study_protocol": 1,
+        "unknown": 32
       },
       "integrity_status_counts": {
-        "unknown": 21
+        "unknown": 43
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
@@ -131,26 +145,27 @@
       ],
       "preferred_designs": [],
       "protocol_status": "protocol_ready",
-      "candidate_cards": 167,
-      "result_bearing_candidate_cards": 160,
-      "excluded_non_result_cards": 7,
+      "candidate_cards": 230,
+      "result_bearing_candidate_cards": 216,
+      "excluded_non_result_cards": 14,
       "excluded_non_result_design_counts": {
-        "post_publication_notice": 3,
-        "study_protocol": 4
+        "post_publication_notice": 4,
+        "study_protocol": 10
       },
       "design_counts": {
-        "commentary_or_editorial": 5,
-        "cross_sectional": 19,
+        "case_report": 1,
+        "commentary_or_editorial": 7,
+        "cross_sectional": 21,
         "non_randomised_intervention": 1,
-        "post_publication_notice": 3,
-        "qualitative_study": 3,
-        "randomised_controlled_trial": 6,
-        "study_protocol": 4,
-        "systematic_review_or_meta_analysis": 10,
-        "unknown": 116
+        "post_publication_notice": 4,
+        "qualitative_study": 5,
+        "randomised_controlled_trial": 17,
+        "study_protocol": 10,
+        "systematic_review_or_meta_analysis": 12,
+        "unknown": 152
       },
       "integrity_status_counts": {
-        "unknown": 167
+        "unknown": 230
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
@@ -174,20 +189,21 @@
       ],
       "preferred_designs": [],
       "protocol_status": "protocol_ready",
-      "candidate_cards": 13,
-      "result_bearing_candidate_cards": 13,
+      "candidate_cards": 22,
+      "result_bearing_candidate_cards": 22,
       "excluded_non_result_cards": 0,
       "excluded_non_result_design_counts": {},
       "design_counts": {
         "animal_study": 1,
         "cross_sectional": 1,
+        "non_randomised_intervention": 1,
         "prospective_cohort": 1,
-        "randomised_controlled_trial": 1,
-        "systematic_review_or_meta_analysis": 1,
-        "unknown": 8
+        "randomised_controlled_trial": 4,
+        "systematic_review_or_meta_analysis": 2,
+        "unknown": 12
       },
       "integrity_status_counts": {
-        "unknown": 13
+        "unknown": 22
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
