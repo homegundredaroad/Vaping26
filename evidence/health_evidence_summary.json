@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "scope": "vaping_specific_evidence_inventory_and_synthesis_readiness",
   "literature": {
     "source_records": {
@@ -107,7 +107,15 @@
       "ultrafine_particles": 3,
       "youth": 409
     },
-    "topic_policy": "Auditable title/journal keyword tags are navigation aids only and are not evidence-strength or effect classifications."
+    "topic_policy": "Auditable title/journal keyword tags are navigation aids only and are not evidence-strength or effect classifications.",
+    "relevance_policy": "Public evidence-card promotion requires an explicit vaping, e-cigarette, ENDS, e-liquid or nicotine-pouch anchor. Broad smoking/tobacco/health records and cannabis-only vaping records remain auditable in quarantine rather than being discarded.",
+    "trial_publication_recovery": {
+      "source": "NCBI PubMed ESummary exact PMID retrieval from ClinicalTrials.gov references",
+      "recovered_source_records": 1183,
+      "accepted_before_direct_relevance_gate": 1077,
+      "quality_quarantined": 106,
+      "policy": "Identifier recovery expands coverage only. Recovered publications still pass the ordinary quality and direct-vaping relevance gates and registry linkage does not establish outcome reporting completeness or reliability."
+    }
   },
   "evidence_cards": {
     "card_count": 1054,
@@ -131,6 +139,95 @@
       "unknown": 1054
     },
     "extraction_policy": "Metadata classification is automated and provisional. Integrity status remains unknown unless a collected source supplies an explicit post-publication update. Effect estimates, comparators, confounding, funding and risk-of-bias fields require source-grounded extraction and review before synthesis."
+  },
+  "review_readiness": {
+    "schema_version": 1,
+    "generated_at": "2026-08-29T11:19:50.786694+00:00",
+    "record_count": 1054,
+    "study_design_counts": {
+      "animal_study": 8,
+      "qualitative_study": 16,
+      "unknown": 678,
+      "commentary_or_editorial": 32,
+      "cross_sectional": 66,
+      "case_report": 18,
+      "systematic_review_or_meta_analysis": 50,
+      "randomised_controlled_trial": 111,
+      "study_protocol": 41,
+      "in_vitro": 5,
+      "non_randomised_intervention": 15,
+      "post_publication_notice": 8,
+      "modelling_study": 1,
+      "prospective_cohort": 5
+    },
+    "integrity_status_counts": {
+      "unknown": 1054
+    },
+    "human_review_status_counts": {
+      "not_reviewed": 1054
+    },
+    "synthesis_readiness_counts": {
+      "metadata_classified_requires_outcome_extraction": 1054
+    },
+    "unknown_study_design": {
+      "count": 678,
+      "percent": 64.33
+    },
+    "unknown_integrity_status": {
+      "count": 1054,
+      "percent": 100.0
+    },
+    "reviewed_record_count": 0,
+    "conclusion_sensitive_ready_record_count": 0,
+    "conclusion_field_presence": {
+      "population": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "smoking_history": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "dual_use": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "intervention_exposure": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "comparator": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "outcomes": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "effect_estimates": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "funding": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "conflicts_of_interest": {
+        "count": 0,
+        "percent": 0.0
+      },
+      "risk_of_bias": {
+        "count": 0,
+        "percent": 0.0
+      }
+    },
+    "phase_gates": {
+      "external_method_review_candidate": true,
+      "conclusion_sensitive_synthesis_has_any_reviewed_ready_records": false,
+      "all_study_designs_resolved": false,
+      "all_integrity_states_resolved": false
+    },
+    "interpretation": "This is an operational readiness report, not an evidence-certainty rating. No threshold in this report establishes a health conclusion."
   },
   "synthesis": {
     "question_count": 6,
@@ -203,6 +300,8 @@
     "trials_with_result_outcome_measures": 189,
     "publication_pmids_linked": 1195,
     "trials_with_matched_evidence_cards": 173,
+    "unique_pmids_matched_to_evidence_cards": 364,
+    "unique_referenced_pmids": 1195,
     "unmatched_referenced_pmids": 831
   },
   "official_prevalence_resources": [
@@ -286,7 +385,7 @@
     "Counts are not effect estimates and do not establish causation, safety, harm or certainty.",
     "Automated study-design classification is provisional until human review.",
     "Structured comparator, outcome, effect-estimate, risk-of-bias and funding fields are not yet complete enough for pooled quantitative synthesis.",
-    "Recent-first literature surveillance is not yet a complete historical systematic review; backfill and incremental-update work remain separate stages.",
+    "Recent-first literature surveillance plus identifier-based trial-publication recovery is not yet a complete historical systematic review; broader backfill remains a separate governed stage.",
     "Official prevalence estimates must retain survey, geography, confidence-interval and comparability metadata."
   ]
 }
