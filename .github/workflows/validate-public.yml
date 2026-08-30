@@ -60,7 +60,8 @@ jobs:
           ! grep -q '<td colspan="6">Loading…</td>' build/site/sources.html
           grep -q 'name="vaping26-build" content="${{ github.sha }}"' build/site/index.html
           grep -q 'id="external-review-status"' build/site/index.html
-          grep -q 'id="public-build-code">${{ github.sha }}' build/site/index.html
+          public_short="$(printf '%s' '${{ github.sha }}' | cut -c1-12)"
+          grep -q "id=\"public-build-code\">${public_short}" build/site/index.html
           grep -q 'Research code revision' build/site/index.html
           grep -q 'Public build revision' build/site/index.html
           grep -Eq 'id="metric-sources">[^—<]+' build/site/index.html
