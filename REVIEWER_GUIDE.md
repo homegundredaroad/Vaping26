@@ -3,11 +3,10 @@
 **Version:** Reviewer Freeze Release  
 **Public Repository:** https://github.com/homegundredaroad/Vaping26  
 **Public Observatory:** https://homegundredaroad.github.io/Vaping26/  
-**Public validation commit:** `34a987036c3b425d8112794e61df0a88d3ff4a9e`  
 **Associated Research engine revision:** `5b5500778bf83637e6ec3e8388046cb73789d58d`  
 **Associated Research run:** `33306721309`
 
-> Release note: the public validation run number is intentionally not hard-coded here as a scientific identifier. Reviewers should use the commit SHA and the release identity displayed on the deployed Observatory, together with the GitHub Actions record, to identify the exact public build assessed.
+> **How to identify the exact public build under review:** use the `vaping26-build` fingerprint embedded in the deployed HTML, the shortened **Public build revision** displayed on the Observatory homepage, and the corresponding successful GitHub Actions validation/deployment run. The guide intentionally does not hard-code the current public commit because changing this document would itself create a new commit and make that value stale.
 
 ## 1. Executive summary and review scope
 
@@ -44,7 +43,7 @@ AI or other automated tooling may assist bounded extraction or classification wh
 The Observatory deliberately separates the scientific-engine release from the public-presentation release.
 
 - **Research release:** Research run `33306721309`, Research code revision `5b5500778bf83637e6ec3e8388046cb73789d58d`.
-- **Public build:** identified by the full public commit SHA embedded in the deployed HTML as the `vaping26-build` fingerprint and displayed in shortened form on the homepage.
+- **Public build:** identified by the full public commit SHA embedded in deployed HTML as the `vaping26-build` fingerprint and displayed in shortened form on the homepage.
 - **Publication validation:** GitHub Actions validates the build, reviewer-facing static hardening, public JSON/PDF presence and post-deployment live parity.
 
 This distinction prevents a Research-engine provenance identifier from being mistaken for the public-site commit.
@@ -58,20 +57,22 @@ This distinction prevents a Research-engine provenance identifier from being mis
 - A SHA-256 utility such as `sha256sum` or `shasum -a 256`
 - `curl` for raw-HTML inspection
 
-### Reproduce the frozen public commit
+### Reproduce the exact public build
+
+First obtain the full public commit SHA from the deployed `vaping26-build` fingerprint or the successful GitHub Actions run being assessed, then:
 
 ```bash
 git clone https://github.com/homegundredaroad/Vaping26.git
 cd Vaping26
-git checkout 34a987036c3b425d8112794e61df0a88d3ff4a9e
+git checkout <PUBLIC_COMMIT_SHA>
 python -m pip install reportlab==4.4.3
 python scripts/validate_public.py
 python -m unittest discover -s tests -v
 python scripts/build_site.py
-python scripts/harden_public_build.py
+GITHUB_SHA=<PUBLIC_COMMIT_SHA> GITHUB_RUN_NUMBER=<PUBLIC_RUN_NUMBER> python scripts/harden_public_build.py
 ```
 
-The CI environment supplies `GITHUB_SHA` and `GITHUB_RUN_NUMBER`, so a purely local run may display local-build placeholders for public-build identity unless those environment variables are set explicitly. Scientific/public data values are still derived from the checked-out approved JSON.
+The CI environment supplies `GITHUB_SHA` and `GITHUB_RUN_NUMBER`. A purely local run without those variables will display local-build placeholders for public-build identity; scientific/public data values are still derived from the checked-out approved JSON.
 
 ### Inspect publication integrity
 
