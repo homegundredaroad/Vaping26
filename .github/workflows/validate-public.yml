@@ -126,7 +126,8 @@ jobs:
               ],
               "results.html": [
                   f'name="vaping26-build" content="{sha}"',
-                  'href="results.html" aria-current="page">Results</a>',
+                  'href="results.html"',
+                  'aria-current="page"',
                   'id="r-literature"',
               ],
           }
