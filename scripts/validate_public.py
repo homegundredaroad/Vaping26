@@ -26,11 +26,11 @@ REQUIRED_ROOT_FILES = [
     "AUDITABILITY.md", "EXTERNAL_REVIEW.md"
 ]
 REQUIRED_SITE_FILES = [
-    "index.html", "health.html", "cessation.html", "young-people.html", "prevalence.html",
+    "index.html", "results.html", "health.html", "cessation.html", "young-people.html", "prevalence.html",
     "exposure.html", "products.html", "retail-enforcement.html", "regulation.html", "evidence.html",
     "sources.html", "methodology.html", "limitations.html", "downloads.html",
-    "environment.html",
-    "assets/site.css", "assets/site.js", "robots.txt", "sitemap.xml",
+    "environment.html", "ai-governance.html", "citation.html",
+    "assets/site.css", "assets/site.js", "assets/youth.js", "robots.txt", "sitemap.xml",
 ]
 
 MANIFESTED_DATA_ROOTS = ("data/public", "evidence", "environment", "regulation", "provenance")

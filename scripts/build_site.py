@@ -18,6 +18,7 @@ PUBLIC_DATA_ROOTS = (
 REQUIRED_PUBLIC_JSON = (
     Path("data/public/research_status.json"), Path("evidence/evidence_cards.json"), Path("evidence/health_evidence_summary.json"),
     Path("evidence/ons_prevalence.json"), Path("evidence/synthesis_register.json"), Path("evidence/youth_prevalence.json"),
+    Path("evidence/trial_publication_links.json"),
     Path("provenance/source_register.json"), Path("provenance/source_coverage.json"), Path("provenance/publication_manifest.json"),
     Path("provenance/release_evidence.json"),
 )
@@ -51,6 +52,19 @@ def _daily_ons_estimate(prevalence: dict) -> dict:
         if "daily e-cigarette users" not in str(row.get("statistic") or ""): continue
         return row
     return {}
+
+def _result_reference_stats(links: dict) -> dict[str, int]:
+    referenced: set[str] = set()
+    matched: set[str] = set()
+    for trial in links.get("records", []) if isinstance(links.get("records"), list) else []:
+        if not isinstance(trial, dict): continue
+        for ref in trial.get("publication_references", []) or []:
+            if not isinstance(ref, dict) or str(ref.get("reference_type") or "").upper() != "RESULT": continue
+            pmid = str(ref.get("pmid") or "").strip()
+            if not pmid: continue
+            referenced.add(pmid)
+            if ref.get("matched_to_evidence_card") is True: matched.add(pmid)
+    return {"referenced": len(referenced), "matched": len(matched), "unmatched": len(referenced - matched)}
 
 def _question_rows(questions: list[dict]) -> str:
     if not questions: return '<tr><td colspan="4">No approved synthesis register is available for this release.</td></tr>'
@@ -105,9 +119,10 @@ def render_overview_page(target: Path) -> None:
 
 def render_results_page(target: Path) -> None:
     page=target/"results.html"; document=page.read_text(encoding="utf-8")
-    status=_read_json(target/"data/public/research_status.json"); evidence=_read_json(target/"evidence/health_evidence_summary.json"); synthesis=_read_json(target/"evidence/synthesis_register.json"); prevalence=_read_json(target/"evidence/ons_prevalence.json")
+    status=_read_json(target/"data/public/research_status.json"); evidence=_read_json(target/"evidence/health_evidence_summary.json"); synthesis=_read_json(target/"evidence/synthesis_register.json"); prevalence=_read_json(target/"evidence/ons_prevalence.json"); links=_read_json(target/"evidence/trial_publication_links.json")
     literature=evidence.get("literature") if isinstance(evidence.get("literature"),dict) else {}; cards=evidence.get("evidence_cards") if isinstance(evidence.get("evidence_cards"),dict) else {}; trials=evidence.get("clinical_trials") if isinstance(evidence.get("clinical_trials"),dict) else {}; readiness=evidence.get("review_readiness") if isinstance(evidence.get("review_readiness"),dict) else {}
-    values={"r-literature":_num(literature.get("canonical_records")),"r-cards":_num(cards.get("card_count")),"r-trials":_num(trials.get("record_count")),"r-trial-results":_num(trials.get("trials_with_results")),"r-linked":_num(trials.get("trials_with_matched_evidence_cards")),"r-unmatched":_num(trials.get("unmatched_referenced_pmids")),"r-reviewed":_num(readiness.get("reviewed_record_count")),"r-ready":_num(readiness.get("conclusion_sensitive_ready_record_count")),"r-unknown-design":f"{_num((readiness.get('unknown_study_design') or {}).get('count'))} ({float((readiness.get('unknown_study_design') or {}).get('percent') or 0):.1f}%)","r-integrity":f"{_num((readiness.get('unknown_integrity_status') or {}).get('count'))} ({float((readiness.get('unknown_integrity_status') or {}).get('percent') or 0):.1f}%)","r-prev-year":_num(prevalence.get("latest_year")),"r-release":str(status.get("generated_at") or "Release timestamp unavailable")}
+    result_refs=_result_reference_stats(links)
+    values={"r-literature":_num(literature.get("canonical_records")),"r-cards":_num(cards.get("card_count")),"r-trials":_num(trials.get("record_count")),"r-trial-results":_num(trials.get("trials_with_results")),"r-linked":_num(trials.get("trials_with_matched_evidence_cards")),"r-unmatched":_num(result_refs.get("unmatched")),"r-reviewed":_num(readiness.get("reviewed_record_count")),"r-ready":_num(readiness.get("conclusion_sensitive_ready_record_count")),"r-unknown-design":f"{_num((readiness.get('unknown_study_design') or {}).get('count'))} ({float((readiness.get('unknown_study_design') or {}).get('percent') or 0):.1f}%)","r-integrity":f"{_num((readiness.get('unknown_integrity_status') or {}).get('count'))} ({float((readiness.get('unknown_integrity_status') or {}).get('percent') or 0):.1f}%)","r-prev-year":_num(prevalence.get("latest_year")),"r-release":str(status.get("generated_at") or "Release timestamp unavailable")}
     daily=_daily_ons_estimate(prevalence)
     if daily:
         values["r-prev"]=f"{float(daily.get('estimate_percent')):.1f}%"; lo=daily.get("lower_95_percent",daily.get("lower_ci")); hi=daily.get("upper_95_percent",daily.get("upper_ci"))
@@ -117,12 +132,24 @@ def render_results_page(target: Path) -> None:
     questions=synthesis.get("questions") if isinstance(synthesis.get("questions"),list) else []
     document,count=re.subn(r'(<tbody\b[^>]*\bid=["\']question-rows["\'][^>]*>)(.*?)(</tbody>)',lambda m:m.group(1)+_question_rows([q for q in questions if isinstance(q,dict)])+m.group(3),document,count=1,flags=re.S)
     if count!=1: raise RuntimeError("Could not render build-time synthesis question rows")
+    # Do not let the legacy all-reference summary overwrite the correct RESULT-only build-time value.
+    document=document.replace("t('r-unmatched',n(tr.unmatched_referenced_pmids));", "")
+    document=document.replace("Trial-referenced PMIDs still unmatched", "Registry RESULT PMIDs still unmatched")
+    document=document.replace(
+        "trial records linked to candidate evidence, and referenced PMIDs still unresolved",
+        "trial records linked to candidate evidence, and RESULT-reference PMIDs still unresolved",
+    )
+    document=document.replace(
+        "Unmatched does not mean unpublished or invalid; it means the current governed linkage process has not reconciled that identifier to a public candidate record.",
+        "This headline gap counts only ClinicalTrials.gov RESULT references. BACKGROUND bibliography and DERIVED references remain auditable but are not presented as missing trial-result publications. Unmatched does not mean unpublished or invalid; it means the current governed linkage process has not reconciled that RESULT identifier to a public candidate record.",
+    )
     document=document.replace("</head>",_dataset_jsonld(status)+"</head>",1); page.write_text(document,encoding="utf-8")
 
 def validate_built_bundle(target: Path) -> None:
     errors=[]
     if not (target/"index.html").is_file(): errors.append("missing index.html")
     if not (target/"assets/site.js").is_file(): errors.append("missing assets/site.js")
+    if not (target/"assets/youth.js").is_file(): errors.append("missing assets/youth.js")
     for rel in REQUIRED_PUBLIC_JSON:
         path=target/rel
         if not path.is_file(): errors.append(f"missing public JSON: {rel.as_posix()}"); continue
@@ -136,7 +163,8 @@ def validate_built_bundle(target: Path) -> None:
         text=results.read_text(encoding="utf-8")
         if 'type="application/ld+json"' not in text or '"@type":"Dataset"' not in text: errors.append("results.html missing Dataset structured data")
         if "Loading latest approved synthesis register" in text: errors.append("results.html still contains unresolved synthesis loading placeholder")
-        for element_id in ("r-literature","r-cards","r-trials","r-prev-year"):
+        if "Trial-referenced PMIDs still unmatched" in text: errors.append("results.html still labels all registry references as missing trial publications")
+        for element_id in ("r-literature","r-cards","r-trials","r-prev-year","r-unmatched"):
             match=re.search(rf'id=["\']{element_id}["\'][^>]*>(.*?)</',text,re.S)
             if not match or match.group(1).strip() in {"","—","Data unavailable"}: errors.append(f"results.html has unresolved required result: {element_id}")
     overview=(target/"index.html").read_text(encoding="utf-8")
