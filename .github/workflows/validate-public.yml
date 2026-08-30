@@ -59,6 +59,16 @@ jobs:
           ! grep -q 'Loading latest approved synthesis register' build/site/results.html
           ! grep -q '<td colspan="6">Loading…</td>' build/site/sources.html
           grep -q 'name="vaping26-build" content="${{ github.sha }}"' build/site/index.html
+          grep -q 'id="external-review-status"' build/site/index.html
+          grep -q 'id="public-build-code">${{ github.sha }}' build/site/index.html
+          grep -q 'Research code revision' build/site/index.html
+          grep -q 'Public build revision' build/site/index.html
+          grep -Eq 'id="metric-sources">[^—<]+' build/site/index.html
+          grep -Eq 'id="metric-literature">[^—<]+' build/site/index.html
+          grep -Eq 'id="metric-cards">[^—<]+' build/site/index.html
+          grep -Eq 'id="metric-trials">[^—<]+' build/site/index.html
+          grep -Eq 'id="metric-questions">[^—<]+' build/site/index.html
+          grep -Eq 'id="design-table">[[:space:]]*<tr>' build/site/index.html
       - name: Upload GitHub Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
@@ -99,7 +109,7 @@ jobs:
               req = urllib.request.Request(
                   url,
                   headers={
-                      "User-Agent": "Vaping26-live-parity-check/2.0",
+                      "User-Agent": "Vaping26-live-parity-check/3.0",
                       "Cache-Control": "no-cache",
                       "Pragma": "no-cache",
                   },
@@ -114,6 +124,16 @@ jobs:
                   f'name="vaping26-build" content="{sha}"',
                   "Current scientific maturity",
                   'href="results.html">Results</a>',
+                  'id="external-review-status"',
+                  'Research code revision',
+                  'Public build revision',
+                  f'id="public-build-code">{sha[:12]}',
+                  'id="metric-sources"',
+                  'id="metric-literature"',
+                  'id="metric-cards"',
+                  'id="metric-trials"',
+                  'id="metric-questions"',
+                  'id="design-table"',
               ],
               "methodology.html": [
                   f'name="vaping26-build" content="{sha}"',
@@ -132,6 +152,14 @@ jobs:
               ],
           }
           forbidden = {
+              "index.html": [
+                  'id="metric-sources">—',
+                  'id="metric-literature">—',
+                  'id="metric-cards">—',
+                  'id="metric-trials">—',
+                  'id="metric-questions">—',
+                  'id="design-table"></tbody>',
+              ],
               "sources.html": ["<td colspan=\"6\">Loading…</td>"],
               "results.html": ["Loading latest approved synthesis register"],
           }
