@@ -39,18 +39,38 @@ def daily_ons(prevalence: dict) -> dict:
     return {}
 
 
+def result_reference_stats(links: dict) -> dict[str, int]:
+    referenced: set[str] = set()
+    matched: set[str] = set()
+    for trial in links.get("records", []) if isinstance(links.get("records"), list) else []:
+        if not isinstance(trial, dict):
+            continue
+        for ref in trial.get("publication_references", []) or []:
+            if not isinstance(ref, dict) or str(ref.get("reference_type") or "").upper() != "RESULT":
+                continue
+            pmid = str(ref.get("pmid") or "").strip()
+            if not pmid:
+                continue
+            referenced.add(pmid)
+            if ref.get("matched_to_evidence_card") is True:
+                matched.add(pmid)
+    return {"referenced": len(referenced), "matched": len(matched), "unmatched": len(referenced - matched)}
+
+
 def build_results_pdf(site_root: Path, output: Path) -> Path:
     status = read_json(site_root, "data/public/research_status.json")
     evidence = read_json(site_root, "evidence/health_evidence_summary.json")
     synthesis = read_json(site_root, "evidence/synthesis_register.json")
     prevalence = read_json(site_root, "evidence/ons_prevalence.json")
     coverage = read_json(site_root, "provenance/source_coverage.json")
+    links = read_json(site_root, "evidence/trial_publication_links.json")
 
     literature = evidence.get("literature") or {}
     cards = evidence.get("evidence_cards") or {}
     trials = evidence.get("clinical_trials") or {}
     readiness = evidence.get("review_readiness") or {}
     daily = daily_ons(prevalence)
+    result_refs = result_reference_stats(links)
 
     output.parent.mkdir(parents=True, exist_ok=True)
     doc = SimpleDocTemplate(str(output), pagesize=A4, rightMargin=16*mm, leftMargin=16*mm, topMargin=15*mm, bottomMargin=15*mm,
@@ -72,7 +92,7 @@ def build_results_pdf(site_root: Path, output: Path) -> Path:
     metrics = [
         ["Validated literature", number(literature.get("canonical_records")), "Evidence cards", number(cards.get("card_count"))],
         ["Clinical trials", number(trials.get("record_count")), "Trials with results", number(trials.get("trials_with_results"))],
-        ["Trials linked to cards", number(trials.get("trials_with_matched_evidence_cards")), "Unmatched trial PMIDs", number(trials.get("unmatched_referenced_pmids"))],
+        ["Trials linked to cards", number(trials.get("trials_with_matched_evidence_cards")), "Unmatched RESULT PMIDs", number(result_refs.get("unmatched"))],
         ["Human-reviewed records", number(readiness.get("reviewed_record_count")), "Conclusion-ready records", number(readiness.get("conclusion_sensitive_ready_record_count"))],
     ]
     table = Table(metrics, colWidths=[47*mm, 24*mm, 47*mm, 24*mm])
@@ -87,7 +107,16 @@ def build_results_pdf(site_root: Path, output: Path) -> Path:
         ("VALIGN", (0,0), (-1,-1), "MIDDLE"),
         ("TOPPADDING", (0,0), (-1,-1), 5), ("BOTTOMPADDING", (0,0), (-1,-1), 5),
     ]))
-    story += [Paragraph("Evidence coverage", styles["V26H2"]), table]
+    story += [
+        Paragraph("Evidence coverage", styles["V26H2"]),
+        table,
+        Paragraph(
+            f"ClinicalTrials.gov RESULT references are reported separately: {number(result_refs.get('referenced'))} unique RESULT PMIDs, "
+            f"{number(result_refs.get('matched'))} matched to candidate evidence records and {number(result_refs.get('unmatched'))} currently unmatched. "
+            "BACKGROUND bibliography and DERIVED references remain auditable but are not counted as missing trial-result publications.",
+            styles["V26Small"],
+        ),
+    ]
 
     unknown_design = readiness.get("unknown_study_design") or {}
     unknown_integrity = readiness.get("unknown_integrity_status") or {}
