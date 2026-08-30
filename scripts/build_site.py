@@ -6,6 +6,7 @@ import html
 import json
 import re
 import shutil
+from datetime import datetime, timezone
 from pathlib import Path
 
 from build_results_pdf import build_results_pdf
@@ -18,6 +19,7 @@ REQUIRED_PUBLIC_JSON = (
     Path("data/public/research_status.json"), Path("evidence/evidence_cards.json"), Path("evidence/health_evidence_summary.json"),
     Path("evidence/ons_prevalence.json"), Path("evidence/synthesis_register.json"), Path("evidence/youth_prevalence.json"),
     Path("provenance/source_register.json"), Path("provenance/source_coverage.json"), Path("provenance/publication_manifest.json"),
+    Path("provenance/release_evidence.json"),
 )
 
 def _read_json(path: Path) -> dict:
@@ -59,8 +61,47 @@ def _question_rows(questions: list[dict]) -> str:
     return "".join(rows)
 
 def _dataset_jsonld(status: dict) -> str:
-    payload={"@context":"https://schema.org","@type":"Dataset","name":"Vaping26 current evidence results","description":"Vaping26 approved public evidence release containing validated vaping literature coverage, clinical-trial linkage, synthesis-readiness metadata and official UK prevalence extracts.","url":"https://homegundredaroad.github.io/Vaping26/results.html","isAccessibleForFree":True,"dateModified":status.get("generated_at"),"creator":{"@type":"Organization","name":"Vaping26"},"license":"https://github.com/homegundredaroad/Vaping26","measurementTechnique":"Registered-source harvesting, deterministic validation, deduplication, relevance gating and governed publication","distribution":[{"@type":"DataDownload","encodingFormat":"application/pdf","contentUrl":"https://homegundredaroad.github.io/Vaping26/downloads/vaping26-current-results.pdf"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://homegundredaroad.github.io/Vaping26/evidence/health_evidence_summary.json"}]}
+    payload={"@context":"https://schema.org","@type":"Dataset","name":"Vaping26 current evidence results","description":"Vaping26 approved public evidence release containing quality-gated vaping literature coverage, clinical-trial linkage, synthesis-readiness metadata and official UK prevalence extracts.","url":"https://homegundredaroad.github.io/Vaping26/results.html","isAccessibleForFree":True,"dateModified":status.get("generated_at"),"creator":{"@type":"Organization","name":"Vaping26"},"license":"https://github.com/homegundredaroad/Vaping26","measurementTechnique":"Registered-source harvesting, deterministic validation, deduplication, relevance gating and governed publication","distribution":[{"@type":"DataDownload","encodingFormat":"application/pdf","contentUrl":"https://homegundredaroad.github.io/Vaping26/downloads/vaping26-current-results.pdf"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://homegundredaroad.github.io/Vaping26/evidence/health_evidence_summary.json"}]}
     return '<script type="application/ld+json">'+json.dumps(payload,ensure_ascii=False,separators=(",",":"))+"</script>"
+
+def render_overview_page(target: Path) -> None:
+    page=target/"index.html"; document=page.read_text(encoding="utf-8")
+    status=_read_json(target/"data/public/research_status.json")
+    evidence=_read_json(target/"evidence/health_evidence_summary.json")
+    cards=_read_json(target/"evidence/evidence_cards.json")
+    release=_read_json(target/"provenance/release_evidence.json")
+    coverage=status.get("source_coverage") if isinstance(status.get("source_coverage"),dict) else {}
+    readiness=evidence.get("review_readiness") if isinstance(evidence.get("review_readiness"),dict) else {}
+    generated=status.get("generated_at")
+    state="OPERATIONAL"
+    age_text="Release freshness unavailable."
+    if generated:
+        try:
+            stamp=datetime.fromisoformat(str(generated).replace("Z","+00:00"))
+            age=max(0.0,(datetime.now(timezone.utc)-stamp.astimezone(timezone.utc)).total_seconds()/86400)
+            age_text=f"Latest approved export is {'less than one day' if age < 1 else str(int(age))+' day'+('' if int(age)==1 else 's')} old."
+            if age>10: state="STALE"
+        except ValueError: pass
+    attempted=int(coverage.get("attempted_sources") or 0); successful=int(coverage.get("successful_sources") or 0); failed=int(coverage.get("failed_attempts") or 0)
+    if state!="STALE" and (failed>0 or (attempted>0 and successful<attempted)): state="DEGRADED"
+    values={
+        "last-refresh":generated or "Release timestamp unavailable",
+        "publication-level":_human(status.get("publication_level")),
+        "maturity-captured":_num(cards.get("card_count")),
+        "maturity-reviewed":_num(readiness.get("reviewed_record_count")),
+        "maturity-ready":_num(readiness.get("conclusion_sensitive_ready_record_count")),
+        "pipeline-state":state,
+        "pipeline-age":age_text,
+        "pipeline-attempted":_num(attempted),
+        "pipeline-successful":_num(successful),
+        "pipeline-failed":_num(failed),
+        "pipeline-integrity":"PASS" if coverage.get("no_silent_disappearance") is True else "CHECK REQUIRED",
+        "release-run":release.get("run_id") or "Unavailable",
+        "release-code":str(release.get("code_revision") or "Unavailable")[:12],
+        "release-validation":"PASS",
+    }
+    for element_id,value in values.items(): document=_replace_id_text(document,element_id,value)
+    page.write_text(document,encoding="utf-8")
 
 def render_results_page(target: Path) -> None:
     page=target/"results.html"; document=page.read_text(encoding="utf-8")
@@ -98,6 +139,15 @@ def validate_built_bundle(target: Path) -> None:
         for element_id in ("r-literature","r-cards","r-trials","r-prev-year"):
             match=re.search(rf'id=["\']{element_id}["\'][^>]*>(.*?)</',text,re.S)
             if not match or match.group(1).strip() in {"","—","Data unavailable"}: errors.append(f"results.html has unresolved required result: {element_id}")
+    overview=(target/"index.html").read_text(encoding="utf-8")
+    for element_id in ("maturity-captured","maturity-reviewed","maturity-ready","pipeline-state","release-run","release-code"):
+        match=re.search(rf'id=["\']{element_id}["\'][^>]*>(.*?)</',overview,re.S)
+        if not match or match.group(1).strip() in {"","—","STATUS UNAVAILABLE"}: errors.append(f"index.html has unresolved release state: {element_id}")
+    cards=_read_json(target/"evidence/evidence_cards.json")
+    evidence_html=(target/"evidence.html").read_text(encoding="utf-8")
+    if int(cards.get("card_count") or 0)>0 and "will populate after the first approved publication" in evidence_html.lower(): errors.append("evidence.html claims records are awaiting first publication despite published cards")
+    for rel in ("ai-governance.html","citation.html"):
+        if not (target/rel).is_file(): errors.append(f"missing governance page: {rel}")
     pdf=target/"downloads/vaping26-current-results.pdf"
     if not pdf.is_file() or pdf.stat().st_size < 2000: errors.append("missing or implausibly small results PDF")
     if errors: raise RuntimeError("Built public bundle contract failed:\n - "+"\n - ".join(errors))
@@ -112,6 +162,7 @@ def build_site() -> Path:
         source=ROOT/rel
         if source.exists():
             destination=target/rel; destination.parent.mkdir(parents=True,exist_ok=True); shutil.copytree(source,destination,dirs_exist_ok=True)
+    render_overview_page(target)
     render_results_page(target)
     build_results_pdf(target,target/"downloads/vaping26-current-results.pdf")
     (target/".nojekyll").write_text("",encoding="utf-8")
