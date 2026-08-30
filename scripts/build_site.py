@@ -8,245 +8,115 @@ import re
 import shutil
 from pathlib import Path
 
+from build_results_pdf import build_results_pdf
 from validate_public import ROOT, validate_repository
 
 PUBLIC_DATA_ROOTS = (
-    Path("data/public"),
-    Path("evidence"),
-    Path("environment"),
-    Path("regulation"),
-    Path("provenance"),
+    Path("data/public"), Path("evidence"), Path("environment"), Path("regulation"), Path("provenance"),
 )
-
 REQUIRED_PUBLIC_JSON = (
-    Path("data/public/research_status.json"),
-    Path("evidence/evidence_cards.json"),
-    Path("evidence/health_evidence_summary.json"),
-    Path("evidence/ons_prevalence.json"),
-    Path("evidence/synthesis_register.json"),
-    Path("evidence/youth_prevalence.json"),
-    Path("provenance/source_register.json"),
-    Path("provenance/source_coverage.json"),
-    Path("provenance/publication_manifest.json"),
+    Path("data/public/research_status.json"), Path("evidence/evidence_cards.json"), Path("evidence/health_evidence_summary.json"),
+    Path("evidence/ons_prevalence.json"), Path("evidence/synthesis_register.json"), Path("evidence/youth_prevalence.json"),
+    Path("provenance/source_register.json"), Path("provenance/source_coverage.json"), Path("provenance/publication_manifest.json"),
 )
-
 
 def _read_json(path: Path) -> dict:
     payload = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(payload, dict):
-        raise RuntimeError(f"Expected JSON object in {path}")
+    if not isinstance(payload, dict): raise RuntimeError(f"Expected JSON object in {path}")
     return payload
-
 
 def _human(value: object) -> str:
     text = str(value or "unknown").replace("_", " ")
     return " ".join(word.capitalize() for word in text.split())
 
-
 def _num(value: object) -> str:
-    try:
-        return f"{int(value):,}"
-    except (TypeError, ValueError):
-        return "Data unavailable"
-
+    try: return f"{int(value):,}"
+    except (TypeError, ValueError): return "Data unavailable"
 
 def _replace_id_text(document: str, element_id: str, value: object) -> str:
     escaped = html.escape(str(value), quote=False)
     pattern = re.compile(rf'(<(?P<tag>[a-zA-Z0-9]+)\b[^>]*\bid=["\']{re.escape(element_id)}["\'][^>]*>)(.*?)(</(?P=tag)>)', re.S)
     rendered, count = pattern.subn(lambda m: m.group(1) + escaped + m.group(4), document, count=1)
-    if count != 1:
-        raise RuntimeError(f"Could not render build-time result for #{element_id}")
+    if count != 1: raise RuntimeError(f"Could not render build-time result for #{element_id}")
     return rendered
-
 
 def _daily_ons_estimate(prevalence: dict) -> dict:
     latest = prevalence.get("latest_year")
     rows = prevalence.get("estimates") or prevalence.get("latest_year_estimates") or []
     for row in rows:
-        if not isinstance(row, dict):
-            continue
-        if Number := row.get("year"):
-            pass
-        if str(row.get("year")) != str(latest):
-            continue
-        if str(row.get("group") or "").strip() != "All persons aged 16 and over":
-            continue
-        if "daily e-cigarette users" not in str(row.get("statistic") or ""):
-            continue
+        if not isinstance(row, dict) or str(row.get("year")) != str(latest): continue
+        if str(row.get("group") or "").strip() != "All persons aged 16 and over": continue
+        if "daily e-cigarette users" not in str(row.get("statistic") or ""): continue
         return row
     return {}
 
-
 def _question_rows(questions: list[dict]) -> str:
-    if not questions:
-        return '<tr><td colspan="4">No approved synthesis register is available for this release.</td></tr>'
-    rows: list[str] = []
+    if not questions: return '<tr><td colspan="4">No approved synthesis register is available for this release.</td></tr>'
+    rows=[]
     for question in questions:
-        title = html.escape(str(question.get("title") or question.get("id") or "Untitled question"))
-        candidates = _num(question.get("candidate_cards"))
-        ready = _num(question.get("effect_estimate_ready_cards"))
-        status = html.escape(_human(question.get("synthesis_status") or question.get("protocol_status")))
-        rows.append(f"<tr><td>{title}</td><td>{candidates}</td><td>{ready}</td><td>{status}</td></tr>")
+        title=html.escape(str(question.get("title") or question.get("id") or "Untitled question"))
+        rows.append(f"<tr><td>{title}</td><td>{_num(question.get('candidate_cards'))}</td><td>{_num(question.get('effect_estimate_ready_cards'))}</td><td>{html.escape(_human(question.get('synthesis_status') or question.get('protocol_status')))}</td></tr>")
     return "".join(rows)
 
-
-def _dataset_jsonld(status: dict, evidence: dict, synthesis: dict, prevalence: dict) -> str:
-    description = (
-        "Vaping26 approved public evidence release containing validated vaping literature coverage, "
-        "clinical-trial linkage, synthesis-readiness metadata and official UK prevalence extracts."
-    )
-    payload = {
-        "@context": "https://schema.org",
-        "@type": "Dataset",
-        "name": "Vaping26 current evidence results",
-        "description": description,
-        "url": "https://homegundredaroad.github.io/Vaping26/results.html",
-        "isAccessibleForFree": True,
-        "dateModified": status.get("generated_at"),
-        "creator": {"@type": "Organization", "name": "Vaping26"},
-        "license": "https://github.com/homegundredaroad/Vaping26",
-        "measurementTechnique": "Registered-source harvesting, deterministic validation, deduplication, relevance gating and governed publication",
-        "variableMeasured": [
-            "Validated literature records",
-            "Evidence cards",
-            "Clinical trials",
-            "Trial-result availability",
-            "Trial-publication linkage",
-            "Synthesis readiness",
-            "ONS e-cigarette prevalence",
-        ],
-        "distribution": [
-            {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://homegundredaroad.github.io/Vaping26/evidence/health_evidence_summary.json"},
-            {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://homegundredaroad.github.io/Vaping26/evidence/synthesis_register.json"},
-            {"@type": "DataDownload", "encodingFormat": "application/json", "contentUrl": "https://homegundredaroad.github.io/Vaping26/evidence/ons_prevalence.json"},
-        ],
-    }
-    return '<script type="application/ld+json">' + json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "</script>"
-
+def _dataset_jsonld(status: dict) -> str:
+    payload={"@context":"https://schema.org","@type":"Dataset","name":"Vaping26 current evidence results","description":"Vaping26 approved public evidence release containing validated vaping literature coverage, clinical-trial linkage, synthesis-readiness metadata and official UK prevalence extracts.","url":"https://homegundredaroad.github.io/Vaping26/results.html","isAccessibleForFree":True,"dateModified":status.get("generated_at"),"creator":{"@type":"Organization","name":"Vaping26"},"license":"https://github.com/homegundredaroad/Vaping26","measurementTechnique":"Registered-source harvesting, deterministic validation, deduplication, relevance gating and governed publication","distribution":[{"@type":"DataDownload","encodingFormat":"application/pdf","contentUrl":"https://homegundredaroad.github.io/Vaping26/downloads/vaping26-current-results.pdf"},{"@type":"DataDownload","encodingFormat":"application/json","contentUrl":"https://homegundredaroad.github.io/Vaping26/evidence/health_evidence_summary.json"}]}
+    return '<script type="application/ld+json">'+json.dumps(payload,ensure_ascii=False,separators=(",",":"))+"</script>"
 
 def render_results_page(target: Path) -> None:
-    page = target / "results.html"
-    document = page.read_text(encoding="utf-8")
-    status = _read_json(target / "data/public/research_status.json")
-    evidence = _read_json(target / "evidence/health_evidence_summary.json")
-    synthesis = _read_json(target / "evidence/synthesis_register.json")
-    prevalence = _read_json(target / "evidence/ons_prevalence.json")
-
-    literature = evidence.get("literature") if isinstance(evidence.get("literature"), dict) else {}
-    cards = evidence.get("evidence_cards") if isinstance(evidence.get("evidence_cards"), dict) else {}
-    trials = evidence.get("clinical_trials") if isinstance(evidence.get("clinical_trials"), dict) else {}
-    readiness = evidence.get("review_readiness") if isinstance(evidence.get("review_readiness"), dict) else {}
-
-    values = {
-        "r-literature": _num(literature.get("canonical_records")),
-        "r-cards": _num(cards.get("card_count")),
-        "r-trials": _num(trials.get("record_count")),
-        "r-trial-results": _num(trials.get("trials_with_results")),
-        "r-linked": _num(trials.get("trials_with_matched_evidence_cards")),
-        "r-unmatched": _num(trials.get("unmatched_referenced_pmids")),
-        "r-reviewed": _num(readiness.get("reviewed_record_count")),
-        "r-ready": _num(readiness.get("conclusion_sensitive_ready_record_count")),
-        "r-unknown-design": f"{_num((readiness.get('unknown_study_design') or {}).get('count'))} ({float((readiness.get('unknown_study_design') or {}).get('percent') or 0):.1f}%)",
-        "r-integrity": f"{_num((readiness.get('unknown_integrity_status') or {}).get('count'))} ({float((readiness.get('unknown_integrity_status') or {}).get('percent') or 0):.1f}%)",
-        "r-prev-year": _num(prevalence.get("latest_year")),
-        "r-release": str(status.get("generated_at") or "Release timestamp unavailable"),
-    }
-
-    daily = _daily_ons_estimate(prevalence)
+    page=target/"results.html"; document=page.read_text(encoding="utf-8")
+    status=_read_json(target/"data/public/research_status.json"); evidence=_read_json(target/"evidence/health_evidence_summary.json"); synthesis=_read_json(target/"evidence/synthesis_register.json"); prevalence=_read_json(target/"evidence/ons_prevalence.json")
+    literature=evidence.get("literature") if isinstance(evidence.get("literature"),dict) else {}; cards=evidence.get("evidence_cards") if isinstance(evidence.get("evidence_cards"),dict) else {}; trials=evidence.get("clinical_trials") if isinstance(evidence.get("clinical_trials"),dict) else {}; readiness=evidence.get("review_readiness") if isinstance(evidence.get("review_readiness"),dict) else {}
+    values={"r-literature":_num(literature.get("canonical_records")),"r-cards":_num(cards.get("card_count")),"r-trials":_num(trials.get("record_count")),"r-trial-results":_num(trials.get("trials_with_results")),"r-linked":_num(trials.get("trials_with_matched_evidence_cards")),"r-unmatched":_num(trials.get("unmatched_referenced_pmids")),"r-reviewed":_num(readiness.get("reviewed_record_count")),"r-ready":_num(readiness.get("conclusion_sensitive_ready_record_count")),"r-unknown-design":f"{_num((readiness.get('unknown_study_design') or {}).get('count'))} ({float((readiness.get('unknown_study_design') or {}).get('percent') or 0):.1f}%)","r-integrity":f"{_num((readiness.get('unknown_integrity_status') or {}).get('count'))} ({float((readiness.get('unknown_integrity_status') or {}).get('percent') or 0):.1f}%)","r-prev-year":_num(prevalence.get("latest_year")),"r-release":str(status.get("generated_at") or "Release timestamp unavailable")}
+    daily=_daily_ons_estimate(prevalence)
     if daily:
-        values["r-prev"] = f"{float(daily.get('estimate_percent')):.1f}%"
-        lo = daily.get("lower_95_percent", daily.get("lower_ci"))
-        hi = daily.get("upper_95_percent", daily.get("upper_ci"))
-        if lo is not None and hi is not None:
-            values["r-prev-detail"] = f"England, age 16+, {prevalence.get('latest_year')}; 95% CI {float(lo):.1f}–{float(hi):.1f}%."
-    else:
-        values["r-prev"] = "Data unavailable"
-        values["r-prev-detail"] = "No matching approved ONS daily-use estimate is present in this release."
-
-    for element_id, value in values.items():
-        document = _replace_id_text(document, element_id, value)
-
-    questions = synthesis.get("questions") if isinstance(synthesis.get("questions"), list) else []
-    document, count = re.subn(
-        r'(<tbody\b[^>]*\bid=["\']question-rows["\'][^>]*>)(.*?)(</tbody>)',
-        lambda m: m.group(1) + _question_rows([q for q in questions if isinstance(q, dict)]) + m.group(3),
-        document,
-        count=1,
-        flags=re.S,
-    )
-    if count != 1:
-        raise RuntimeError("Could not render build-time synthesis question rows")
-
-    jsonld = _dataset_jsonld(status, evidence, synthesis, prevalence)
-    document = document.replace("</head>", jsonld + "</head>", 1)
-    page.write_text(document, encoding="utf-8")
-
+        values["r-prev"]=f"{float(daily.get('estimate_percent')):.1f}%"; lo=daily.get("lower_95_percent",daily.get("lower_ci")); hi=daily.get("upper_95_percent",daily.get("upper_ci"))
+        if lo is not None and hi is not None: values["r-prev-detail"]=f"England, age 16+, {prevalence.get('latest_year')}; 95% CI {float(lo):.1f}-{float(hi):.1f}%."
+    else: values["r-prev"]="Data unavailable"; values["r-prev-detail"]="No matching approved ONS daily-use estimate is present in this release."
+    for element_id,value in values.items(): document=_replace_id_text(document,element_id,value)
+    questions=synthesis.get("questions") if isinstance(synthesis.get("questions"),list) else []
+    document,count=re.subn(r'(<tbody\b[^>]*\bid=["\']question-rows["\'][^>]*>)(.*?)(</tbody>)',lambda m:m.group(1)+_question_rows([q for q in questions if isinstance(q,dict)])+m.group(3),document,count=1,flags=re.S)
+    if count!=1: raise RuntimeError("Could not render build-time synthesis question rows")
+    document=document.replace("</head>",_dataset_jsonld(status)+"</head>",1); page.write_text(document,encoding="utf-8")
 
 def validate_built_bundle(target: Path) -> None:
-    errors: list[str] = []
-
-    if not (target / "index.html").is_file():
-        errors.append("missing index.html")
-    if not (target / "assets" / "site.js").is_file():
-        errors.append("missing assets/site.js")
-
+    errors=[]
+    if not (target/"index.html").is_file(): errors.append("missing index.html")
+    if not (target/"assets/site.js").is_file(): errors.append("missing assets/site.js")
     for rel in REQUIRED_PUBLIC_JSON:
-        path = target / rel
-        if not path.is_file():
-            errors.append(f"missing public JSON: {rel.as_posix()}")
-            continue
-        if path.stat().st_size == 0:
-            errors.append(f"empty public JSON: {rel.as_posix()}")
-            continue
-        try:
-            payload = json.loads(path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as exc:
-            errors.append(f"invalid public JSON {rel.as_posix()}: {exc}")
-            continue
-        if not isinstance(payload, dict):
-            errors.append(f"public JSON must contain an object: {rel.as_posix()}")
-
-    results = target / "results.html"
-    if not results.is_file():
-        errors.append("missing results.html")
+        path=target/rel
+        if not path.is_file(): errors.append(f"missing public JSON: {rel.as_posix()}"); continue
+        if path.stat().st_size==0: errors.append(f"empty public JSON: {rel.as_posix()}"); continue
+        try: payload=json.loads(path.read_text(encoding="utf-8"))
+        except (OSError,json.JSONDecodeError) as exc: errors.append(f"invalid public JSON {rel.as_posix()}: {exc}"); continue
+        if not isinstance(payload,dict): errors.append(f"public JSON must contain an object: {rel.as_posix()}")
+    results=target/"results.html"
+    if not results.is_file(): errors.append("missing results.html")
     else:
-        text = results.read_text(encoding="utf-8")
-        if 'type="application/ld+json"' not in text or '"@type":"Dataset"' not in text:
-            errors.append("results.html missing Dataset structured data")
-        if "Loading latest approved synthesis register" in text:
-            errors.append("results.html still contains unresolved synthesis loading placeholder")
-        for element_id in ("r-literature", "r-cards", "r-trials", "r-prev-year"):
-            match = re.search(rf'id=["\']{element_id}["\'][^>]*>(.*?)</', text, re.S)
-            if not match or match.group(1).strip() in {"", "—", "Data unavailable"}:
-                errors.append(f"results.html has unresolved required result: {element_id}")
-
-    if errors:
-        raise RuntimeError("Built public bundle contract failed:\n - " + "\n - ".join(errors))
-
+        text=results.read_text(encoding="utf-8")
+        if 'type="application/ld+json"' not in text or '"@type":"Dataset"' not in text: errors.append("results.html missing Dataset structured data")
+        if "Loading latest approved synthesis register" in text: errors.append("results.html still contains unresolved synthesis loading placeholder")
+        for element_id in ("r-literature","r-cards","r-trials","r-prev-year"):
+            match=re.search(rf'id=["\']{element_id}["\'][^>]*>(.*?)</',text,re.S)
+            if not match or match.group(1).strip() in {"","—","Data unavailable"}: errors.append(f"results.html has unresolved required result: {element_id}")
+    pdf=target/"downloads/vaping26-current-results.pdf"
+    if not pdf.is_file() or pdf.stat().st_size < 2000: errors.append("missing or implausibly small results PDF")
+    if errors: raise RuntimeError("Built public bundle contract failed:\n - "+"\n - ".join(errors))
 
 def build_site() -> Path:
-    errors = validate_repository()
-    if errors:
-        raise RuntimeError("Public repository validation failed:\n - " + "\n - ".join(errors))
-
-    target = ROOT / "build" / "site"
-    if target.exists():
-        shutil.rmtree(target)
-    shutil.copytree(ROOT / "site", target)
-
+    errors=validate_repository()
+    if errors: raise RuntimeError("Public repository validation failed:\n - "+"\n - ".join(errors))
+    target=ROOT/"build"/"site"
+    if target.exists(): shutil.rmtree(target)
+    shutil.copytree(ROOT/"site",target)
     for rel in PUBLIC_DATA_ROOTS:
-        source = ROOT / rel
+        source=ROOT/rel
         if source.exists():
-            destination = target / rel
-            destination.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copytree(source, destination, dirs_exist_ok=True)
-
+            destination=target/rel; destination.parent.mkdir(parents=True,exist_ok=True); shutil.copytree(source,destination,dirs_exist_ok=True)
     render_results_page(target)
-    (target / ".nojekyll").write_text("", encoding="utf-8")
+    build_results_pdf(target,target/"downloads/vaping26-current-results.pdf")
+    (target/".nojekyll").write_text("",encoding="utf-8")
     validate_built_bundle(target)
     return target
 
-
-if __name__ == "__main__":
-    destination = build_site()
-    print(f"Built validated site at {destination}")
+if __name__=="__main__":
+    destination=build_site(); print(f"Built validated site at {destination}")
