@@ -238,5 +238,63 @@ const V26 = (() => {
     const body=q("source-rows"); if(!body)return; const [register,coverage]=await Promise.all([optionalJSON("provenance/source_register.json"),optionalJSON("provenance/source_coverage.json")]); const runMap=new Map((coverage.sources||[]).map(x=>[x.source_id,x])); body.innerHTML=""; if(!(register.sources||[]).length){body.innerHTML='<tr><td colspan="6">The public source register has not yet been generated.</td></tr>';return;} (register.sources||[]).forEach(source=>{const run=runMap.get(source.id)||{},tr=document.createElement("tr");[source.name||source.id,source.family||"—",source.evidence_role||"—",source.authority||"—",source.status||"—",run.run_status||"not attempted in published run"].forEach(v=>{const td=document.createElement("td");td.textContent=v;tr.appendChild(td)});body.appendChild(tr)});setText("source-count",number(register.source_count));setText("source-generated",date(register.generated_at));
   }
 
+  function initMobileNav() {
+    const nav = document.querySelector(".site-header .nav");
+    const links = nav?.querySelector(".nav-links");
+    if (!nav || !links || nav.querySelector(".nav-toggle")) return;
+
+    links.id = links.id || "primary-navigation";
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "nav-toggle";
+    button.setAttribute("aria-controls", links.id);
+    button.setAttribute("aria-expanded", "false");
+    button.setAttribute("aria-label", "Open navigation menu");
+    button.innerHTML = '<span class="nav-toggle-lines" aria-hidden="true"><span></span><span></span><span></span></span><span class="nav-toggle-text">Menu</span>';
+    nav.insertBefore(button, links);
+
+    const style = document.createElement("style");
+    style.textContent = `
+      .nav-toggle{display:none}
+      @media(max-width:900px){
+        .site-header{position:sticky;top:0}
+        .site-header .nav{min-height:64px;padding:.55rem 0;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:.75rem}
+        .site-header .brand{min-width:0}
+        .nav-toggle{display:inline-flex;align-items:center;gap:.55rem;justify-self:end;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.07);color:#fff;border-radius:.6rem;padding:.55rem .7rem;font:inherit;font-size:.86rem;font-weight:750;cursor:pointer}
+        .nav-toggle:hover,.nav-toggle:focus-visible{background:rgba(255,255,255,.14);outline:2px solid transparent}
+        .nav-toggle-lines{width:1.15rem;display:grid;gap:3px}
+        .nav-toggle-lines span{display:block;height:2px;background:currentColor;border-radius:99px;transition:transform .18s ease,opacity .18s ease}
+        .nav-toggle[aria-expanded="true"] .nav-toggle-lines span:nth-child(1){transform:translateY(5px) rotate(45deg)}
+        .nav-toggle[aria-expanded="true"] .nav-toggle-lines span:nth-child(2){opacity:0}
+        .nav-toggle[aria-expanded="true"] .nav-toggle-lines span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
+        .site-header .nav-links{display:none;grid-column:1/-1;width:100%;padding:.45rem 0 .65rem;gap:.15rem;border-top:1px solid rgba(255,255,255,.1)}
+        .site-header .nav-links.is-open{display:grid}
+        .site-header .nav-links a{display:block;padding:.62rem .7rem;font-size:.92rem;border-radius:.45rem}
+        .site-header .nav-links a[aria-current="page"]{background:rgba(255,255,255,.12)}
+      }
+      @media(max-width:420px){.nav-toggle-text{position:absolute;inline-size:1px;block-size:1px;overflow:hidden;clip-path:inset(50%)}.nav-toggle{padding:.6rem}.site-header .brand{font-size:1.18rem}}
+    `;
+    document.head.appendChild(style);
+
+    const close = (restoreFocus = false) => {
+      links.classList.remove("is-open");
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Open navigation menu");
+      if (restoreFocus) button.focus();
+    };
+    const open = () => {
+      links.classList.add("is-open");
+      button.setAttribute("aria-expanded", "true");
+      button.setAttribute("aria-label", "Close navigation menu");
+    };
+
+    button.addEventListener("click", () => button.getAttribute("aria-expanded") === "true" ? close() : open());
+    links.addEventListener("click", event => { if (event.target.closest("a")) close(); });
+    document.addEventListener("keydown", event => { if (event.key === "Escape" && button.getAttribute("aria-expanded") === "true") close(true); });
+    document.addEventListener("click", event => { if (button.getAttribute("aria-expanded") === "true" && !nav.contains(event.target)) close(); });
+    window.addEventListener("resize", () => { if (window.innerWidth > 900) close(); }, {passive:true});
+  }
+
+  initMobileNav();
   return {dashboard,evidencePage,healthPage,cessationPage,youngPeoplePage,prevalencePage,exposurePage,productsPage,retailPage,environmentPage,regulationPage,downloadsPage,sourcesPage};
 })();
