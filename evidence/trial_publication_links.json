@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "trial_count_with_publication_references": 286,
   "trials_with_matched_evidence_cards": 173,
   "unique_referenced_pmids": 1195,
@@ -836,6 +836,40 @@
     "9738608",
     "9817120",
     "9825424"
+  ],
+  "reference_type_summary": {
+    "BACKGROUND": {
+      "unique_pmids": 927,
+      "matched_pmids": 210,
+      "unmatched_pmids": 717
+    },
+    "DERIVED": {
+      "unique_pmids": 246,
+      "matched_pmids": 143,
+      "unmatched_pmids": 103
+    },
+    "RESULT": {
+      "unique_pmids": 35,
+      "matched_pmids": 22,
+      "unmatched_pmids": 13
+    }
+  },
+  "result_reference_pmids": 35,
+  "result_pmids_matched_to_evidence_cards": 22,
+  "unmatched_result_pmids": [
+    "10807119",
+    "23489056",
+    "25644890",
+    "26000024",
+    "28067621",
+    "32538283",
+    "33761149",
+    "33784312",
+    "33870815",
+    "36087843",
+    "36657751",
+    "37868257",
+    "42154285"
   ],
   "records": [
     {
@@ -11777,5 +11811,5 @@
       ]
     }
   ],
-  "notice": "Registry-to-publication linkage is identifier based. A linked paper does not itself establish that all registered outcomes were reported or that the study result is reliable."
+  "notice": "Registry-to-publication linkage is identifier based. RESULT references are reported separately from DERIVED and BACKGROUND references so background bibliography is not misrepresented as a missing trial-result publication. A linked paper does not itself establish that all registered outcomes were reported or that the study result is reliable."
 }

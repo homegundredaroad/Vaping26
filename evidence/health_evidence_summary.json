@@ -1,5 +1,5 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "scope": "vaping_specific_evidence_inventory_and_synthesis_readiness",
   "literature": {
     "source_records": {
@@ -8,27 +8,27 @@
       "crossref": 100
     },
     "input_records": 1200,
-    "canonical_records": 1054,
-    "canonical_records_before_quality_gate": 1125,
-    "quarantined_records": 1253,
+    "canonical_records": 1056,
+    "canonical_records_before_quality_gate": 1128,
+    "quarantined_records": 1254,
     "quarantine_reason_counts": {
       "cannabis_vaping_without_nicotine_or_ecig_context": 9,
-      "no_explicit_vaping_ecig_ends_or_nicotine_pouch_anchor": 1037,
-      "not_direct_vaping_nicotine_evidence": 1046,
+      "no_explicit_vaping_ecig_ends_or_nicotine_pouch_anchor": 1038,
+      "not_direct_vaping_nicotine_evidence": 1047,
       "pre_modern_ecigarette_publication_year": 105,
       "retraction_record_not_primary_evidence": 2,
       "secondary_only_title_not_vaping_specific": 100
     },
-    "duplicates_collapsed": 75,
+    "duplicates_collapsed": 72,
     "source_overlap": {
       "clinicaltrials_pubmed_recovery": 1076,
-      "europe_pmc": 924,
-      "europe_pmc+pubmed_eutils": 70,
-      "pubmed_eutils": 30
+      "europe_pmc": 927,
+      "europe_pmc+pubmed_eutils": 67,
+      "pubmed_eutils": 33
     },
     "publication_year_counts": {
       "2027": 1,
-      "2026": 709,
+      "2026": 711,
       "2025": 31,
       "2024": 24,
       "2023": 23,
@@ -47,7 +47,7 @@
       "2010": 1
     },
     "publication_type_counts": {
-      "Journal Article": 971,
+      "Journal Article": 973,
       "research-article": 146,
       "Research Support, Non-U.S. Gov't": 117,
       "Research Support, N.I.H., Extramural": 113,
@@ -105,7 +105,7 @@
       "secondhand_exposure": 7,
       "thirdhand_residue": 2,
       "ultrafine_particles": 3,
-      "youth": 409
+      "youth": 411
     },
     "topic_policy": "Auditable title/journal keyword tags are navigation aids only and are not evidence-strength or effect classifications.",
     "relevance_policy": "Public evidence-card promotion requires an explicit vaping, e-cigarette, ENDS, e-liquid or nicotine-pouch anchor. Broad smoking/tobacco/health records and cannabis-only vaping records remain auditable in quarantine rather than being discarded.",
@@ -118,12 +118,12 @@
     }
   },
   "evidence_cards": {
-    "card_count": 1054,
+    "card_count": 1056,
     "study_design_counts": {
       "animal_study": 8,
       "case_report": 18,
       "commentary_or_editorial": 32,
-      "cross_sectional": 66,
+      "cross_sectional": 67,
       "in_vitro": 5,
       "modelling_study": 1,
       "non_randomised_intervention": 15,
@@ -133,23 +133,23 @@
       "randomised_controlled_trial": 111,
       "study_protocol": 41,
       "systematic_review_or_meta_analysis": 50,
-      "unknown": 678
+      "unknown": 679
     },
     "integrity_status_counts": {
-      "unknown": 1054
+      "unknown": 1056
     },
     "extraction_policy": "Metadata classification is automated and provisional. Integrity status remains unknown unless a collected source supplies an explicit post-publication update. Effect estimates, comparators, confounding, funding and risk-of-bias fields require source-grounded extraction and review before synthesis."
   },
   "review_readiness": {
     "schema_version": 1,
-    "generated_at": "2026-08-29T19:59:58.283126+00:00",
-    "record_count": 1054,
+    "generated_at": "2026-08-30T10:33:57.627432+00:00",
+    "record_count": 1056,
     "study_design_counts": {
       "animal_study": 8,
       "qualitative_study": 16,
-      "unknown": 678,
+      "unknown": 679,
       "commentary_or_editorial": 32,
-      "cross_sectional": 66,
+      "cross_sectional": 67,
       "case_report": 18,
       "systematic_review_or_meta_analysis": 50,
       "randomised_controlled_trial": 111,
@@ -161,20 +161,20 @@
       "prospective_cohort": 5
     },
     "integrity_status_counts": {
-      "unknown": 1054
+      "unknown": 1056
     },
     "human_review_status_counts": {
-      "not_reviewed": 1054
+      "not_reviewed": 1056
     },
     "synthesis_readiness_counts": {
-      "metadata_classified_requires_outcome_extraction": 1054
+      "metadata_classified_requires_outcome_extraction": 1056
     },
     "unknown_study_design": {
-      "count": 678,
-      "percent": 64.33
+      "count": 679,
+      "percent": 64.3
     },
     "unknown_integrity_status": {
-      "count": 1054,
+      "count": 1056,
       "percent": 100.0
     },
     "reviewed_record_count": 0,
@@ -256,7 +256,7 @@
       {
         "id": "youth_use",
         "title": "Vaping among children and young people",
-        "candidate_cards": 230,
+        "candidate_cards": 232,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
@@ -302,7 +302,28 @@
     "trials_with_matched_evidence_cards": 173,
     "unique_pmids_matched_to_evidence_cards": 364,
     "unique_referenced_pmids": 1195,
-    "unmatched_referenced_pmids": 831
+    "unmatched_referenced_pmids": 831,
+    "reference_type_summary": {
+      "BACKGROUND": {
+        "unique_pmids": 927,
+        "matched_pmids": 210,
+        "unmatched_pmids": 717
+      },
+      "DERIVED": {
+        "unique_pmids": 246,
+        "matched_pmids": 143,
+        "unmatched_pmids": 103
+      },
+      "RESULT": {
+        "unique_pmids": 35,
+        "matched_pmids": 22,
+        "unmatched_pmids": 13
+      }
+    },
+    "result_reference_pmids": 35,
+    "result_pmids_matched_to_evidence_cards": 22,
+    "unmatched_result_pmids": 13,
+    "linkage_interpretation": "RESULT references are the appropriate headline publication-linkage metric. DERIVED references and BACKGROUND bibliography are retained for audit but are not counted as missing trial-result publications."
   },
   "official_prevalence_resources": [
     {
@@ -386,6 +407,7 @@
     "Automated study-design classification is provisional until human review.",
     "Structured comparator, outcome, effect-estimate, risk-of-bias and funding fields are not yet complete enough for pooled quantitative synthesis.",
     "Recent-first literature surveillance plus identifier-based trial-publication recovery is not yet a complete historical systematic review; broader backfill remains a separate governed stage.",
+    "Registry BACKGROUND references are not missing trial-result publications and are excluded from the headline RESULT-publication linkage gap.",
     "Official prevalence estimates must retain survey, geography, confidence-interval and comparability metadata."
   ]
 }

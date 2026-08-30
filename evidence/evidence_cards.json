@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "card_count": 1054,
+  "card_count": 1056,
   "study_design_counts": {
     "animal_study": 8,
     "case_report": 18,
     "commentary_or_editorial": 32,
-    "cross_sectional": 66,
+    "cross_sectional": 67,
     "in_vitro": 5,
     "modelling_study": 1,
     "non_randomised_intervention": 15,
@@ -15,10 +15,10 @@
     "randomised_controlled_trial": 111,
     "study_protocol": 41,
     "systematic_review_or_meta_analysis": 50,
-    "unknown": 678
+    "unknown": 679
   },
   "integrity_status_counts": {
-    "unknown": 1054
+    "unknown": 1056
   },
   "records": [
     {
@@ -3319,6 +3319,32 @@
       "human_review_status": "not_reviewed"
     },
     {
+      "evidence_id": "pmid:42667646",
+      "title": "Socioeconomic, psychological distress, and social norm correlates of youth smoking and vaping: a multilevel pooled cross-sectional analysis.",
+      "year": "2026",
+      "journal": "Nicotine & tobacco research : official journal of the Society for Research on Nicotine and Tobacco",
+      "pmid": "42667646",
+      "pmcid": null,
+      "doi": "10.1093/ntr/ntag191",
+      "sources": [
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "topic_tags": [
+        "youth"
+      ],
+      "study_design": "cross_sectional",
+      "study_design_basis": [
+        "cross-sectional"
+      ],
+      "integrity_status": "unknown",
+      "open_access": null,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
       "evidence_id": "pmid:42294124",
       "title": "Sociodemographic differences in beliefs in harm reduction tobacco products as cigarette cessation aids among United States adults in 2024: Results from the health information National Trends Survey (HINTS) 7.",
       "year": "2026",
@@ -6229,8 +6255,7 @@
       "pmcid": null,
       "doi": "10.1007/s10900-026-01625-3",
       "sources": [
-        "europe_pmc",
-        "pubmed_eutils"
+        "europe_pmc"
       ],
       "publication_types": [
         "Journal Article"
@@ -6243,7 +6268,7 @@
         "cross-sectional"
       ],
       "integrity_status": "unknown",
-      "open_access": null,
+      "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -6269,6 +6294,30 @@
       "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": true,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
+      "evidence_id": "pmid:42668792",
+      "title": "Peer Vaped Nicotine Use in Adolescents and Young Adults: Associations With Abstinence and Intervention Adherence During a Quit Attempt.",
+      "year": "2026",
+      "journal": "Substance use : research and treatment",
+      "pmid": "42668792",
+      "pmcid": null,
+      "doi": "10.1177/29768357261481840",
+      "sources": [
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "topic_tags": [
+        "youth"
+      ],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -8170,8 +8219,7 @@
       "pmcid": null,
       "doi": "10.1093/ntr/ntag184",
       "sources": [
-        "europe_pmc",
-        "pubmed_eutils"
+        "europe_pmc"
       ],
       "publication_types": [
         "Journal Article"
@@ -8182,7 +8230,7 @@
       "study_design": "unknown",
       "study_design_basis": [],
       "integrity_status": "unknown",
-      "open_access": null,
+      "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -16691,8 +16739,7 @@
       "pmcid": null,
       "doi": "10.1093/ntr/ntag182",
       "sources": [
-        "europe_pmc",
-        "pubmed_eutils"
+        "europe_pmc"
       ],
       "publication_types": [
         "Journal Article"
@@ -16703,7 +16750,7 @@
         "cross-sectional"
       ],
       "integrity_status": "unknown",
-      "open_access": null,
+      "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },

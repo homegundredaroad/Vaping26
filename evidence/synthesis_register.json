@@ -19,7 +19,7 @@
         "systematic_review_or_meta_analysis",
         "randomised_controlled_trial"
       ],
-      "protocol_status": "protocol_ready",
+      "protocol_status": "question_framework_defined",
       "candidate_cards": 73,
       "result_bearing_candidate_cards": 67,
       "excluded_non_result_cards": 6,
@@ -59,7 +59,7 @@
         "exacerbations"
       ],
       "preferred_designs": [],
-      "protocol_status": "protocol_ready",
+      "protocol_status": "question_framework_defined",
       "candidate_cards": 111,
       "result_bearing_candidate_cards": 109,
       "excluded_non_result_cards": 2,
@@ -103,7 +103,7 @@
         "vascular and cardiac biomarkers"
       ],
       "preferred_designs": [],
-      "protocol_status": "protocol_ready",
+      "protocol_status": "question_framework_defined",
       "candidate_cards": 43,
       "result_bearing_candidate_cards": 42,
       "excluded_non_result_cards": 1,
@@ -144,9 +144,9 @@
         "subsequent smoking"
       ],
       "preferred_designs": [],
-      "protocol_status": "protocol_ready",
-      "candidate_cards": 230,
-      "result_bearing_candidate_cards": 216,
+      "protocol_status": "question_framework_defined",
+      "candidate_cards": 232,
+      "result_bearing_candidate_cards": 218,
       "excluded_non_result_cards": 14,
       "excluded_non_result_design_counts": {
         "post_publication_notice": 4,
@@ -155,17 +155,17 @@
       "design_counts": {
         "case_report": 1,
         "commentary_or_editorial": 7,
-        "cross_sectional": 21,
+        "cross_sectional": 22,
         "non_randomised_intervention": 1,
         "post_publication_notice": 4,
         "qualitative_study": 5,
         "randomised_controlled_trial": 17,
         "study_protocol": 10,
         "systematic_review_or_meta_analysis": 12,
-        "unknown": 152
+        "unknown": 153
       },
       "integrity_status_counts": {
-        "unknown": 230
+        "unknown": 232
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
@@ -188,7 +188,7 @@
         "symptoms"
       ],
       "preferred_designs": [],
-      "protocol_status": "protocol_ready",
+      "protocol_status": "question_framework_defined",
       "candidate_cards": 22,
       "result_bearing_candidate_cards": 22,
       "excluded_non_result_cards": 0,
@@ -223,7 +223,7 @@
         "transfer or biomarker evidence"
       ],
       "preferred_designs": [],
-      "protocol_status": "protocol_ready",
+      "protocol_status": "question_framework_defined",
       "candidate_cards": 2,
       "result_bearing_candidate_cards": 2,
       "excluded_non_result_cards": 0,
