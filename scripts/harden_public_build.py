@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / "build" / "site"
+PENDING = "Pending review stage"
 
 NAV_ITEMS = [
     ("index.html", "Overview"),
@@ -31,6 +32,16 @@ def read_json(path: Path) -> dict:
     if not isinstance(payload, dict):
         raise RuntimeError(f"Expected JSON object: {path}")
     return payload
+
+
+def display_number(value: object, pending: str = PENDING) -> str:
+    """Render zero only when the approved payload explicitly contains zero."""
+    if value is None or value == "":
+        return pending
+    try:
+        return f"{int(value):,}"
+    except (TypeError, ValueError):
+        return pending
 
 
 def set_text(document: str, element_id: str, value: object) -> str:
@@ -72,6 +83,128 @@ def normalise_navigation_and_fingerprint() -> None:
         page.write_text(document, encoding="utf-8")
 
 
+def exact_ons_daily(prevalence: dict) -> dict:
+    latest = prevalence.get("latest_year")
+    for row in prevalence.get("estimates", []) if isinstance(prevalence.get("estimates"), list) else []:
+        if not isinstance(row, dict):
+            continue
+        if str(row.get("year")) != str(latest):
+            continue
+        if str(row.get("group") or "").strip() != "All persons aged 16 and over":
+            continue
+        if str(row.get("statistic") or "").strip() != "Proportion of population who are daily e-cigarette users":
+            continue
+        return row
+    return {}
+
+
+def prerender_overview() -> None:
+    page = TARGET / "index.html"
+    document = page.read_text(encoding="utf-8")
+    status = read_json(TARGET / "data" / "public" / "research_status.json")
+    evidence = read_json(TARGET / "evidence" / "health_evidence_summary.json")
+    cards = read_json(TARGET / "evidence" / "evidence_cards.json")
+    synthesis = read_json(TARGET / "evidence" / "synthesis_register.json")
+    prevalence = read_json(TARGET / "evidence" / "ons_prevalence.json")
+    register = read_json(TARGET / "provenance" / "source_register.json")
+    release = read_json(TARGET / "provenance" / "release_evidence.json")
+
+    values = {
+        "metric-sources": display_number(register.get("source_count"), "Not yet available"),
+        "metric-literature": display_number((evidence.get("literature") or {}).get("canonical_records")),
+        "metric-cards": display_number(cards.get("card_count")),
+        "metric-trials": display_number((evidence.get("clinical_trials") or {}).get("record_count")),
+        "metric-questions": display_number(synthesis.get("question_count")),
+        "visual-total": display_number(cards.get("card_count")),
+    }
+    daily = exact_ons_daily(prevalence)
+    estimate = daily.get("estimate_percent") if daily else None
+    values["metric-ons-daily"] = f"{float(estimate):.1f}%" if estimate is not None else "Not yet available"
+    if daily:
+        lo = daily.get("lower_95_percent", daily.get("lower_ci"))
+        hi = daily.get("upper_95_percent", daily.get("upper_ci"))
+        detail = f"{prevalence.get('latest_year')} England estimate, age 16+"
+        if lo is not None and hi is not None:
+            detail += f"; 95% CI {float(lo):.1f}–{float(hi):.1f}%."
+        else:
+            detail += "."
+        values["metric-ons-daily-detail"] = detail
+
+    for element_id, value in values.items():
+        document = set_text(document, element_id, value)
+
+    # A no-JS reviewer should see the study-design distribution rather than an empty tbody.
+    design_counts = cards.get("study_design_counts") if isinstance(cards.get("study_design_counts"), dict) else {}
+    total = int(cards.get("card_count") or 0)
+    design_rows = []
+    for key, count in sorted(design_counts.items(), key=lambda item: int(item[1] or 0), reverse=True)[:6]:
+        n = int(count or 0)
+        share = (100.0 * n / total) if total else 0.0
+        label = " ".join(word.capitalize() for word in str(key).replace("_", " ").split())
+        design_rows.append(
+            f"<tr><td>{html.escape(label)}</td><td>{n:,}</td><td>{share:.1f}%</td></tr>"
+        )
+    if not design_rows:
+        design_rows = ['<tr><td colspan="3">Not yet available</td></tr>']
+    document, count = re.subn(
+        r'(<tbody\b[^>]*\bid=["\']design-table["\'][^>]*>)(.*?)(</tbody>)',
+        lambda m: m.group(1) + "".join(design_rows) + m.group(3),
+        document,
+        count=1,
+        flags=re.S,
+    )
+    if count != 1:
+        raise RuntimeError("Could not pre-render study-design table")
+
+    # Disambiguate scientific-engine provenance from public-presentation provenance.
+    document = document.replace(
+        '<span class="label">Research run</span>',
+        '<span class="label">Research release run</span>',
+        1,
+    )
+    document = document.replace(
+        '<span class="label">Code revision</span>',
+        '<span class="label">Research code revision</span>',
+        1,
+    )
+    public_sha = os.environ.get("GITHUB_SHA", "local-build")
+    public_run = os.environ.get("GITHUB_RUN_NUMBER", "local")
+    release_grid_pattern = re.compile(
+        r'(<section class="section" aria-labelledby="release-title">.*?<div class="metric-grid">)(.*?)(</div><p class="muted">)',
+        re.S,
+    )
+    extra = (
+        '<article class="metric"><span class="label">Public build revision</span>'
+        f'<span class="value" id="public-build-code">{html.escape(public_sha[:12])}</span></article>'
+        '<article class="metric"><span class="label">Public validation run</span>'
+        f'<span class="value" id="public-build-run">#{html.escape(str(public_run))}</span></article>'
+    )
+    document, count = release_grid_pattern.subn(
+        lambda m: m.group(1) + m.group(2) + extra + m.group(3), document, count=1
+    )
+    if count != 1:
+        raise RuntimeError("Could not extend release identity panel")
+
+    # Make reviewer status explicit without implying that scientific validation is complete.
+    banner = (
+        '<section class="section" id="external-review-status"><div class="notice">'
+        '<strong>External review release</strong>'
+        'Vaping26 is undergoing independent methodological and scientific review. '
+        'Automated discovery does not constitute scientific synthesis; conclusion-sensitive outputs remain review-gated.'
+        '</div></section>'
+    )
+    if 'id="external-review-status"' not in document:
+        document = document.replace('<main id="main" class="wrap">', '<main id="main" class="wrap">' + banner, 1)
+
+    # Keep the Research release identity explicitly tied to the compact provenance object.
+    if release.get("run_id") is not None:
+        document = set_text(document, "release-run", release.get("run_id"))
+    if release.get("code_revision"):
+        document = set_text(document, "release-code", str(release.get("code_revision"))[:12])
+
+    page.write_text(document, encoding="utf-8")
+
+
 def prerender_sources() -> None:
     page = TARGET / "sources.html"
     document = page.read_text(encoding="utf-8")
@@ -82,7 +215,7 @@ def prerender_sources() -> None:
         for item in coverage.get("sources", [])
         if isinstance(item, dict) and item.get("source_id")
     }
-    document = set_text(document, "source-count", f"{int(register.get('source_count') or 0):,}")
+    document = set_text(document, "source-count", display_number(register.get("source_count"), "Not yet available"))
     document = set_text(document, "source-generated", register.get("generated_at") or "Timestamp unavailable")
 
     rows = []
@@ -128,9 +261,26 @@ def assert_reviewer_surface() -> None:
             failures.append(f"{filename}: legacy synthesis loading placeholder remains")
         if "<td colspan=\"6\">Loading…</td>" in text:
             failures.append(f"{filename}: legacy source loading placeholder remains")
+
     sources = (TARGET / "sources.html").read_text(encoding="utf-8")
     if re.search(r'id=["\']source-count["\'][^>]*>\s*[—-]\s*</', sources):
         failures.append("sources.html: source count was not pre-rendered")
+
+    overview = (TARGET / "index.html").read_text(encoding="utf-8")
+    for element_id in (
+        "metric-sources", "metric-literature", "metric-cards", "metric-trials", "metric-questions",
+        "visual-total", "maturity-captured", "maturity-reviewed", "maturity-ready",
+        "release-run", "release-code", "public-build-code", "public-build-run",
+    ):
+        match = re.search(rf'id=["\']{re.escape(element_id)}["\'][^>]*>(.*?)</', overview, re.S)
+        if not match or match.group(1).strip() in {"", "—", "STATUS UNAVAILABLE"}:
+            failures.append(f"index.html: unresolved reviewer-facing value #{element_id}")
+    if 'id="external-review-status"' not in overview:
+        failures.append("index.html: external-review banner missing")
+    design = re.search(r'id=["\']design-table["\'][^>]*>(.*?)</tbody>', overview, re.S)
+    if not design or not design.group(1).strip():
+        failures.append("index.html: study-design table was not pre-rendered")
+
     if failures:
         raise RuntimeError("Reviewer-facing public build hardening failed:\n - " + "\n - ".join(failures))
 
@@ -139,6 +289,7 @@ def main() -> None:
     if not TARGET.is_dir():
         raise SystemExit("build/site does not exist; run scripts/build_site.py first")
     normalise_navigation_and_fingerprint()
+    prerender_overview()
     prerender_sources()
     assert_reviewer_surface()
     print("REVIEWER-FACING PUBLIC BUILD HARDENING PASS")
