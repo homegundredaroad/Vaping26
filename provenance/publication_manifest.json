@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-08-30T10:33:57.792963+00:00",
+  "generated_at": "2026-08-31T11:39:55.003006+00:00",
   "publication_contract": "deny-by-default-v2",
   "files": [
     {
       "path": "data/public/research_status.json",
-      "sha256": "f14cc45c0d518cb74264b9e9f685ac1b8eaa2e3e43db7940c11921757a91d552",
+      "sha256": "17ff06282cfb9858634651f4e7e407a373c58b308d54b04f91d3d548895087be",
       "bytes": 2462
     },
     {
@@ -15,13 +15,13 @@
     },
     {
       "path": "evidence/evidence_cards.json",
-      "sha256": "f3442fe6cdb390f245090264ed5411bddce9f79b2c3a3f559777a384d091f126",
-      "bytes": 863581
+      "sha256": "e688f8f021b8ac4d617937bac56edf2ffd47b46123ab5a48e69623a5cc7a9aa0",
+      "bytes": 864020
     },
     {
       "path": "evidence/health_evidence_summary.json",
-      "sha256": "251d447a3c6dedb6c16842dd29a67bc38cfead4153287d90dd1d30256a64b116",
-      "bytes": 15315
+      "sha256": "d5c83051fe0798c649fa9361c149c3c8f1f5029952f48b4bbd49e600e0d47ca6",
+      "bytes": 15300
     },
     {
       "path": "evidence/ons_prevalence.json",
@@ -30,7 +30,7 @@
     },
     {
       "path": "evidence/synthesis_register.json",
-      "sha256": "6afb3150525f0cbbf69bdb5573ed93a2edf140864b4e979bc72748f5977c54a1",
+      "sha256": "90c4f5ba1db38368dc0856b5fa4128ac29507cc37f8fa6e3690c8afba4050071",
       "bytes": 9160
     },
     {
@@ -45,17 +45,17 @@
     },
     {
       "path": "provenance/release_evidence.json",
-      "sha256": "1ab473a2889191566498bec2a4ff0a5d7425be9f6341d8bedb6d961aa8e5e262",
+      "sha256": "ddecbc06dd955c8fc6c669e9c3ea5e1932221cad8cc77a05bcd8734a0210ac4d",
       "bytes": 8686
     },
     {
       "path": "provenance/source_coverage.json",
-      "sha256": "fb667d4aa63c7bda262fab758852d364eaef12cfcbaabaefb80f30335dec37e8",
+      "sha256": "7512d6fe57806ebed4c30e1b023fd8dbbbd400f1a80957b49ca875609504fa02",
       "bytes": 14968
     },
     {
       "path": "provenance/source_register.json",
-      "sha256": "703cffa625c9312af809a6024a6d9a2cebc669b867c79222d8e3535a2ef56b4e",
+      "sha256": "3a9bd0ae1bfe6769732fd6c39cb9d59e8eb9b18b6c9a374a138a9ae0bb57e71c",
       "bytes": 19313
     },
     {

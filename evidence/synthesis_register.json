@@ -60,15 +60,15 @@
       ],
       "preferred_designs": [],
       "protocol_status": "question_framework_defined",
-      "candidate_cards": 111,
-      "result_bearing_candidate_cards": 109,
+      "candidate_cards": 110,
+      "result_bearing_candidate_cards": 108,
       "excluded_non_result_cards": 2,
       "excluded_non_result_design_counts": {
         "study_protocol": 2
       },
       "design_counts": {
         "animal_study": 4,
-        "case_report": 6,
+        "case_report": 7,
         "commentary_or_editorial": 7,
         "cross_sectional": 3,
         "in_vitro": 2,
@@ -77,10 +77,10 @@
         "randomised_controlled_trial": 10,
         "study_protocol": 2,
         "systematic_review_or_meta_analysis": 3,
-        "unknown": 72
+        "unknown": 70
       },
       "integrity_status_counts": {
-        "unknown": 111
+        "unknown": 110
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
@@ -145,11 +145,11 @@
       ],
       "preferred_designs": [],
       "protocol_status": "question_framework_defined",
-      "candidate_cards": 232,
-      "result_bearing_candidate_cards": 218,
-      "excluded_non_result_cards": 14,
+      "candidate_cards": 230,
+      "result_bearing_candidate_cards": 215,
+      "excluded_non_result_cards": 15,
       "excluded_non_result_design_counts": {
-        "post_publication_notice": 4,
+        "post_publication_notice": 5,
         "study_protocol": 10
       },
       "design_counts": {
@@ -157,15 +157,15 @@
         "commentary_or_editorial": 7,
         "cross_sectional": 22,
         "non_randomised_intervention": 1,
-        "post_publication_notice": 4,
+        "post_publication_notice": 5,
         "qualitative_study": 5,
         "randomised_controlled_trial": 17,
         "study_protocol": 10,
         "systematic_review_or_meta_analysis": 12,
-        "unknown": 153
+        "unknown": 150
       },
       "integrity_status_counts": {
-        "unknown": 232
+        "unknown": 230
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
