@@ -123,7 +123,7 @@ jobs:
           html_checks = {
               "index.html": [
                   f'name="vaping26-build" content="{sha}"',
-                  "Current scientific maturity",
+                  "Evidence landscape",
                   'href="results.html">Results</a>',
                   'id="external-review-status"',
                   'Research code revision',
