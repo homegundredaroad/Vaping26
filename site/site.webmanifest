@@ -1,0 +1,14 @@
+{
+  "name": "Vaping26 — UK Vaping & Nicotine Evidence Observatory",
+  "short_name": "Vaping26",
+  "description": "Independent UK evidence observatory for vaping and nicotine research.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#06111d",
+  "theme_color": "#06111d",
+  "icons": [
+    {"src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"},
+    {"src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "any"}
+  ]
+}
