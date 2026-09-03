@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / "build" / "site"
 PENDING = "Pending review stage"
+BASE_URL = "https://homegundredaroad.github.io/Vaping26/"
 
 NAV_ITEMS = [
     ("index.html", "Overview"),
@@ -64,7 +65,81 @@ def canonical_nav(filename: str) -> str:
     return '<nav class="nav-links" aria-label="Primary">' + "".join(links) + "</nav>"
 
 
-def normalise_navigation_and_fingerprint() -> None:
+def canonical_url(filename: str) -> str:
+    return BASE_URL if filename == "index.html" else BASE_URL + filename
+
+
+def _meta_content(document: str, name: str) -> str:
+    match = re.search(
+        rf'<meta\b[^>]*\bname=["\']{re.escape(name)}["\'][^>]*\bcontent=["\']([^"\']*)["\'][^>]*>',
+        document,
+        re.I,
+    )
+    return html.unescape(match.group(1)).strip() if match else ""
+
+
+def _title_text(document: str) -> str:
+    match = re.search(r"<title>(.*?)</title>", document, re.I | re.S)
+    return html.unescape(re.sub(r"\s+", " ", match.group(1))).strip() if match else "Vaping26"
+
+
+def ensure_global_head_metadata(document: str, filename: str) -> str:
+    """Give every public HTML page a consistent browser/search/social identity."""
+    additions = []
+    canonical = canonical_url(filename)
+
+    if 'name="theme-color"' not in document:
+        additions.append('<meta name="theme-color" content="#06111d">')
+    if 'rel="icon" href="favicon.svg"' not in document:
+        additions.append('<link rel="icon" href="favicon.svg" type="image/svg+xml">')
+    if 'rel="icon" href="favicon.ico"' not in document:
+        additions.append('<link rel="icon" href="favicon.ico" sizes="any">')
+    if 'rel="apple-touch-icon"' not in document:
+        additions.append('<link rel="apple-touch-icon" href="apple-touch-icon.png">')
+    if 'rel="manifest"' not in document:
+        additions.append('<link rel="manifest" href="site.webmanifest">')
+    if 'rel="canonical"' not in document:
+        additions.append(f'<link rel="canonical" href="{html.escape(canonical, quote=True)}">')
+
+    title = _title_text(document)
+    description = _meta_content(document, "description")
+    if 'property="og:title"' not in document:
+        additions.append(f'<meta property="og:title" content="{html.escape(title, quote=True)}">')
+    if description and 'property="og:description"' not in document:
+        additions.append(f'<meta property="og:description" content="{html.escape(description, quote=True)}">')
+    if 'property="og:type"' not in document:
+        additions.append('<meta property="og:type" content="website">')
+    if 'property="og:url"' not in document:
+        additions.append(f'<meta property="og:url" content="{html.escape(canonical, quote=True)}">')
+    if 'name="twitter:card"' not in document:
+        additions.append('<meta name="twitter:card" content="summary">')
+
+    if additions:
+        if "</head>" not in document:
+            raise RuntimeError(f"Missing </head> in {filename}")
+        document = document.replace("</head>", "".join(additions) + "</head>", 1)
+    return document
+
+
+def normalise_result_linkage_wording(document: str) -> str:
+    """Keep the headline trial-publication metric strictly RESULT-reference based."""
+    document = document.replace("t('r-unmatched',n(tr.unmatched_referenced_pmids));", "")
+    document = document.replace(
+        "Trial-referenced PMIDs still unmatched",
+        "Registry RESULT PMIDs still unmatched",
+    )
+    document = document.replace(
+        "trial records linked to candidate evidence, and referenced PMIDs still unresolved",
+        "trial records linked to candidate evidence, and RESULT-reference PMIDs still unresolved",
+    )
+    document = document.replace(
+        "Unmatched does not mean unpublished or invalid; it means the current governed linkage process has not reconciled that identifier to a public candidate record.",
+        "This headline gap counts only ClinicalTrials.gov RESULT references. BACKGROUND bibliography and DERIVED references remain auditable but are not presented as missing trial-result publications. Unmatched does not mean unpublished or invalid; it means the current governed linkage process has not reconciled that RESULT identifier to a public candidate record.",
+    )
+    return document
+
+
+def normalise_navigation_fingerprint_and_metadata() -> None:
     sha = os.environ.get("GITHUB_SHA", "local-build")
     for page in sorted(TARGET.glob("*.html")):
         document = page.read_text(encoding="utf-8")
@@ -80,6 +155,9 @@ def normalise_navigation_and_fingerprint() -> None:
         marker = f'<meta name="vaping26-build" content="{html.escape(sha, quote=True)}">'
         if 'name="vaping26-build"' not in document:
             document = document.replace("</head>", marker + "</head>", 1)
+        document = ensure_global_head_metadata(document, page.name)
+        if page.name == "results.html":
+            document = normalise_result_linkage_wording(document)
         page.write_text(document, encoding="utf-8")
 
 
@@ -101,7 +179,6 @@ def exact_ons_daily(prevalence: dict) -> dict:
 def prerender_overview() -> None:
     page = TARGET / "index.html"
     document = page.read_text(encoding="utf-8")
-    status = read_json(TARGET / "data" / "public" / "research_status.json")
     evidence = read_json(TARGET / "evidence" / "health_evidence_summary.json")
     cards = read_json(TARGET / "evidence" / "evidence_cards.json")
     synthesis = read_json(TARGET / "evidence" / "synthesis_register.json")
@@ -133,7 +210,6 @@ def prerender_overview() -> None:
     for element_id, value in values.items():
         document = set_text(document, element_id, value)
 
-    # A no-JS reviewer should see the study-design distribution rather than an empty tbody.
     design_counts = cards.get("study_design_counts") if isinstance(cards.get("study_design_counts"), dict) else {}
     total = int(cards.get("card_count") or 0)
     design_rows = []
@@ -156,7 +232,6 @@ def prerender_overview() -> None:
     if count != 1:
         raise RuntimeError("Could not pre-render study-design table")
 
-    # Disambiguate scientific-engine provenance from public-presentation provenance.
     document = document.replace(
         '<span class="label">Research run</span>',
         '<span class="label">Research release run</span>',
@@ -185,18 +260,16 @@ def prerender_overview() -> None:
     if count != 1:
         raise RuntimeError("Could not extend release identity panel")
 
-    # Make reviewer status explicit without implying that scientific validation is complete.
     banner = (
         '<section class="section" id="external-review-status"><div class="notice">'
         '<strong>External review release</strong>'
-        'Vaping26 is undergoing independent methodological and scientific review. '
-        'Automated discovery does not constitute scientific synthesis; conclusion-sensitive outputs remain review-gated.'
-        '</div></section>'
+        "Vaping26 is undergoing independent methodological and scientific review. "
+        "Automated discovery does not constitute scientific synthesis; conclusion-sensitive outputs remain review-gated."
+        "</div></section>"
     )
     if 'id="external-review-status"' not in document:
         document = document.replace('<main id="main" class="wrap">', '<main id="main" class="wrap">' + banner, 1)
 
-    # Keep the Research release identity explicitly tied to the compact provenance object.
     if release.get("run_id") is not None:
         document = set_text(document, "release-run", release.get("run_id"))
     if release.get("code_revision"):
@@ -255,12 +328,34 @@ def assert_reviewer_surface() -> None:
             failures.append(f"{page.name}: Results missing from primary navigation")
         if 'name="vaping26-build"' not in text:
             failures.append(f"{page.name}: build fingerprint missing")
+        for needle, label in (
+            ('name="theme-color"', "theme colour"),
+            ('rel="icon" href="favicon.svg"', "SVG favicon"),
+            ('rel="icon" href="favicon.ico"', "ICO favicon"),
+            ('rel="apple-touch-icon"', "Apple touch icon"),
+            ('rel="manifest"', "web manifest"),
+            ('rel="canonical"', "canonical URL"),
+            ('property="og:title"', "Open Graph title"),
+            ('property="og:url"', "Open Graph URL"),
+            ('name="twitter:card"', "Twitter card"),
+        ):
+            if needle not in text:
+                failures.append(f"{page.name}: {label} missing")
+
     for filename in ("index.html", "results.html", "sources.html", "methodology.html"):
         text = (TARGET / filename).read_text(encoding="utf-8")
         if "Loading latest approved synthesis register" in text:
             failures.append(f"{filename}: legacy synthesis loading placeholder remains")
-        if "<td colspan=\"6\">Loading…</td>" in text:
+        if '<td colspan="6">Loading…</td>' in text:
             failures.append(f"{filename}: legacy source loading placeholder remains")
+
+    results = (TARGET / "results.html").read_text(encoding="utf-8")
+    if "Trial-referenced PMIDs still unmatched" in results:
+        failures.append("results.html: legacy all-reference PMID label remains")
+    if "t('r-unmatched',n(tr.unmatched_referenced_pmids));" in results:
+        failures.append("results.html: legacy all-reference client-side overwrite remains")
+    if "Registry RESULT PMIDs still unmatched" not in results:
+        failures.append("results.html: RESULT-only PMID label missing")
 
     sources = (TARGET / "sources.html").read_text(encoding="utf-8")
     if re.search(r'id=["\']source-count["\'][^>]*>\s*[—-]\s*</', sources):
@@ -288,7 +383,7 @@ def assert_reviewer_surface() -> None:
 def main() -> None:
     if not TARGET.is_dir():
         raise SystemExit("build/site does not exist; run scripts/build_site.py first")
-    normalise_navigation_and_fingerprint()
+    normalise_navigation_fingerprint_and_metadata()
     prerender_overview()
     prerender_sources()
     assert_reviewer_surface()
