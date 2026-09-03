@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-31T11:39:24.755531+00:00",
+  "generated_at": "2026-09-03T18:43:26.298031+00:00",
   "summary": {
     "registered_sources": 43,
     "implemented_sources": 14,
@@ -206,7 +206,7 @@
       "implementation": "active_optional_discovery",
       "attempted": true,
       "run_status": "records_downloaded",
-      "records": 21,
+      "records": 23,
       "success": true
     },
     {
