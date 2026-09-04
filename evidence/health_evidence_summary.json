@@ -142,11 +142,11 @@
     "integrity_status_counts": {
       "unknown": 986
     },
-    "extraction_policy": "Metadata classification is automated and provisional. Integrity status remains unknown unless a collected source supplies an explicit post-publication update. Effect estimates, comparators, confounding, funding and risk-of-bias fields require source-grounded extraction and review before synthesis."
+    "extraction_policy": "Metadata classification is automated and provisional. Integrity status remains unknown unless a collected integrity source or explicit bibliographic signal supplies a post-publication state. Effect estimates, comparators, confounding, funding and risk-of-bias fields require source-grounded extraction and review before synthesis."
   },
   "review_readiness": {
     "schema_version": 1,
-    "generated_at": "2026-09-04T20:55:05.029689+00:00",
+    "generated_at": "2026-09-04T21:02:36.164692+00:00",
     "record_count": 986,
     "study_design_counts": {
       "animal_study": 7,

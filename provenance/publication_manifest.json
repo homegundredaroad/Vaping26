@@ -1,12 +1,12 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-09-04T20:55:05.160195+00:00",
+  "generated_at": "2026-09-04T21:02:36.306915+00:00",
   "publication_contract": "deny-by-default-v2",
   "files": [
     {
       "path": "data/public/research_status.json",
-      "sha256": "51b4665300dab1dc0fb7e4b846b5a1bded482a1f44c475a56086547ecd1345b1",
-      "bytes": 2462
+      "sha256": "6dfe7e345096bdfdcad2880fe6dd83fb4254d83962b0e041f6c75312caa74042",
+      "bytes": 2464
     },
     {
       "path": "environment/source_registry.json",
@@ -20,8 +20,8 @@
     },
     {
       "path": "evidence/health_evidence_summary.json",
-      "sha256": "3a13f4fd8156e6d81125527790fe9a7e049af1ca0e5e671692c25d805949e38e",
-      "bytes": 15468
+      "sha256": "d674f3b5e6d33e6843414766434ffd09f9a4290548db35b81acae5825545fcc9",
+      "bytes": 15500
     },
     {
       "path": "evidence/ons_prevalence.json",
@@ -45,17 +45,17 @@
     },
     {
       "path": "provenance/release_evidence.json",
-      "sha256": "fe87479795b5448109efd944a86914312b8528209566eeef845ec77b73b1eafd",
-      "bytes": 8686
+      "sha256": "bf35c6113b1364386dc50fd3e3a6ae37fdb3fc4258964296b6f3fbc0f3c80417",
+      "bytes": 8728
     },
     {
       "path": "provenance/source_coverage.json",
-      "sha256": "377df96b948fcd83c4e3e8765af031456289d28b1f08b50fdc7a8ea3e702f246",
-      "bytes": 14968
+      "sha256": "0d1c6f6aba4be5542fff6a20688dd4b46f73cdc0f53326e319db7359d7af173e",
+      "bytes": 14970
     },
     {
       "path": "provenance/source_register.json",
-      "sha256": "4763dcce30c42db1db184e4520ef446eb95ba70b7372f035e2b280050476281c",
+      "sha256": "03fa560d383fff21a25764963669c06bbc9f6068ff5da309e6962b36ae53d8d2",
       "bytes": 19313
     },
     {
