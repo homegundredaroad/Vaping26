@@ -2,7 +2,7 @@
   "schema_version": 2,
   "trial_count_with_publication_references": 286,
   "trials_with_matched_evidence_cards": 173,
-  "unique_referenced_pmids": 1195,
+  "unique_referenced_pmids": 1196,
   "unique_pmids_matched_to_evidence_cards": 364,
   "unmatched_referenced_pmids": [
     "10093176",
@@ -795,6 +795,7 @@
     "42560883",
     "42584385",
     "42606856",
+    "42686173",
     "4459223",
     "5785179",
     "6120322",
@@ -844,9 +845,9 @@
       "unmatched_pmids": 717
     },
     "DERIVED": {
-      "unique_pmids": 246,
+      "unique_pmids": 247,
       "matched_pmids": 143,
-      "unmatched_pmids": 103
+      "unmatched_pmids": 104
     },
     "RESULT": {
       "unique_pmids": 35,
@@ -9224,6 +9225,11 @@
       "overall_status": "RECRUITING",
       "has_results": false,
       "publication_references": [
+        {
+          "pmid": "42686173",
+          "reference_type": "DERIVED",
+          "matched_to_evidence_card": false
+        },
         {
           "pmid": "41875428",
           "reference_type": "DERIVED",
