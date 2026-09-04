@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use Vaping26, cite the project and the specific public evidence release consulted."
+title: "Vaping26: UK Vaping & Nicotine Evidence Observatory"
+type: software
+authors:
+  - name: "SCC Nexus"
+abstract: "Independent evidence-monitoring infrastructure for vaping and nicotine research and official UK data, with a deny-by-default publication firewall separating automated discovery from governed scientific review."
+repository-code: "https://github.com/homegundredaroad/Vaping26"
+url: "https://homegundredaroad.github.io/Vaping26/"
+license: MIT
+keywords:
+  - vaping
+  - nicotine
+  - evidence observatory
+  - evidence synthesis
+  - research provenance
+  - UK public health data
