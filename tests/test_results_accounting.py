@@ -17,7 +17,7 @@ def test_results_explains_non_additive_record_accounting():
 def test_results_uses_result_only_trial_publication_gap():
     text = RESULTS.read_text(encoding="utf-8")
     assert "tr.unmatched_result_pmids" in text
-    assert "RESULT-reference PMIDs still unmatched" in text
+    assert "Registry RESULT PMIDs still unmatched" in text
     assert "BACKGROUND bibliography and DERIVED references" in text
     assert "tr.unmatched_referenced_pmids" not in text
 
@@ -28,3 +28,4 @@ def test_results_exposes_quarantine_breakdown_from_approved_release():
     assert 'id="quarantine-reasons"' in text
     assert 'id="r-quarantined"' in text
     assert 'id="r-before-gate"' in text
+    assert "t('r-literature-flow',n(lit.canonical_records))" in text
