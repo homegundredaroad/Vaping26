@@ -1,5 +1,7 @@
 # Vaping26
 
+[![SCC Nexus](https://sccnexus.co.uk/assets/brand/scc-nexus-wordmark.webp)](https://sccnexus.co.uk/)
+
 ## UK Vaping & Nicotine Evidence Observatory
 
 Vaping26 is an independent, evidence-led UK project designed to answer distinct questions about vaping rather than reduce the subject to a single verdict.
@@ -71,6 +73,13 @@ The validated observatory is deployed at:
 `https://homegundredaroad.github.io/Vaping26/`
 
 The Pages workflow validates the disclosure boundary and publication manifest, runs regression tests, builds `build/site/` from maintained site code plus allowlisted public outputs, and deploys only after those checks pass.
+
+## SCC Nexus affiliation
+
+Vaping26 is an SCC Nexus public-benefit evidence project. **Search · Corroborate · Communicate.**
+
+- Portfolio: https://sccnexus.co.uk/
+- Corrections and collaboration: hello@sccnexus.co.uk
 
 ## Publication boundary
 
