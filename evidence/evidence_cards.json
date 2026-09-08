@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "card_count": 990,
+  "card_count": 992,
   "study_design_counts": {
     "animal_study": 7,
     "case_control": 1,
     "case_report": 15,
     "case_series": 1,
     "commentary_or_editorial": 30,
-    "cross_sectional": 65,
+    "cross_sectional": 64,
     "in_vitro": 4,
     "modelling_study": 1,
     "non_randomised_intervention": 14,
@@ -17,10 +17,10 @@
     "randomised_controlled_trial": 111,
     "study_protocol": 38,
     "systematic_review_or_meta_analysis": 41,
-    "unknown": 635
+    "unknown": 638
   },
   "integrity_status_counts": {
-    "unknown": 990
+    "unknown": 992
   },
   "records": [
     {
@@ -2067,6 +2067,29 @@
       "human_review_status": "not_reviewed"
     },
     {
+      "evidence_id": "pmid:42703013",
+      "title": "The XenCart Protocol: A method for Alcian blue labeling and quantitative analysis of craniofacial cartilage in Xenopus.",
+      "year": "2026",
+      "journal": "Journal of anatomy",
+      "pmid": "42703013",
+      "pmcid": null,
+      "doi": "10.1111/joa.70238",
+      "sources": [
+        "europe_pmc",
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "topic_tags": [],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": null,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
       "evidence_id": "doi:10.64898/2026.05.30.728963",
       "title": "The XenCart Protocol: A Method for Alcian Blue Labeling and Quantitative Analysis of Craniofacial Cartilage in  <i>Xenopus</i>",
       "year": "2026",
@@ -2107,6 +2130,30 @@
       "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": false,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
+      "evidence_id": "pmid:42081044",
+      "title": "The Use of Machine Learning to Predict Offline Adolescent e-Cigarette Use: a Proof-of-Concept.",
+      "year": "2026",
+      "journal": "Prevention science : the official journal of the Society for Prevention Research",
+      "pmid": "42081044",
+      "pmcid": null,
+      "doi": "10.1007/s11121-026-01922-2",
+      "sources": [
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "topic_tags": [
+        "youth"
+      ],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -4553,6 +4600,28 @@
       "human_review_status": "not_reviewed"
     },
     {
+      "evidence_id": "pmid:42706673",
+      "title": "Prevalence of Voice Fatigue and Its Correlation With Xerostomia in E-Cigarette Smokers.",
+      "year": "2026",
+      "journal": "The Laryngoscope",
+      "pmid": "42706673",
+      "pmcid": null,
+      "doi": "10.1002/lary.70909",
+      "sources": [
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "topic_tags": [],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": null,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
       "evidence_id": "pmid:42231690",
       "title": "Prevalence and perceptions of e-cigarette use in orthodontic patients: A cross-sectional survey.",
       "year": "2026",
@@ -4621,33 +4690,6 @@
       "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": false,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
-      "evidence_id": "pmid:42099463",
-      "title": "Prevalence and factors associated with intention to use e-cigarettes among lower secondary school students in Bangkok: A cross-sectional study.",
-      "year": "2026",
-      "journal": "Tobacco induced diseases",
-      "pmid": "42099463",
-      "pmcid": "PMC13148362",
-      "doi": "10.18332/tid/218847",
-      "sources": [
-        "europe_pmc"
-      ],
-      "publication_types": [
-        "research-article",
-        "Journal Article"
-      ],
-      "topic_tags": [
-        "youth"
-      ],
-      "study_design": "cross_sectional",
-      "study_design_basis": [
-        "cross-sectional"
-      ],
-      "integrity_status": "unknown",
-      "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -5766,6 +5808,28 @@
       "human_review_status": "not_reviewed"
     },
     {
+      "evidence_id": "doi:10.21203/rs.3.rs-7622921/v1",
+      "title": "Parental Monitoring as a Protective Factor Against Nicotine Vaping: Examining Mediating Pathways Through Dual Systems Cognitive Development",
+      "year": "2026",
+      "journal": null,
+      "pmid": null,
+      "pmcid": null,
+      "doi": "10.21203/rs.3.rs-7622921/v1",
+      "sources": [
+        "europe_pmc"
+      ],
+      "publication_types": [
+        "Preprint"
+      ],
+      "topic_tags": [],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": false,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
       "evidence_id": "pmid:42650236",
       "title": "Oxidative Stress as a Potential Mechanistic Bridge Between Electronic Cigarette Components and Chronic Disease: A Combined Narrative and Bibliometric Analysis.",
       "year": "2026",
@@ -6249,7 +6313,7 @@
     },
     {
       "evidence_id": "doi:10.20944/preprints202608.0189.v1",
-      "title": "Nicotine Use Among Amateur and University Athletes: Prevalence, Pa",
+      "title": "Nicotine Use Among Amateur and University Athletes: Prevalence, Patterns and Reasons—A Scoping Review",
       "year": "2026",
       "journal": null,
       "pmid": null,
@@ -8225,17 +8289,18 @@
       "pmcid": null,
       "doi": "10.1016/j.jogc.2026.103464",
       "sources": [
-        "europe_pmc"
+        "europe_pmc",
+        "pubmed_eutils"
       ],
       "publication_types": [
-        "Practice Guideline",
-        "Journal Article"
+        "Journal Article",
+        "Practice Guideline"
       ],
       "topic_tags": [],
       "study_design": "unknown",
       "study_design_basis": [],
       "integrity_status": "unknown",
-      "open_access": false,
+      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -8500,28 +8565,6 @@
       ],
       "integrity_status": "unknown",
       "open_access": true,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
-      "evidence_id": "pmid:41494528",
-      "title": "Exploring the Relationships Between Social Influence, Vaping Behaviors, and Susceptibility Across Grade Levels in Kentucky.",
-      "year": "2026",
-      "journal": "American journal of health promotion : AJHP",
-      "pmid": "41494528",
-      "pmcid": null,
-      "doi": "10.1177/08901171251413763",
-      "sources": [
-        "pubmed_eutils"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
-      "integrity_status": "unknown",
-      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -9303,7 +9346,8 @@
       "pmcid": null,
       "doi": "10.1016/j.semarthrit.2026.153058",
       "sources": [
-        "europe_pmc"
+        "europe_pmc",
+        "pubmed_eutils"
       ],
       "publication_types": [
         "Journal Article"
@@ -9312,7 +9356,7 @@
       "study_design": "unknown",
       "study_design_basis": [],
       "integrity_status": "unknown",
-      "open_access": false,
+      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -9721,8 +9765,7 @@
       "pmcid": null,
       "doi": "10.1038/s41598-026-69362-0",
       "sources": [
-        "europe_pmc",
-        "pubmed_eutils"
+        "europe_pmc"
       ],
       "publication_types": [
         "Journal Article"
@@ -9735,7 +9778,7 @@
         "case-control"
       ],
       "integrity_status": "unknown",
-      "open_access": null,
+      "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -9808,6 +9851,30 @@
       "study_design_basis": [
         "randomized controlled trial"
       ],
+      "integrity_status": "unknown",
+      "open_access": null,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
+      "evidence_id": "pmid:42707051",
+      "title": "Effective Messaging Against Youth E-Cigarette Use: Does Humor Make a Difference?",
+      "year": "2026",
+      "journal": "Health communication",
+      "pmid": "42707051",
+      "pmcid": null,
+      "doi": "10.1080/10410236.2026.2726483",
+      "sources": [
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "topic_tags": [
+        "youth"
+      ],
+      "study_design": "unknown",
+      "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
@@ -13534,28 +13601,6 @@
       "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": true,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
-      "evidence_id": "pmid:41917378",
-      "title": "Association of electronic cigarette and conventional smoking with urogenital cancers: NHIS analysis.",
-      "year": "2026",
-      "journal": "International urology and nephrology",
-      "pmid": "41917378",
-      "pmcid": null,
-      "doi": "10.1007/s11255-026-05125-0",
-      "sources": [
-        "pubmed_eutils"
-      ],
-      "publication_types": [
-        "Journal Article"
-      ],
-      "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
-      "integrity_status": "unknown",
-      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },

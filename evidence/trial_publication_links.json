@@ -1,8 +1,8 @@
 {
   "schema_version": 2,
-  "trial_count_with_publication_references": 286,
+  "trial_count_with_publication_references": 287,
   "trials_with_matched_evidence_cards": 173,
-  "unique_referenced_pmids": 1196,
+  "unique_referenced_pmids": 1197,
   "unique_pmids_matched_to_evidence_cards": 364,
   "unmatched_referenced_pmids": [
     "10093176",
@@ -791,6 +791,7 @@
     "42323577",
     "42332640",
     "42351094",
+    "42447467",
     "42504048",
     "42560883",
     "42584385",
@@ -845,9 +846,9 @@
       "unmatched_pmids": 717
     },
     "DERIVED": {
-      "unique_pmids": 247,
+      "unique_pmids": 248,
       "matched_pmids": 143,
-      "unmatched_pmids": 104
+      "unmatched_pmids": 105
     },
     "RESULT": {
       "unique_pmids": 35,
@@ -9198,6 +9199,19 @@
           "year": "2025",
           "doi": "10.1016/j.amepre.2025.107664",
           "integrity_status": "unknown"
+        }
+      ]
+    },
+    {
+      "nct_id": "NCT06095999",
+      "brief_title": "Perfect Fit: Evaluation of a Virtual Coach for Smoking Cessation and Physical Activity",
+      "overall_status": "COMPLETED",
+      "has_results": false,
+      "publication_references": [
+        {
+          "pmid": "42447467",
+          "reference_type": "DERIVED",
+          "matched_to_evidence_card": false
         }
       ]
     },

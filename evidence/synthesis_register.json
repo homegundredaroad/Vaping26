@@ -147,8 +147,8 @@
       ],
       "preferred_designs": [],
       "protocol_status": "question_framework_defined",
-      "candidate_cards": 207,
-      "result_bearing_candidate_cards": 194,
+      "candidate_cards": 208,
+      "result_bearing_candidate_cards": 195,
       "excluded_non_result_cards": 13,
       "excluded_non_result_design_counts": {
         "post_publication_notice": 5,
@@ -157,16 +157,16 @@
       "design_counts": {
         "case_report": 1,
         "commentary_or_editorial": 8,
-        "cross_sectional": 20,
+        "cross_sectional": 19,
         "post_publication_notice": 5,
         "qualitative_study": 6,
         "randomised_controlled_trial": 16,
         "study_protocol": 8,
         "systematic_review_or_meta_analysis": 9,
-        "unknown": 134
+        "unknown": 136
       },
       "integrity_status_counts": {
-        "unknown": 207
+        "unknown": 208
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",
