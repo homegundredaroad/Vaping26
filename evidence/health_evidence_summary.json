@@ -8,28 +8,28 @@
       "crossref": 100
     },
     "input_records": 1200,
-    "canonical_records": 912,
-    "canonical_records_before_quality_gate": 1113,
-    "quarantined_records": 1387,
+    "canonical_records": 910,
+    "canonical_records_before_quality_gate": 1112,
+    "quarantined_records": 1388,
     "quarantine_reason_counts": {
       "cannabis_vaping_without_nicotine_or_ecig_context": 12,
-      "no_explicit_vaping_ecig_ends_or_nicotine_pouch_anchor": 1168,
-      "not_direct_vaping_nicotine_evidence": 1180,
+      "no_explicit_vaping_ecig_ends_or_nicotine_pouch_anchor": 1169,
+      "not_direct_vaping_nicotine_evidence": 1181,
       "pre_modern_ecigarette_publication_year": 105,
       "retraction_record_not_primary_evidence": 2,
       "secondary_only_title_not_vaping_specific": 100
     },
-    "duplicates_collapsed": 87,
+    "duplicates_collapsed": 88,
     "source_overlap": {
       "clinicaltrials_pubmed_recovery": 1080,
-      "europe_pmc": 913,
+      "europe_pmc": 912,
       "europe_pmc+pubmed_eutils": 83,
       "pubmed_eutils": 16
     },
     "publication_year_counts": {
       "unknown": 4,
       "2027": 1,
-      "2026": 563,
+      "2026": 561,
       "2025": 31,
       "2024": 24,
       "2023": 23,
@@ -48,7 +48,7 @@
       "2010": 1
     },
     "publication_type_counts": {
-      "Journal Article": 832,
+      "Journal Article": 830,
       "research-article": 185,
       "Research Support, Non-U.S. Gov't": 117,
       "Research Support, N.I.H., Extramural": 106,
@@ -103,7 +103,7 @@
       "cessation": 149,
       "exposure_biomarkers": 30,
       "indoor_air": 5,
-      "respiratory": 198,
+      "respiratory": 199,
       "secondhand_exposure": 7,
       "thirdhand_residue": 2,
       "ultrafine_particles": 3,
@@ -120,7 +120,7 @@
     }
   },
   "evidence_cards": {
-    "card_count": 912,
+    "card_count": 910,
     "study_design_counts": {
       "animal_study": 7,
       "case_control": 1,
@@ -137,20 +137,20 @@
       "randomised_controlled_trial": 110,
       "study_protocol": 35,
       "systematic_review_or_meta_analysis": 31,
-      "unknown": 584
+      "unknown": 582
     },
     "integrity_status_counts": {
-      "unknown": 912
+      "unknown": 910
     },
     "extraction_policy": "Metadata classification is automated and provisional. Integrity status remains unknown unless a collected integrity source or explicit bibliographic signal supplies a post-publication state. Effect estimates, comparators, confounding, funding and risk-of-bias fields require source-grounded extraction and review before synthesis."
   },
   "review_readiness": {
     "schema_version": 1,
-    "generated_at": "2026-09-14T10:45:59.894299+00:00",
-    "record_count": 912,
+    "generated_at": "2026-09-14T18:25:11.663996+00:00",
+    "record_count": 910,
     "study_design_counts": {
       "animal_study": 7,
-      "unknown": 584,
+      "unknown": 582,
       "case_report": 15,
       "commentary_or_editorial": 33,
       "qualitative_study": 15,
@@ -167,20 +167,20 @@
       "case_series": 1
     },
     "integrity_status_counts": {
-      "unknown": 912
+      "unknown": 910
     },
     "human_review_status_counts": {
-      "not_reviewed": 912
+      "not_reviewed": 910
     },
     "synthesis_readiness_counts": {
-      "metadata_classified_requires_outcome_extraction": 912
+      "metadata_classified_requires_outcome_extraction": 910
     },
     "unknown_study_design": {
-      "count": 584,
-      "percent": 64.04
+      "count": 582,
+      "percent": 63.96
     },
     "unknown_integrity_status": {
-      "count": 912,
+      "count": 910,
       "percent": 100.0
     },
     "reviewed_record_count": 0,
@@ -288,10 +288,10 @@
     "total_matches": 834,
     "status_counts": {
       "ACTIVE_NOT_RECRUITING": 29,
-      "COMPLETED": 494,
+      "COMPLETED": 495,
       "ENROLLING_BY_INVITATION": 13,
       "NOT_YET_RECRUITING": 52,
-      "RECRUITING": 132,
+      "RECRUITING": 131,
       "SUSPENDED": 2,
       "TERMINATED": 30,
       "UNKNOWN": 56,

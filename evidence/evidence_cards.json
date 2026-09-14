@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "card_count": 912,
+  "card_count": 910,
   "study_design_counts": {
     "animal_study": 7,
     "case_control": 1,
@@ -17,10 +17,10 @@
     "randomised_controlled_trial": 110,
     "study_protocol": 35,
     "systematic_review_or_meta_analysis": 31,
-    "unknown": 584
+    "unknown": 582
   },
   "integrity_status_counts": {
-    "unknown": 912
+    "unknown": 910
   },
   "records": [
     {
@@ -179,8 +179,7 @@
       "pmcid": null,
       "doi": "10.1016/j.drugalcdep.2026.113260",
       "sources": [
-        "europe_pmc",
-        "pubmed_eutils"
+        "europe_pmc"
       ],
       "publication_types": [
         "Journal Article"
@@ -191,7 +190,7 @@
       "study_design": "unknown",
       "study_design_basis": [],
       "integrity_status": "unknown",
-      "open_access": null,
+      "open_access": false,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -6056,29 +6055,6 @@
       "human_review_status": "not_reviewed"
     },
     {
-      "evidence_id": "pmid:42294225",
-      "title": "Methylglyoxal and Glyoxal in High-Puff Disposable Electronic Cigarette Liquids: Unexpected Accumulation and Enhanced Cytotoxicity.",
-      "year": "2026",
-      "journal": "ACS omega",
-      "pmid": "42294225",
-      "pmcid": "PMC13261583",
-      "doi": "10.1021/acsomega.5c13033",
-      "sources": [
-        "europe_pmc"
-      ],
-      "publication_types": [
-        "research-article",
-        "Journal Article"
-      ],
-      "topic_tags": [],
-      "study_design": "unknown",
-      "study_design_basis": [],
-      "integrity_status": "unknown",
-      "open_access": true,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
       "evidence_id": "pmid:42091311",
       "title": "Methodological and interpretative limitations in a meta-analysis of varenicline for vaping cessation.",
       "year": "2026",
@@ -6757,29 +6733,6 @@
       "topic_tags": [
         "youth"
       ],
-      "study_design": "unknown",
-      "study_design_basis": [],
-      "integrity_status": "unknown",
-      "open_access": false,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
-      "evidence_id": "pmid:42212568",
-      "title": "Investigating the Quality of Chat Generative Pretrained Transformer's (ChatGPT) Parenting Advice.",
-      "year": "2026",
-      "journal": "Journal of developmental and behavioral pediatrics : JDBP",
-      "pmid": "42212568",
-      "pmcid": "PMC13524179",
-      "doi": "10.1097/dbp.0000000000001493",
-      "sources": [
-        "europe_pmc"
-      ],
-      "publication_types": [
-        "research-article",
-        "Journal Article"
-      ],
-      "topic_tags": [],
       "study_design": "unknown",
       "study_design_basis": [],
       "integrity_status": "unknown",
@@ -8641,14 +8594,15 @@
       "year": "2026",
       "journal": "Seminars in arthritis and rheumatism",
       "pmid": "42659936",
-      "pmcid": null,
+      "pmcid": "PMC13572768",
       "doi": "10.1016/j.semarthrit.2026.153058",
       "sources": [
         "europe_pmc",
         "pubmed_eutils"
       ],
       "publication_types": [
-        "Journal Article"
+        "Journal Article",
+        "research-article"
       ],
       "topic_tags": [],
       "study_design": "unknown",
@@ -12267,13 +12221,15 @@
       "year": "2026",
       "journal": "Addictive behaviors reports",
       "pmid": "42733798",
-      "pmcid": null,
+      "pmcid": "PMC13571557",
       "doi": "10.1016/j.abrep.2026.100738",
       "sources": [
+        "europe_pmc",
         "pubmed_eutils"
       ],
       "publication_types": [
-        "Journal Article"
+        "Journal Article",
+        "research-article"
       ],
       "topic_tags": [
         "youth"
@@ -12281,7 +12237,7 @@
       "study_design": "unknown",
       "study_design_basis": [],
       "integrity_status": "unknown",
-      "open_access": null,
+      "open_access": true,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
