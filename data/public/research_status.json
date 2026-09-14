@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
   "project": "Vaping26",
-  "generated_at": "2026-09-08T14:58:46.664879+00:00",
+  "generated_at": "2026-09-14T10:46:00.037899+00:00",
   "publication_level": "aggregate_and_audit_metadata_only",
   "collectors": [
     {
@@ -26,7 +26,7 @@
       "collector": "crossref_retraction_watch",
       "evidence_role": "research_integrity_enrichment",
       "status": "records_downloaded",
-      "records": 66959
+      "records": 67106
     },
     {
       "collector": "clinical_trials",
@@ -68,7 +68,7 @@
       "collector": "newsapi_leads",
       "evidence_role": "discovery_lead_only",
       "status": "records_downloaded",
-      "records": 22
+      "records": 12
     }
   ],
   "source_failures": [],

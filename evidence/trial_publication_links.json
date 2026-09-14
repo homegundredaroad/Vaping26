@@ -1,9 +1,9 @@
 {
   "schema_version": 2,
   "trial_count_with_publication_references": 287,
-  "trials_with_matched_evidence_cards": 173,
+  "trials_with_matched_evidence_cards": 172,
   "unique_referenced_pmids": 1197,
-  "unique_pmids_matched_to_evidence_cards": 364,
+  "unique_pmids_matched_to_evidence_cards": 363,
   "unmatched_referenced_pmids": [
     "10093176",
     "10170434",
@@ -787,6 +787,7 @@
     "42143578",
     "42154285",
     "42180350",
+    "42205972",
     "42278704",
     "42323577",
     "42332640",
@@ -847,8 +848,8 @@
     },
     "DERIVED": {
       "unique_pmids": 248,
-      "matched_pmids": 143,
-      "unmatched_pmids": 105
+      "matched_pmids": 142,
+      "unmatched_pmids": 106
     },
     "RESULT": {
       "unique_pmids": 35,
@@ -10388,12 +10389,7 @@
         {
           "pmid": "42205972",
           "reference_type": "DERIVED",
-          "matched_to_evidence_card": true,
-          "evidence_id": "pmid:42205972",
-          "title": "Acceptance and preferences for different nicotine substitute products to reduce tobacco smoking in people living with HIV: Results from an internal pilot study of a randomized trial.",
-          "year": "2026",
-          "doi": "10.18332/tid/218987",
-          "integrity_status": "unknown"
+          "matched_to_evidence_card": false
         },
         {
           "pmid": "41952225",

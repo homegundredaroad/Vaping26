@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-09-08T14:58:46.664879+00:00",
+  "generated_at": "2026-09-14T10:46:00.037899+00:00",
   "publication_contract": "deny-by-default-v2",
   "files": [
     {
       "path": "data/public/research_status.json",
-      "sha256": "515324972df1a6cd3872475c3d03fe51f6cbb017c1116b910b3ecbfcb7fd8a3d",
+      "sha256": "dd8e9613080e973d50c56c4694a79a706233b9c32f3bdc413088a324f94012d5",
       "bytes": 2464
     },
     {
@@ -15,13 +15,13 @@
     },
     {
       "path": "evidence/evidence_cards.json",
-      "sha256": "bffd544c5ff7cd21165de174861025bd40847f51e696fdf0c65c8aed3c447e8f",
-      "bytes": 813536
+      "sha256": "c3c7b5a12b74e58d818b81d23560ba1d9f32db8d1270db886a68e7097404f7dc",
+      "bytes": 752233
     },
     {
       "path": "evidence/health_evidence_summary.json",
-      "sha256": "3b3b30065b9fc6817bc478bb12d73dac68bb94857af7a392dfecab56ede5ec6e",
-      "bytes": 15487
+      "sha256": "f4d4e3593683f28342da535634cee61e59db173ff231a1045b483ffbfea7062a",
+      "bytes": 15494
     },
     {
       "path": "evidence/ons_prevalence.json",
@@ -30,13 +30,13 @@
     },
     {
       "path": "evidence/synthesis_register.json",
-      "sha256": "fc8a6f6f467d408491e2dfe21817cf4f545dd0a7931261ce8dc68d268366425e",
-      "bytes": 9189
+      "sha256": "870d4495b30810127c82d6452f7e4800bdae4307a45e7a0e48168163d37e3525",
+      "bytes": 9183
     },
     {
       "path": "evidence/trial_publication_links.json",
-      "sha256": "40cb1c97d594a5d5e35cb493280a2b1c1195da97278fef530bc68b292295ca35",
-      "bytes": 389944
+      "sha256": "7446187a59b6a2110b222e618331003b53b570806d2b6bcfbda07747c58ff24f",
+      "bytes": 389607
     },
     {
       "path": "evidence/youth_prevalence.json",
@@ -45,17 +45,17 @@
     },
     {
       "path": "provenance/release_evidence.json",
-      "sha256": "9455ad6d80388197f4b6abd854c86ccf6f742e43c670ed441308523c99ff6c66",
+      "sha256": "0ab904b6c2cc4f520f161ea3de1a2a1bcb663d3f9a90230fcdf8b6676bcf8ad3",
       "bytes": 8728
     },
     {
       "path": "provenance/source_coverage.json",
-      "sha256": "9078078c41b9b0f239fe68420616524d28676b08d464dca7b058ca4c7fa1d084",
+      "sha256": "c027ccfc158bf639a8d78f69b3a6ed0bae1f967eb176de74f4cc838682dcf240",
       "bytes": 14970
     },
     {
       "path": "provenance/source_register.json",
-      "sha256": "7914e2ba3516d90132796dd53bf8a6df746159ccccac8f3132a61fa619558b53",
+      "sha256": "6f954406cec21360a1624664113b5c65e819e1897c63e2d89577e3b3404689ff",
       "bytes": 19313
     },
     {
