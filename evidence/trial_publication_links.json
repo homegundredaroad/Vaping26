@@ -2,7 +2,7 @@
   "schema_version": 2,
   "trial_count_with_publication_references": 287,
   "trials_with_matched_evidence_cards": 172,
-  "unique_referenced_pmids": 1197,
+  "unique_referenced_pmids": 1198,
   "unique_pmids_matched_to_evidence_cards": 363,
   "unmatched_referenced_pmids": [
     "10093176",
@@ -797,6 +797,7 @@
     "42560883",
     "42584385",
     "42606856",
+    "42622852",
     "42686173",
     "4459223",
     "5785179",
@@ -847,9 +848,9 @@
       "unmatched_pmids": 717
     },
     "DERIVED": {
-      "unique_pmids": 248,
+      "unique_pmids": 249,
       "matched_pmids": 142,
-      "unmatched_pmids": 106
+      "unmatched_pmids": 107
     },
     "RESULT": {
       "unique_pmids": 35,
@@ -8215,7 +8216,7 @@
       "nct_id": "NCT05430334",
       "brief_title": "Assess the Influence of Nicotine Flux and Nicotine Form on Subjective Effects Related to Dependency",
       "overall_status": "COMPLETED",
-      "has_results": false,
+      "has_results": true,
       "publication_references": [
         {
           "pmid": "37733666",
@@ -10312,6 +10313,11 @@
           "pmid": "39111371",
           "reference_type": "BACKGROUND",
           "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "42622852",
+          "reference_type": "DERIVED",
+          "matched_to_evidence_card": false
         }
       ]
     },
@@ -11135,7 +11141,7 @@
     {
       "nct_id": "NCT07173335",
       "brief_title": "Integrated Healthy Lifestyle and Pain Care for People With Musculoskeletal Conditions Living in Rural Areas.",
-      "overall_status": "NOT_YET_RECRUITING",
+      "overall_status": "RECRUITING",
       "has_results": false,
       "publication_references": [
         {
