@@ -41,7 +41,7 @@
       "status": "parsed",
       "survey_year": 2023,
       "release_check": {
-        "discovery_status": "checked_no_newer_release",
+        "discovery_status": "latest_release_check_unavailable",
         "freshness_status": "awaiting_scheduled_release",
         "expected_next_survey_year": 2025,
         "expected_publication_year": 2026,
@@ -148,7 +148,7 @@
       }
     ],
     "release_check": {
-      "discovery_status": "checked_no_newer_release",
+      "discovery_status": "latest_release_check_unavailable",
       "freshness_status": "awaiting_scheduled_release",
       "expected_next_survey_year": 2025,
       "expected_publication_year": 2026,

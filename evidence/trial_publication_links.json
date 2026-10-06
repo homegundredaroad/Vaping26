@@ -2,8 +2,8 @@
   "schema_version": 2,
   "trial_count_with_publication_references": 287,
   "trials_with_matched_evidence_cards": 172,
-  "unique_referenced_pmids": 1199,
-  "unique_pmids_matched_to_evidence_cards": 363,
+  "unique_referenced_pmids": 1211,
+  "unique_pmids_matched_to_evidence_cards": 365,
   "unmatched_referenced_pmids": [
     "10093176",
     "10170434",
@@ -103,6 +103,7 @@
     "16649096",
     "16777543",
     "16799076",
+    "16809587",
     "16875787",
     "16896901",
     "16925881",
@@ -141,6 +142,7 @@
     "18324559",
     "18353792",
     "18383133",
+    "18407007",
     "18506621",
     "18522490",
     "18662802",
@@ -540,6 +542,7 @@
     "31417321",
     "31481555",
     "31513559",
+    "31531756",
     "31538806",
     "31609228",
     "31615592",
@@ -576,6 +579,7 @@
     "32678452",
     "32693198",
     "32769198",
+    "32839050",
     "32841482",
     "32895878",
     "32928988",
@@ -638,6 +642,7 @@
     "3485495",
     "34874892",
     "34949171",
+    "35044467",
     "35065036",
     "35078840",
     "35081953",
@@ -713,7 +718,9 @@
     "37585282",
     "37790642",
     "37857774",
+    "37859683",
     "37868257",
+    "37921662",
     "37947094",
     "37957321",
     "37988256",
@@ -756,6 +763,7 @@
     "40053349",
     "40230801",
     "40419993",
+    "40494156",
     "40507022",
     "40584776",
     "40586019",
@@ -792,6 +800,7 @@
     "42323577",
     "42332640",
     "42351094",
+    "42386924",
     "42447467",
     "42504048",
     "42560883",
@@ -800,6 +809,7 @@
     "42622852",
     "42686173",
     "42752171",
+    "42822167",
     "4459223",
     "5785179",
     "6120322",
@@ -844,37 +854,42 @@
   ],
   "reference_type_summary": {
     "BACKGROUND": {
-      "unique_pmids": 927,
-      "matched_pmids": 210,
-      "unmatched_pmids": 717
+      "unique_pmids": 935,
+      "matched_pmids": 212,
+      "unmatched_pmids": 723
     },
     "DERIVED": {
-      "unique_pmids": 250,
+      "unique_pmids": 249,
       "matched_pmids": 142,
-      "unmatched_pmids": 108
+      "unmatched_pmids": 107
     },
     "RESULT": {
-      "unique_pmids": 35,
+      "unique_pmids": 40,
       "matched_pmids": 22,
-      "unmatched_pmids": 13
+      "unmatched_pmids": 18
     }
   },
-  "result_reference_pmids": 35,
+  "result_reference_pmids": 40,
   "result_pmids_matched_to_evidence_cards": 22,
   "unmatched_result_pmids": [
     "10807119",
     "23489056",
     "25644890",
     "26000024",
-    "28067621",
     "32538283",
     "33761149",
     "33784312",
     "33870815",
     "36087843",
     "36657751",
+    "37337860",
+    "37859683",
     "37868257",
-    "42154285"
+    "37921662",
+    "39011963",
+    "40494156",
+    "42154285",
+    "42386924"
   ],
   "records": [
     {
@@ -4991,6 +5006,11 @@
       "has_results": false,
       "publication_references": [
         {
+          "pmid": "42822167",
+          "reference_type": "DERIVED",
+          "matched_to_evidence_card": false
+        },
+        {
           "pmid": "42059106",
           "reference_type": "DERIVED",
           "matched_to_evidence_card": false
@@ -6585,22 +6605,42 @@
     {
       "nct_id": "NCT04676295",
       "brief_title": "Pre-eclampsia and Future Cardiovascular Health: An Underused Opportunity to Improve Family Health",
-      "overall_status": "UNKNOWN",
+      "overall_status": "COMPLETED",
       "has_results": false,
       "publication_references": [
         {
           "pmid": "28067621",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "37337860",
+          "reference_type": "RESULT",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "37859683",
+          "reference_type": "RESULT",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "37921662",
           "reference_type": "RESULT",
           "matched_to_evidence_card": false
         },
         {
           "pmid": "39011963",
-          "reference_type": "DERIVED",
+          "reference_type": "RESULT",
           "matched_to_evidence_card": false
         },
         {
-          "pmid": "37337860",
-          "reference_type": "DERIVED",
+          "pmid": "40494156",
+          "reference_type": "RESULT",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "42386924",
+          "reference_type": "RESULT",
           "matched_to_evidence_card": false
         }
       ]
@@ -11211,6 +11251,51 @@
       "overall_status": "ACTIVE_NOT_RECRUITING",
       "has_results": false,
       "publication_references": [
+        {
+          "pmid": "32839050",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "33167676",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:33167676",
+          "title": "Adolescent Susceptibility to E-Cigarettes: An Update From the 2018 National Youth Tobacco Survey.",
+          "year": "2021",
+          "doi": "10.1177/0890117120971121",
+          "integrity_status": "unknown"
+        },
+        {
+          "pmid": "35044467",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "31531756",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "16809587",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "18407007",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": false
+        },
+        {
+          "pmid": "34678711",
+          "reference_type": "BACKGROUND",
+          "matched_to_evidence_card": true,
+          "evidence_id": "pmid:34678711",
+          "title": "E-cigarette use among Hispanics: Reducing risk or recruiting new tobacco users?",
+          "year": "2022",
+          "doi": "10.1016/j.addbeh.2021.107149",
+          "integrity_status": "unknown"
+        },
         {
           "pmid": "28523431",
           "reference_type": "BACKGROUND",
