@@ -8,28 +8,28 @@
       "crossref": 100
     },
     "input_records": 1200,
-    "canonical_records": 910,
-    "canonical_records_before_quality_gate": 1123,
-    "quarantined_records": 1416,
+    "canonical_records": 901,
+    "canonical_records_before_quality_gate": 1128,
+    "quarantined_records": 1429,
     "quarantine_reason_counts": {
-      "cannabis_vaping_without_nicotine_or_ecig_context": 14,
-      "no_explicit_vaping_ecig_ends_or_nicotine_pouch_anchor": 1195,
-      "not_direct_vaping_nicotine_evidence": 1209,
+      "cannabis_vaping_without_nicotine_or_ecig_context": 13,
+      "no_explicit_vaping_ecig_ends_or_nicotine_pouch_anchor": 1209,
+      "not_direct_vaping_nicotine_evidence": 1222,
       "pre_modern_ecigarette_publication_year": 105,
       "retraction_record_not_primary_evidence": 2,
       "secondary_only_title_not_vaping_specific": 100
     },
-    "duplicates_collapsed": 77,
+    "duplicates_collapsed": 72,
     "source_overlap": {
-      "clinicaltrials_pubmed_recovery": 1097,
-      "europe_pmc": 922,
-      "europe_pmc+pubmed_eutils": 75,
-      "pubmed_eutils": 25
+      "clinicaltrials_pubmed_recovery": 1096,
+      "europe_pmc": 927,
+      "europe_pmc+pubmed_eutils": 68,
+      "pubmed_eutils": 32
     },
     "publication_year_counts": {
-      "unknown": 6,
+      "unknown": 10,
       "2027": 2,
-      "2026": 556,
+      "2026": 543,
       "2025": 31,
       "2024": 24,
       "2023": 23,
@@ -48,32 +48,32 @@
       "2010": 1
     },
     "publication_type_counts": {
-      "Journal Article": 824,
-      "research-article": 174,
-      "Research Support, Non-U.S. Gov't": 117,
+      "Journal Article": 816,
+      "research-article": 181,
+      "Research Support, Non-U.S. Gov't": 116,
       "Research Support, N.I.H., Extramural": 109,
       "Randomized Controlled Trial": 102,
-      "Review": 75,
-      "Preprint": 42,
+      "Review": 74,
+      "Preprint": 44,
       "review-article": 28,
       "Research Support, U.S. Gov't, P.H.S.": 23,
       "Clinical Trial Protocol": 21,
-      "Letter": 20,
-      "Comparative Study": 20,
-      "Systematic Review": 17,
-      "Case Reports": 13,
+      "Comparative Study": 21,
+      "Letter": 18,
+      "Systematic Review": 16,
+      "Case Reports": 12,
       "Editorial": 12,
       "Multicenter Study": 11,
       "Observational Study": 9,
       "Meta-Analysis": 9,
       "Clinical Trial": 9,
-      "case-report": 7,
+      "case-report": 8,
       "brief-report": 7,
       "Comment": 6,
       "Research Support, U.S. Gov't, Non-P.H.S.": 6,
       "Published Erratum": 6,
       "Validation Study": 5,
-      "systematic-review": 4,
+      "systematic-review": 5,
       "Pragmatic Clinical Trial": 4,
       "Abstract": 4,
       "English Abstract": 3,
@@ -100,89 +100,89 @@
       "Clinical Conference": 1
     },
     "topic_counts": {
-      "aerosol_chemistry": 11,
+      "aerosol_chemistry": 10,
       "cardiovascular": 113,
-      "cessation": 151,
-      "exposure_biomarkers": 31,
+      "cessation": 153,
+      "exposure_biomarkers": 32,
       "indoor_air": 5,
-      "respiratory": 204,
-      "secondhand_exposure": 7,
+      "respiratory": 202,
+      "secondhand_exposure": 6,
       "thirdhand_residue": 2,
       "ultrafine_particles": 3,
-      "youth": 387
+      "youth": 384
     },
     "topic_policy": "Auditable title/journal keyword tags are navigation aids only and are not evidence-strength or effect classifications.",
     "relevance_policy": "Public evidence-card promotion requires an explicit vaping, e-cigarette, ENDS, e-liquid or nicotine-pouch anchor. Broad smoking/tobacco/health records and cannabis-only vaping records remain auditable in quarantine rather than being discarded.",
     "trial_publication_recovery": {
       "source": "NCBI PubMed ESummary exact PMID retrieval from ClinicalTrials.gov references",
-      "recovered_source_records": 1204,
-      "accepted_before_direct_relevance_gate": 1098,
+      "recovered_source_records": 1203,
+      "accepted_before_direct_relevance_gate": 1097,
       "quality_quarantined": 106,
       "policy": "Identifier recovery expands coverage only. Recovered publications still pass the ordinary quality and direct-vaping relevance gates and registry linkage does not establish outcome reporting completeness or reliability."
     }
   },
   "evidence_cards": {
-    "card_count": 910,
+    "card_count": 901,
     "study_design_counts": {
       "animal_study": 7,
       "case_control": 1,
-      "case_report": 15,
+      "case_report": 14,
       "case_series": 1,
-      "commentary_or_editorial": 36,
-      "cross_sectional": 51,
-      "in_vitro": 4,
+      "commentary_or_editorial": 34,
+      "cross_sectional": 52,
+      "in_vitro": 5,
       "modelling_study": 1,
       "non_randomised_intervention": 14,
       "post_publication_notice": 6,
-      "prospective_cohort": 2,
+      "prospective_cohort": 1,
       "qualitative_study": 16,
       "randomised_controlled_trial": 108,
-      "study_protocol": 35,
-      "systematic_review_or_meta_analysis": 36,
-      "unknown": 577
+      "study_protocol": 34,
+      "systematic_review_or_meta_analysis": 35,
+      "unknown": 572
     },
     "integrity_status_counts": {
-      "unknown": 910
+      "unknown": 901
     },
     "extraction_policy": "Metadata classification is automated and provisional. Integrity status remains unknown unless a collected integrity source or explicit bibliographic signal supplies a post-publication state. Effect estimates, comparators, confounding, funding and risk-of-bias fields require source-grounded extraction and review before synthesis."
   },
   "review_readiness": {
     "schema_version": 1,
-    "generated_at": "2026-10-06T04:58:34.321347+00:00",
-    "record_count": 910,
+    "generated_at": "2026-10-12T13:15:12.856058+00:00",
+    "record_count": 901,
     "study_design_counts": {
-      "unknown": 577,
+      "unknown": 572,
       "animal_study": 7,
-      "cross_sectional": 51,
-      "case_report": 15,
-      "commentary_or_editorial": 36,
+      "cross_sectional": 52,
+      "case_report": 14,
+      "commentary_or_editorial": 34,
       "qualitative_study": 16,
       "randomised_controlled_trial": 108,
-      "prospective_cohort": 2,
-      "in_vitro": 4,
-      "systematic_review_or_meta_analysis": 36,
-      "study_protocol": 35,
+      "in_vitro": 5,
+      "systematic_review_or_meta_analysis": 35,
+      "study_protocol": 34,
       "modelling_study": 1,
       "case_control": 1,
+      "prospective_cohort": 1,
       "post_publication_notice": 6,
       "non_randomised_intervention": 14,
       "case_series": 1
     },
     "integrity_status_counts": {
-      "unknown": 910
+      "unknown": 901
     },
     "human_review_status_counts": {
-      "not_reviewed": 910
+      "not_reviewed": 901
     },
     "synthesis_readiness_counts": {
-      "metadata_classified_requires_outcome_extraction": 910
+      "metadata_classified_requires_outcome_extraction": 901
     },
     "unknown_study_design": {
-      "count": 577,
-      "percent": 63.41
+      "count": 572,
+      "percent": 63.49
     },
     "unknown_integrity_status": {
-      "count": 910,
+      "count": 901,
       "percent": 100.0
     },
     "reviewed_record_count": 0,
@@ -250,28 +250,28 @@
       {
         "id": "respiratory_health",
         "title": "Respiratory health outcomes associated with vaping",
-        "candidate_cards": 99,
+        "candidate_cards": 96,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
       {
         "id": "cardiovascular_health",
         "title": "Cardiovascular outcomes associated with vaping",
-        "candidate_cards": 45,
+        "candidate_cards": 46,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
       {
         "id": "youth_use",
         "title": "Vaping among children and young people",
-        "candidate_cards": 183,
+        "candidate_cards": 180,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
       {
         "id": "secondhand_exposure",
         "title": "Second-hand vaping aerosol exposure",
-        "candidate_cards": 18,
+        "candidate_cards": 17,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },
@@ -286,31 +286,31 @@
     "governance": "No pooled effect or causal conclusion is produced until comparator, outcome, effect-estimate and risk-of-bias fields have been source-grounded and reviewed."
   },
   "clinical_trials": {
-    "record_count": 842,
-    "total_matches": 842,
+    "record_count": 844,
+    "total_matches": 844,
     "status_counts": {
-      "ACTIVE_NOT_RECRUITING": 29,
-      "COMPLETED": 499,
-      "ENROLLING_BY_INVITATION": 13,
-      "NOT_YET_RECRUITING": 54,
-      "RECRUITING": 133,
+      "ACTIVE_NOT_RECRUITING": 28,
+      "COMPLETED": 501,
+      "ENROLLING_BY_INVITATION": 15,
+      "NOT_YET_RECRUITING": 53,
+      "RECRUITING": 134,
       "SUSPENDED": 2,
-      "TERMINATED": 30,
+      "TERMINATED": 29,
       "UNKNOWN": 56,
       "WITHDRAWN": 26
     },
     "study_type_counts": {
-      "INTERVENTIONAL": 702,
-      "OBSERVATIONAL": 140
+      "INTERVENTIONAL": 703,
+      "OBSERVATIONAL": 141
     },
     "trials_with_results": 191,
-    "trials_with_primary_outcomes": 842,
+    "trials_with_primary_outcomes": 844,
     "trials_with_result_outcome_measures": 191,
-    "publication_pmids_linked": 1211,
+    "publication_pmids_linked": 1212,
     "trials_with_matched_evidence_cards": 172,
     "unique_pmids_matched_to_evidence_cards": 365,
-    "unique_referenced_pmids": 1211,
-    "unmatched_referenced_pmids": 846,
+    "unique_referenced_pmids": 1212,
+    "unmatched_referenced_pmids": 847,
     "reference_type_summary": {
       "BACKGROUND": {
         "unique_pmids": 935,
@@ -318,9 +318,9 @@
         "unmatched_pmids": 723
       },
       "DERIVED": {
-        "unique_pmids": 249,
+        "unique_pmids": 250,
         "matched_pmids": 142,
-        "unmatched_pmids": 107
+        "unmatched_pmids": 108
       },
       "RESULT": {
         "unique_pmids": 40,
@@ -392,7 +392,7 @@
         "Tried using e-cigarettes"
       ],
       "release_check": {
-        "discovery_status": "latest_release_check_unavailable",
+        "discovery_status": "checked_no_newer_release",
         "freshness_status": "awaiting_scheduled_release",
         "expected_next_survey_year": 2025,
         "expected_publication_year": 2026,

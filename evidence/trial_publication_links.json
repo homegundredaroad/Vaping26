@@ -2,7 +2,7 @@
   "schema_version": 2,
   "trial_count_with_publication_references": 287,
   "trials_with_matched_evidence_cards": 172,
-  "unique_referenced_pmids": 1211,
+  "unique_referenced_pmids": 1212,
   "unique_pmids_matched_to_evidence_cards": 365,
   "unmatched_referenced_pmids": [
     "10093176",
@@ -801,6 +801,7 @@
     "42332640",
     "42351094",
     "42386924",
+    "42441935",
     "42447467",
     "42504048",
     "42560883",
@@ -859,9 +860,9 @@
       "unmatched_pmids": 723
     },
     "DERIVED": {
-      "unique_pmids": 249,
+      "unique_pmids": 250,
       "matched_pmids": 142,
-      "unmatched_pmids": 107
+      "unmatched_pmids": 108
     },
     "RESULT": {
       "unique_pmids": 40,
@@ -4338,6 +4339,11 @@
       "overall_status": "COMPLETED",
       "has_results": true,
       "publication_references": [
+        {
+          "pmid": "42441935",
+          "reference_type": "DERIVED",
+          "matched_to_evidence_card": false
+        },
         {
           "pmid": "35841024",
           "reference_type": "DERIVED",
@@ -8247,7 +8253,7 @@
     },
     {
       "nct_id": "NCT05396911",
-      "brief_title": "Development of UP2UTobacco for High School Youth",
+      "brief_title": "Development of UP2UTeacher for High School Youth",
       "overall_status": "COMPLETED",
       "has_results": false,
       "publication_references": [
