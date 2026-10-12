@@ -51,7 +51,7 @@
       "Journal Article": 816,
       "research-article": 181,
       "Research Support, Non-U.S. Gov't": 116,
-      "Research Support, N.I.H., Extramural": 109,
+      "Research Support, N.I.H., Extramural": 108,
       "Randomized Controlled Trial": 102,
       "Review": 74,
       "Preprint": 44,
@@ -105,7 +105,7 @@
       "cessation": 153,
       "exposure_biomarkers": 32,
       "indoor_air": 5,
-      "respiratory": 202,
+      "respiratory": 201,
       "secondhand_exposure": 6,
       "thirdhand_residue": 2,
       "ultrafine_particles": 3,
@@ -130,7 +130,7 @@
       "case_series": 1,
       "commentary_or_editorial": 34,
       "cross_sectional": 52,
-      "in_vitro": 5,
+      "in_vitro": 4,
       "modelling_study": 1,
       "non_randomised_intervention": 14,
       "post_publication_notice": 6,
@@ -139,7 +139,7 @@
       "randomised_controlled_trial": 108,
       "study_protocol": 34,
       "systematic_review_or_meta_analysis": 35,
-      "unknown": 572
+      "unknown": 573
     },
     "integrity_status_counts": {
       "unknown": 901
@@ -148,17 +148,17 @@
   },
   "review_readiness": {
     "schema_version": 1,
-    "generated_at": "2026-10-12T13:15:12.856058+00:00",
+    "generated_at": "2026-10-12T17:03:37.560947+00:00",
     "record_count": 901,
     "study_design_counts": {
-      "unknown": 572,
+      "unknown": 573,
       "animal_study": 7,
       "cross_sectional": 52,
       "case_report": 14,
       "commentary_or_editorial": 34,
       "qualitative_study": 16,
       "randomised_controlled_trial": 108,
-      "in_vitro": 5,
+      "in_vitro": 4,
       "systematic_review_or_meta_analysis": 35,
       "study_protocol": 34,
       "modelling_study": 1,
@@ -178,8 +178,8 @@
       "metadata_classified_requires_outcome_extraction": 901
     },
     "unknown_study_design": {
-      "count": 572,
-      "percent": 63.49
+      "count": 573,
+      "percent": 63.6
     },
     "unknown_integrity_status": {
       "count": 901,
@@ -250,7 +250,7 @@
       {
         "id": "respiratory_health",
         "title": "Respiratory health outcomes associated with vaping",
-        "candidate_cards": 96,
+        "candidate_cards": 95,
         "effect_estimate_ready_cards": 0,
         "synthesis_status": "awaiting_structured_outcome_extraction_and_review"
       },

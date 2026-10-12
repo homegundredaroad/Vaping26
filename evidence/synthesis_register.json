@@ -59,8 +59,8 @@
       ],
       "preferred_designs": [],
       "protocol_status": "question_framework_defined",
-      "candidate_cards": 96,
-      "result_bearing_candidate_cards": 92,
+      "candidate_cards": 95,
+      "result_bearing_candidate_cards": 91,
       "excluded_non_result_cards": 4,
       "excluded_non_result_design_counts": {
         "post_publication_notice": 2,
@@ -70,7 +70,6 @@
         "animal_study": 4,
         "case_report": 7,
         "commentary_or_editorial": 7,
-        "in_vitro": 1,
         "non_randomised_intervention": 1,
         "post_publication_notice": 2,
         "qualitative_study": 1,
@@ -80,7 +79,7 @@
         "unknown": 59
       },
       "integrity_status_counts": {
-        "unknown": 96
+        "unknown": 95
       },
       "effect_estimate_ready_cards": 0,
       "synthesis_status": "awaiting_structured_outcome_extraction_and_review",

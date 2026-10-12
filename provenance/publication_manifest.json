@@ -1,11 +1,11 @@
 {
   "schema_version": 3,
-  "generated_at": "2026-10-12T13:15:12.997105+00:00",
+  "generated_at": "2026-10-12T17:03:37.698301+00:00",
   "publication_contract": "deny-by-default-v2",
   "files": [
     {
       "path": "data/public/research_status.json",
-      "sha256": "344679fde3843ff2bfd0a5b3972401f3e52abab861d5778b410763f23566767e",
+      "sha256": "0bff5bfa0ed181aa402990ef985c5442c24210965d83cf7ffea3e741ad21fb65",
       "bytes": 2464
     },
     {
@@ -15,13 +15,13 @@
     },
     {
       "path": "evidence/evidence_cards.json",
-      "sha256": "f25cc2e68fbb597f326d863fae05e7978a89c731b82c3a3794dbd30f179f644c",
-      "bytes": 744102
+      "sha256": "ac254697ccbf1eab1b1338a1ef79961e06dbb8eb636339478017089e4ae778be",
+      "bytes": 743945
     },
     {
       "path": "evidence/health_evidence_summary.json",
-      "sha256": "71d9446e8cd841fb781d718b3aef07aeb0b1605d5a7ec6b76111ba8b6f17829f",
-      "bytes": 15513
+      "sha256": "df8753db23e74efa2e99cbbf7a5e9f3c7fc324cbf24f48f9c7928fdd6e00b675",
+      "bytes": 15512
     },
     {
       "path": "evidence/ons_prevalence.json",
@@ -30,8 +30,8 @@
     },
     {
       "path": "evidence/synthesis_register.json",
-      "sha256": "5838d0dd12ab3e05d42630d3cfcca7a0a6b902a3498bd9113a82236307ecafce",
-      "bytes": 9225
+      "sha256": "9976622d6bfd3ebe02bf3e2c9d3d71923cebfa785197f2151049758b554816ec",
+      "bytes": 9202
     },
     {
       "path": "evidence/trial_publication_links.json",
@@ -45,17 +45,17 @@
     },
     {
       "path": "provenance/release_evidence.json",
-      "sha256": "c6e01012161aa7eb0823d632685b34f3a93037cc4cbf823ba89bb6cc5c004e27",
+      "sha256": "6205939a83c0fcc63078fb3cc48bab3925e3d81317ee194dff7432b2a4386613",
       "bytes": 8728
     },
     {
       "path": "provenance/source_coverage.json",
-      "sha256": "bd7b9902935fcae913f3df94e2fad370b9e0094c7ede11f204787a194bdab145",
+      "sha256": "193865d5ea874ff0463a22e9c99cb434c132f4eda25c8b45d9f00e493c7b32b6",
       "bytes": 14970
     },
     {
       "path": "provenance/source_register.json",
-      "sha256": "24e1e30019ba08824033e97af647fb8ba37c1eabe55d27158a86c2a1da7785d8",
+      "sha256": "5b6112a3f02ec06884f3d3a6b5c60e73f52104684db7792d1d2690851c6cfae8",
       "bytes": 19313
     },
     {

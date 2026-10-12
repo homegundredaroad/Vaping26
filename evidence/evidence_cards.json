@@ -8,7 +8,7 @@
     "case_series": 1,
     "commentary_or_editorial": 34,
     "cross_sectional": 52,
-    "in_vitro": 5,
+    "in_vitro": 4,
     "modelling_study": 1,
     "non_randomised_intervention": 14,
     "post_publication_notice": 6,
@@ -17,7 +17,7 @@
     "randomised_controlled_trial": 108,
     "study_protocol": 34,
     "systematic_review_or_meta_analysis": 35,
-    "unknown": 572
+    "unknown": 573
   },
   "integrity_status_counts": {
     "unknown": 901
@@ -2867,6 +2867,28 @@
       "study_design_basis": [],
       "integrity_status": "unknown",
       "open_access": false,
+      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
+      "human_review_status": "not_reviewed"
+    },
+    {
+      "evidence_id": "pmid:42861996",
+      "title": "Severe MDMB-4en-PINACA toxicity following use of an electronic vaping device.",
+      "year": "2026",
+      "journal": "Clinical toxicology (Philadelphia, Pa.)",
+      "pmid": "42861996",
+      "pmcid": null,
+      "doi": "10.1080/15563650.2026.2743727",
+      "sources": [
+        "pubmed_eutils"
+      ],
+      "publication_types": [
+        "Journal Article"
+      ],
+      "topic_tags": [],
+      "study_design": "unknown",
+      "study_design_basis": [],
+      "integrity_status": "unknown",
+      "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
       "human_review_status": "not_reviewed"
     },
@@ -8186,33 +8208,6 @@
       "topic_tags": [],
       "study_design": "unknown",
       "study_design_basis": [],
-      "integrity_status": "unknown",
-      "open_access": null,
-      "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
-      "human_review_status": "not_reviewed"
-    },
-    {
-      "evidence_id": "pmid:42247188",
-      "title": "Electronic cigarette aerosols disrupt airway barrier function via MMP-dependent E-cadherin cleavage: findings from cell culture and murine models.",
-      "year": "2026",
-      "journal": "Archives of toxicology",
-      "pmid": "42247188",
-      "pmcid": null,
-      "doi": "10.1007/s00204-026-04456-2",
-      "sources": [
-        "pubmed_eutils"
-      ],
-      "publication_types": [
-        "Journal Article",
-        "Research Support, N.I.H., Extramural"
-      ],
-      "topic_tags": [
-        "respiratory"
-      ],
-      "study_design": "in_vitro",
-      "study_design_basis": [
-        "cell culture"
-      ],
       "integrity_status": "unknown",
       "open_access": null,
       "synthesis_readiness": "metadata_classified_requires_outcome_extraction",
